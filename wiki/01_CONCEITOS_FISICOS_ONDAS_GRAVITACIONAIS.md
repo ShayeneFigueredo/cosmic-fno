@@ -43,6 +43,8 @@ Amplitude da Onda
 ```
 
 ### 1. Inspiral (Aproximação em Espiral)
+<img width="459" height="280" alt="image" src="https://github.com/user-attachments/assets/d7d67387-5b1c-43e1-a700-7c29aeca8702" />
+
 * Os dois buracos negros orbitam um em torno do outro, perdendo energia em forma de ondas gravitacionais.
 * À medida que perdem energia, chegam cada vez mais perto e giram cada vez mais rápido.
 * O sinal emitido aqui tem o formato de um **"Chirp"**: o som vai ficando mais agudo (frequência sobe) e mais alto (amplitude sobe).
