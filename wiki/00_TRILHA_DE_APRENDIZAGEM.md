@@ -38,10 +38,11 @@ Bem-vinda à base de conhecimento do seu TCC! Esta Wiki foi desenhada para const
    - As 3 fases fundamentais: *Inspiral* (Aproximação), *Merger* (Fusão) e *Ringdown* (Acomodação).
    - O que é a deformação da onda ($h_+$ e $h_\times$).
 
-2. **[02. A Matemática das Frequências e Transformada de Fourier](02_MATEMATICA_FOURIER_DO_ZERO.md)** *(Em Breve)*
+2. **[02. A Matemática das Frequências e Transformada de Fourier](02_MATEMATICA_FOURIER_DO_ZERO.md)**
    - Do domínio do Tempo para o domínio da Frequência.
    - Entendendo a Transformada Rápida de Fourier (FFT) com números simples.
    - A visão de Tesla: por que analisar frequências simplifica equações complexas.
+
 
 3. **[03. Engenharia de Dados & O Catálogo SXS](03_ENGENHARIA_DADOS_SXS.md)** *(Em Breve)*
    - O que é o catálogo SXS (*Simulating eXtreme Spacetimes*).
