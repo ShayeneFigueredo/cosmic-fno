@@ -27,13 +27,18 @@ share/python-wheels/
 MANIFEST
 
 # Virtual Environments
+# Pastas de ambientes virtuais
 venv/
 .venv/
 ENV/
+.env/
 env/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints
+# Arquivos gerados pelo Python
+__pycache__/
+*.pyc
 
 # Large datasets & binary models (evitar subir arquivos pesados para o Git)
 *.h5
@@ -43,12 +48,21 @@ env/
 *.onnx
 dados/raw/
 dados/cache/
+# Dados brutos e tensores pesados (Não subir pro GitHub)
+data/
+dataset/
+modelos_salvos/
+resultados/
 
 # IDE, Agents & OS
 .agents/
 .claude/
+# Configurações de IDE
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
 
+# Arquivos Pessoais
+_pessoal_nao_upar/
+wiki_pages/

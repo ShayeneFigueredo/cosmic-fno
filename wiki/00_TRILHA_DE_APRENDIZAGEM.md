@@ -44,10 +44,11 @@ Bem-vinda à base de conhecimento do seu TCC! Esta Wiki foi desenhada para const
    - A visão de Tesla: por que analisar frequências simplifica equações complexas.
 
 
-3. **[03. Engenharia de Dados & O Catálogo SXS](03_ENGENHARIA_DADOS_SXS.md)** *(Em Breve)*
+3. **[03. Engenharia de Dados & O Catálogo SXS](03_ENGENHARIA_DADOS_SXS.md)**
    - O que é o catálogo SXS (*Simulating eXtreme Spacetimes*).
    - Como ler, limpar e normalizar as séries temporais.
    - Pipeline de ETL completo comentado linha a linha.
+
 
 4. **[04. Inteligência Artificial: De Redes Neurais ao FNO](04_IA_FOURIER_NEURAL_OPERATOR.md)** *(Em Breve)*
    - O que é um operador neural (*Neural Operator*).
