@@ -134,6 +134,9 @@ def rodar_experimento_alinhamento():
             otimizador.step()
 
         modelo.eval()
+        pasta_modelos = os.path.join(pasta_base, "modelos_salvos")
+        os.makedirs(pasta_modelos, exist_ok=True)
+        torch.save(modelo.state_dict(), os.path.join(pasta_modelos, f"fno_holdout_idx{idx_teste}.pth"))
         with torch.no_grad():
             pred_teste = modelo(X_teste).cpu().squeeze().numpy()
             ref_teste = Y_teste.cpu().squeeze().numpy()

@@ -1,90 +1,67 @@
-﻿# CosmicFNO: Investigação de Fourier Neural Operators na Emulação de Formas de Onda Gravitacionais
+# CosmicFNO: Operadores Neurais de Fourier na Emulacao, Alerta Pre-Merger e Diagnostico de Remanescentes de Ondas Gravitacionais
 
-**CosmicFNO** é um projeto de pesquisa em *Scientific Machine Learning* (SciML) que investiga a aplicabilidade de **Fourier Neural Operators (FNOs)** na emulação de formas de onda gravitacionais (*waveforms*) geradas pela coalescência de sistemas binários de buracos negros (BBH), utilizando simulações de Relatividade Numérica do catálogo **SXS** (*Simulating eXtreme Spacetimes*), com foco no modo quadrupolar dominante $h_{22}$.
-
----
-
-## 1. Problema de Pesquisa e Hipótese Científica
-
-A análise de sinais gravitacionais requer modelos teóricos de formas de onda para identificação e inferência de parâmetros astrofísicos. Simulações de Relatividade Numérica resolvem as equações de campo de Einstein com alta precisão, mas possuem alto custo computacional.
-
-- **Desafio:** Investigar como diferentes arquiteturas neurais capturam dependências temporais globais e variações morfológicas nas fases de *inspiral*, *merger* e *ringdown*.
-- **Hipótese:** A parametrização espectral dos *Fourier Neural Operators* (via FFT/IFFT) permite representar interações globais no domínio do tempo/frequência de forma eficiente, oferecendo vantagens na emulação de famílias parametrizadas de formas de onda quando combinada ao alinhamento físico de tempo e fase orbital.
+**CosmicFNO** e um projeto de pesquisa em *Scientific Machine Learning* (SciML) desenvolvido na **Universidade Federal de Uberlandia (UFU)** que investiga a aplicacao de **Fourier Neural Operators (FNOs)** na emulacao de formas de onda gravitacionais (*waveforms*), previsao antecipada de colisoes (*Pre-Merger Early Warning*) e estimativa de recuo relativistico (*Gravitational Wave Recoil Kick*) em sistemas binarios de buracos negros (BBH) do catalogo **SXS v3.0.0** (*Simulating eXtreme Spacetimes*).
 
 ---
 
-## 2. Experimentos Preliminares e Resultados
+## 1. Principais Resultados Experimentais (Validacao Hold-Out Cega)
 
-Todos os experimentos são avaliados utilizando métricas padrão da literatura de Operadores Neurais e Relatividade Numérica (`src/08_metricas_fisicas.py`):
-- **MSE** (*Mean Squared Error*)
-- **Erro Relativo $L_2$** ($\|h_{\text{ref}} - h_{\text{pred}}\|_2 / \|h_{\text{ref}}\|_2$)
-- **Overlap ($\mathcal{O}$)** e **Mismatch ($\mathcal{M} = 1 - \mathcal{O}$)** no espaço de Hilbert $L^2$.
+### 1.1. Emulacao de Formas de Onda ($h_{22}(t)$) em 14 Simulacoes Alinhadas ($q \in [1.0, 8.0]$)
+Treinamento realizado em 11 simulacoes do catalogo SXS com alinhamento temporal no pico do *Merger* ($t=0$), alinhamento de fase orbital ($\phi(0)=0$) e grade fisica uniforme $t \in [-330M, +90M]$, avaliado em **3 simulacoes 100% ineditas (Teste Cego)** comparando a parametrizacao espectral direta (**CosmicFNO Direto**) com a decomposicao polar explícita (**Polar-CosmicFNO** em $A(t), \phi(t)$):
 
-### Experimento 1: Capacidade de Reconstrução (`SXS:BBH:0305`, 100 épocas)
-Comparação entre o `CosmicFNO` (32 modos, largura 64) e um modelo baseline `1D-CNN` (4 camadas convolucionais de kernel local) treinados sob condições equivalentes na forma de onda de referência `SXS:BBH:0305` ($q=1.22$):
+| Simulacao Inedita (Teste Cego) | Arquitetura | Erro Relativo $L_2$ | Overlap ($\mathcal{O}$) | Mismatch ($\mathcal{M}$) |
+| :--- | :--- | :---: | :---: | :---: |
+| **`SXS:BBH:0593` ($q = 1.50$)** | **CosmicFNO Direto** | **1.81%** | **99.98%** (`0.99984`) | **`0.00016`** |
+| **`SXS:BBH:0593` ($q = 1.50$)** | **Polar-CosmicFNO ($A, \phi$)** | 7.71% | **99.70%** (`0.99702`) | `0.00298` |
+| **`SXS:BBH:0201` ($q = 2.32$)** | **CosmicFNO Direto** | **2.66%** | **99.97%** (`0.99970`) | **`0.00030`** |
+| **`SXS:BBH:0201` ($q = 2.32$)** | **Polar-CosmicFNO ($A, \phi$)** | 9.15% | **99.59%** (`0.99588`) | `0.00412` |
+| **`SXS:BBH:0113` ($q = 5.00$)** | **CosmicFNO Direto** | **4.34%** | **99.91%** (`0.99908`) | **`0.00092`** |
+| **`SXS:BBH:0113` ($q = 5.00$)** | **Polar-CosmicFNO ($A, \phi$)** | 11.50% | **99.34%** (`0.99336`) | `0.00664` |
 
-| Arquitetura | MSE | Erro Relativo $L_2$ | Overlap ($\mathcal{O}$) | Mismatch ($\mathcal{M}$) |
-| :--- | :---: | :---: | :---: | :---: |
-| **CosmicFNO (32 modos)** | `0.000493` | **17.06%** | **0.991150** | **0.008850** |
-| **Baseline 1D-CNN** | `0.015855` | **96.67%** | **0.258804** | **0.741196** |
+> Em todas as simulacoes ineditas de teste, o **CosmicFNO Direto** superou o limiar de excelencia de Relatividade Numerica ($\mathcal{M} < 10^{-3}$, Overlap $> 99.9\%$).
 
-![Reconstrução FNO](docs/assets/resultado_treino_real.png)
-
----
-
-### Experimento 2: Generalização Hold-Out e Alinhamento de Fase Orbital ($\phi_0 = 0$)
-Avaliação da capacidade de generalização em simulações **não vistas durante o treinamento** (4 simulações de treino vs 1 simulação de teste em *Hold-Out* cego).
-
-Investigamos o impacto de alinhar não apenas o instante do pico da colisão ($t=0$), mas também a **fase orbital no Merger** ($h_{22}(t) \cdot e^{-i\phi(0)}$ garantindo $\phi(0)=0$) interpolada em uma grade física uniforme $t \in [-330M, +90M]$ (`src/09_alinhamento_fase_e_interpolacao.py`):
-
-| Cenário Avaliado (Hold-Out Cego) | MSE | Erro Relativo $L_2$ | Overlap ($\mathcal{O}$) | Mismatch ($\mathcal{M}$) |
-| :--- | :---: | :---: | :---: | :---: |
-| **Treinamento (Média de 4 sims)** | `0.000004` | **2.19%** | **0.999693** | **0.000307** |
-| **Teste Inédito ($q=5.00$, sem alinhamento de fase)** | `0.009074` | $115.46\%$ | **0.167040** | `0.832960` |
-| **Teste Inédito ($q=5.00$, com fase e grade alinhadas)** | **`0.001094`** | **$39.66\%$** | **0.941598** | **`0.058402`** |
-| **Teste Inédito ($q=4.00$, com fase e grade alinhadas)** | **`0.000657`** | **$26.73\%$** | **0.990707** | **`0.009293`** |
-
-![Hold-Out Fase Alinhada](docs/assets/resultado_holdout_fase_alinhada.png)
+![Benchmark Hold-Out 14 Simulacoes SXS](docs/assets/benchmark_14sims_holdout.png)
 
 ---
 
-## 3. Estrutura do Repositório e Como Executar
+### 1.2. Evolucao Historica na Simulacao de Teste Cego `SXS:BBH:0113` ($q = 5.00$)
 
-```text
-TCC/
-├── src/
-│   ├── 01b_download_sxs_real.py             # Extração de amostra individual do catálogo SXS
-│   ├── 01d_download_alinhado.py             # Extração e alinhamento temporal pelo pico do Merger
-│   ├── 02_modelo_fno.py                     # Implementação da arquitetura Fourier Neural Operator 1D
-│   ├── 03b_treinamento_real.py              # Experimento 1: Reconstrução em amostra única (FNO)
-│   ├── 03d_treinamento_holdout.py           # Experimento 2: Validação Hold-Out entre simulações
-│   ├── 04_modelo_cnn_baseline.py            # Experimento 1: Baseline 1D-CNN
-│   ├── 06_dashboard_fno.py                  # Plataforma visual interativa em Streamlit
-│   ├── 07_animacao_3d.py                    # Visualização 3D da coalescência binária e strain
-│   ├── 08_metricas_fisicas.py               # Avaliação por Erro Relativo L2, Overlap e Mismatch
-│   └── 09_alinhamento_fase_e_interpolacao.py# Alinhamento de fase orbital (phi_0=0) e grade uniforme
-├── docs/                                    # Relatórios técnicos detalhados de cada experimento
-└── requirements.txt                         # Dependências do projeto
-```
+| Estagio Experimental | Overlap ($\mathcal{O}$) | Mismatch ($\mathcal{M}$) | Erro Relativo $L_2$ |
+| :--- | :---: | :---: | :---: |
+| **1. Baseline Inicial (4 ondas de treino, sem alinhar fase)** | `16.70%` | `0.83296` | `115.46%` |
+| **2. Alinhamento de Fase Orbital ($\phi_0 = 0$, 4 ondas de treino)** | `94.16%` | `0.05840` | `39.66%` |
+| **3. Grade Densa SXS (11 ondas de treino + Fase Alinhada $\phi_0 = 0$)** | **`99.91%`** | **`0.00092`** | **`4.34%`** |
 
-### Instalação e Execução
+---
+
+### 1.3. Previsao Pre-Merger (Alerta Antecipado) e Diagnostico de Remanescentes em 3.435 Colisoes SXS
+1. **Previsao Antecipada da Colisao (*Pre-Merger Early Warning*, `src/10_previsao_pre_merger_e_remanescente.py`):**
+   - Recebendo apenas a fase inicial da espiral ($t \le -50M$, com o *Merger* e *Ringdown* futuros ocultos), o modelo reconstrói a colisão futura com **99.99% de Overlap** ($\mathcal{M} = 0.00010$).
+2. **Predicao de Buracos Negros Fugitivos em Escala Completa (`3.435` Colisoes BBH do SXS v3.0.0, `src/11_escala_sxs_e_fno_polar.py`):**
+   - Treinamento em `2.748` simulacoes (80%) e avaliacao cega em **`687` simulacoes ineditas (20%)**:
+   - **Massa Final do Buraco Negro ($M_f / M$):** Erro Relativo Medio de **`0.67%`** (**99.33% de precisao**).
+   - **Spin Final Adimensional ($\chi_f$):** Coeficiente de Determinacao **$R^2 = 98.60\%$** (`MAE = 0.0142`).
+   - **Classificacao de Ejecao Astrofisica ($v_{\text{kick}}$):** **`97.67%` de acuracia** para ejecao de Aglomerados Globulares ($> 50\text{ km/s}$) e **`92.87%` de acuracia** para ejecao de Galaxias Anas ($> 150\text{ km/s}$).
+
+---
+
+## 2. Estrutura do Repositorio e Execucao
+
 ```bash
 pip install -r requirements.txt
 
-# 1. Executar avaliação completa de métricas físicas (L2, Overlap e Mismatch)
+# 1. Avaliacao de metricas fisicas (L2, Overlap e Mismatch)
 python src/08_metricas_fisicas.py
 
-# 2. Executar o experimento de alinhamento de fase orbital e interpolação Hold-Out
+# 2. Alinhamento de fase orbital (phi_0 = 0) e interpolacao
 python src/09_alinhamento_fase_e_interpolacao.py
 
-# 3. Iniciar o laboratório visual interativo (Streamlit)
+# 3. Previsao Pre-Merger (Alerta Antecipado) e Chute Relativistico
+python src/10_previsao_pre_merger_e_remanescente.py
+
+# 4. Escalonamento SXS (3.435 colisoes + 14 ondas Polar-FNO vs FNO Direto)
+python src/11_escala_sxs_e_fno_polar.py
+
+# 5. Plataforma Visual Interativa (Streamlit)
 streamlit run src/06_dashboard_fno.py
 ```
-
----
-
-## 4. Limitações Atuais e Próximos Passos da Pesquisa
-
-1. **Escala do Conjunto de Dados:** Os experimentos preliminares utilizam um subconjunto reduzido de 5 simulações do catálogo SXS. A próxima etapa consiste em ampliar a curadoria para dezenas de simulações cobrindo sistematicamente o espaço de razões de massa ($q$) e spins ($\chi_{1z}, \chi_{2z}$).
-2. **Decomposição Amplitude-Fase:** Emular diretamente a parte real oscilatória $\text{Re}(h_{22}(t))$ ainda apresenta sensibilidade à defasagem acumulada em longas janelas de *inspiral*. Investigaremos a modelagem separada da envoltória de amplitude $A(t)$ e da fase acumulada $\phi(t)$.
-3. **Comparação Arquitetural Expandida:** Avaliar arquiteturas CNN 1D mais profundas (com convoluções dilatadas) e condicionamento físico explícito sob validação cruzada.
