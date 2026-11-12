@@ -3,12 +3,11 @@ CosmicFNO - Plataforma Visual e Observatorio SciML (PT / EN / ES)
 Autora: Shayene Figueredo (BSI/UFU)
 
 Descricao:
-    Portal cientifico responsivo (Desktop e Mobile) projetado com Design System moderno:
-    - Paleta Roxo/Violeta Cosmico alinhada a logo oficial CosmicFNO
-    - Cards flutuantes com sombras difusas em camadas (sem bordas laterais coloridas)
-    - Banner de diagnostico em cor solida (sem degrade)
-    - Icones nativos Material Symbols corrigidos (recolher/expandir sidebar sem texto quebrado)
-    - Seletor de idioma instantaneo: Portugues (PT), English (EN) e Espanol (ES)
+    Portal cientifico responsivo (Desktop e Mobile) com Design System Roxo Cosmico:
+    - Menu lateral de largura fixa (sem redimensionamento por arrasto) e modo recolhido em trilho de icones (Icon Rail)
+    - Seletor compacto de idiomas (PT / EN / ES) no topo do menu
+    - Cabecalho ocupando 100% da largura util com tipografia refinada
+    - Cards flutuantes com sombras difusas (sem bordas coloridas e sem blocos pesados desnecessarios)
 """
 
 import os
@@ -48,23 +47,21 @@ logo_b64 = carregar_logo_base64()
 # =====================================================================
 I18N = {
     "PT": {
-        "sec_main": "MODULOS PRINCIPAIS",
-        "sec_vis": "EXPLORACAO VISUAL",
-        "sec_lang": "IDIOMA / LANGUAGE",
-        "sec_info": "PESQUISA",
-        "nav_previsao": "Previsao Pre-Merger e Kick",
-        "nav_validacao": "Validacao Hold-Out (99.9%)",
-        "nav_espectro": "Emulador e Espectro FFT",
-        "nav_colisao3d": "Colisao 3D Sincronizada",
+        "sec_main": "MODULOS",
+        "sec_vis": "EXPLORACAO",
+        "nav_previsao": "Pre-Merger e Kick",
+        "nav_validacao": "Validacao Hold-Out",
+        "nav_espectro": "Emulador e FFT",
+        "nav_colisao3d": "Colisao 3D",
         "nav_tabela": "Tabela de Metricas",
-        "info_caption": "3.435 Simulacoes SXS BBH\n14 Formas de Onda Alinhadas\nUniversidade Federal de Uberlandia (UFU)",
+        "info_caption": "3.435 Simulacoes SXS · 14 Ondas Alinhadas · UFU",
         "pill_catalog": "Catálogo SXS v3.0.0 · 3.435 Colisões",
         "pill_fid": "Fidelidade > 99.9%",
         "pages": {
             "previsao": {
                 "eyebrow": "OBSERVATORIO ESPECTRAL DE ONDAS GRAVITACIONAIS",
                 "titulo": "Previsão Antecipada da Colisão (Pre-Merger) e Diagnóstico de Fuga Galáctica",
-                "subtitulo": "O operador neural observa apenas a fase inicial da espiral (antes de t = -50M, com o impacto oculto) para prever a forma de onda da fusão e diagnosticar a massa final, o spin e a velocidade de ejeção (Recoil Kick) do buraco negro remanescente."
+                "subtitulo": "O operador neural observa apenas a fase inicial da espiral (antes de t = -50M, com o impacto oculto) para prever a forma de onda da fusão e estimar a massa final, o spin e a velocidade de ejeção (Recoil Kick) do buraco negro remanescente."
             },
             "validacao": {
                 "eyebrow": "BENCHMARK CIENTIFICO DE RELATIVIDADE NUMERICA",
@@ -99,13 +96,9 @@ I18N = {
         "kpi3_sub": "SXS Real",
         "kpi4_title": "Chute Relativístico (Kick)",
         "kpi4_sub": "SXS Real",
-        "v_header": "DIAGNÓSTICO DE RECUO RELATIVÍSTICO (VALIDADO EM {n} COLISÕES SXS — {acc:.2f}% ACURÁCIA)",
-        "v_high_t": "VEREDITO ASTROFÍSICO: BURACO NEGRO FUGITIVO INTERGALÁCTICO",
-        "v_high_d": "O chute gravitacional previsto ({v:.1f} km/s = {vh:,.0f} km/h) ultrapassa a velocidade de escape de Aglomerados Globulares (50 km/s), Galáxias Anãs (150 km/s) e Galáxias Médias (300 km/s). O buraco negro recém-nascido será ejetado do seu núcleo!",
-        "v_mid_t": "VEREDITO ASTROFÍSICO: EJEÇÃO DE AGLOMERADOS E GALÁXIAS ANÃS",
-        "v_mid_d": "O chute gravitacional previsto ({v:.1f} km/s = {vh:,.0f} km/h) rompe a gravidade de Aglomerados Estelares Globulares (50 km/s) e Galáxias Satélites Anãs, mas permanece retido no halo de galáxias massivas como a Via Láctea (550 km/s).",
-        "v_low_t": "VEREDITO ASTROFÍSICO: EJEÇÃO DE AGLOMERADO ESTELAR (RETIDO NA GALÁXIA)",
-        "v_low_d": "O chute gravitacional previsto ({v:.1f} km/s) supera a velocidade de escape de Aglomerados Globulares (50 km/s), mas o buraco negro permanecerá preso ao potencial gravitacional da galáxia hospedeira.",
+        "esc_tag_high": "Fuga Galáctica (>300 km/s)",
+        "esc_tag_mid": "Ejeção de Galáxia Anã (>150 km/s)",
+        "esc_tag_low": "Ejeção de Aglomerado (>50 km/s)",
         "p1_chart1_title": "Previsão Antecipada da Colisão (Pre-Merger em t = -50M)",
         "p1_tr_obs": "Espiral Observada (Entrada)",
         "p1_tr_real": "Impacto Real SXS (Oculto)",
@@ -152,16 +145,14 @@ I18N = {
         "footer_r": "Universidade Federal de Uberlândia (UFU) · Catálogo SXS v3.0.0",
     },
     "EN": {
-        "sec_main": "CORE MODULES",
-        "sec_vis": "VISUAL EXPLORATION",
-        "sec_lang": "LANGUAGE / IDIOMA",
-        "sec_info": "RESEARCH",
-        "nav_previsao": "Pre-Merger & Recoil Kick",
-        "nav_validacao": "Hold-Out Validation (99.9%)",
-        "nav_espectro": "Emulator & FFT Spectrum",
-        "nav_colisao3d": "Synchronized 3D Merger",
-        "nav_tabela": "Metrics Benchmark Table",
-        "info_caption": "3,435 SXS BBH Simulations\n14 Phase-Aligned Waveforms\nFederal University of Uberlandia (UFU)",
+        "sec_main": "MODULES",
+        "sec_vis": "EXPLORATION",
+        "nav_previsao": "Pre-Merger & Kick",
+        "nav_validacao": "Hold-Out Validation",
+        "nav_espectro": "Emulator & FFT",
+        "nav_colisao3d": "3D Coalescence",
+        "nav_tabela": "Metrics Table",
+        "info_caption": "3,435 SXS Simulations · 14 Aligned Waveforms · UFU",
         "pill_catalog": "SXS Catalog v3.0.0 · 3,435 Mergers",
         "pill_fid": "Fidelity > 99.9%",
         "pages": {
@@ -203,13 +194,9 @@ I18N = {
         "kpi3_sub": "True SXS",
         "kpi4_title": "Relativistic Recoil Kick",
         "kpi4_sub": "True SXS",
-        "v_header": "RELATIVISTIC RECOIL DIAGNOSTICS (VALIDATED ON {n} SXS MERGERS — {acc:.2f}% ACCURACY)",
-        "v_high_t": "ASTROPHYSICAL VERDICT: INTERGALACTIC RUNAWAY BLACK HOLE",
-        "v_high_d": "The predicted gravitational recoil kick ({v:.1f} km/s = {vh:,.0f} km/h) exceeds the escape velocity of Globular Clusters (50 km/s), Dwarf Galaxies (150 km/s), and Medium Galaxies (300 km/s). The newborn black hole will be ejected from its host core!",
-        "v_mid_t": "ASTROPHYSICAL VERDICT: CLUSTER & DWARF GALAXY EJECTION",
-        "v_mid_d": "The predicted gravitational recoil kick ({v:.1f} km/s = {vh:,.0f} km/h) breaks free from Globular Star Clusters (50 km/s) and Dwarf Satellite Galaxies, while remaining bound within massive halos like the Milky Way (550 km/s).",
-        "v_low_t": "ASTROPHYSICAL VERDICT: STAR CLUSTER EJECTION (GALAXY RETAINED)",
-        "v_low_d": "The predicted gravitational recoil kick ({v:.1f} km/s) exceeds the escape velocity of Globular Clusters (50 km/s), but the remnant black hole remains gravitationally bound to its host galaxy.",
+        "esc_tag_high": "Galactic Escape (>300 km/s)",
+        "esc_tag_mid": "Dwarf Galaxy Ejection (>150 km/s)",
+        "esc_tag_low": "Cluster Ejection (>50 km/s)",
         "p1_chart1_title": "Early-Warning Collision Forecast (Pre-Merger at t = -50M)",
         "p1_tr_obs": "Observed Inspiral (Input)",
         "p1_tr_real": "True SXS Merger (Hidden)",
@@ -256,16 +243,14 @@ I18N = {
         "footer_r": "Federal University of Uberlândia (UFU) · SXS Catalog v3.0.0",
     },
     "ES": {
-        "sec_main": "MODULOS PRINCIPALES",
-        "sec_vis": "EXPLORACION VISUAL",
-        "sec_lang": "IDIOMA / LANGUAGE",
-        "sec_info": "INVESTIGACION",
-        "nav_previsao": "Prediccion Pre-Merger y Kick",
-        "nav_validacao": "Validacion Hold-Out (99.9%)",
-        "nav_espectro": "Emulador y Espectro FFT",
-        "nav_colisao3d": "Colision 3D Sincronizada",
+        "sec_main": "MODULOS",
+        "sec_vis": "EXPLORACION",
+        "nav_previsao": "Pre-Merger y Kick",
+        "nav_validacao": "Validacion Hold-Out",
+        "nav_espectro": "Emulador y FFT",
+        "nav_colisao3d": "Colision 3D",
         "nav_tabela": "Tabla de Metricas",
-        "info_caption": "3.435 Simulaciones SXS BBH\n14 Formas de Onda Alineadas\nUniversidad Federal de Uberlandia (UFU)",
+        "info_caption": "3.435 Simulaciones SXS · 14 Ondas Alineadas · UFU",
         "pill_catalog": "Catálogo SXS v3.0.0 · 3.435 Colisiones",
         "pill_fid": "Fidelidad > 99.9%",
         "pages": {
@@ -307,13 +292,9 @@ I18N = {
         "kpi3_sub": "SXS Real",
         "kpi4_title": "Patada Relativista (Kick)",
         "kpi4_sub": "SXS Real",
-        "v_header": "DIAGNÓSTICO DE RETROCESO RELATIVISTA (VALIDADO EN {n} COLISIONES SXS — {acc:.2f}% PRECISIÓN)",
-        "v_high_t": "VEREDICTO ASTROFÍSICO: AGUJERO NEGRO FUGITIVO INTERGALÁCTICO",
-        "v_high_d": "La patada gravitacional prevista ({v:.1f} km/s = {vh:,.0f} km/h) supera la velocidad de escape de Cúmulos Globulares (50 km/s), Galaxias Enanas (150 km/s) y Galaxias Medianas (300 km/s). ¡El agujero negro recién formado será eyectado de su núcleo!",
-        "v_mid_t": "VEREDICTO ASTROFÍSICO: EYECCIÓN DE CÚMULOS Y GALAXIAS ENANAS",
-        "v_mid_d": "La patada gravitacional prevista ({v:.1f} km/s = {vh:,.0f} km/h) vence la gravedad de Cúmulos Estelares Globulares (50 km/s) y Galaxias Satélites Enanas, pero permanece retenida en el halo de galaxias masivas como la Vía Láctea (550 km/s).",
-        "v_low_t": "VEREDICTO ASTROFÍSICO: EYECCIÓN DE CÚMULO ESTELAR (RETENIDO EN LA GALAXIA)",
-        "v_low_d": "La patada gravitacional prevista ({v:.1f} km/s) supera la velocidad de escape de Cúmulos Globulares (50 km/s), pero el agujero negro permanecerá ligado al potencial gravitacional de su galaxia anfitriona.",
+        "esc_tag_high": "Escape Galáctico (>300 km/s)",
+        "esc_tag_mid": "Eyección Gal. Enana (>150 km/s)",
+        "esc_tag_low": "Eyección de Cúmulo (>50 km/s)",
         "p1_chart1_title": "Predicción Anticipada de la Colisión (Pre-Merger en t = -50M)",
         "p1_tr_obs": "Espiral Observada (Entrada)",
         "p1_tr_real": "Impacto Real SXS (Oculto)",
@@ -363,19 +344,18 @@ I18N = {
 
 
 # =====================================================================
-# 2. DESIGN SYSTEM MODERNO (ROXO COSMICO + SOMBRAS FLUTUANTES + ICONES PUROS)
+# 2. DESIGN SYSTEM MODERNO (SIDEBAR FIXA + ICON RAIL + CABECALHO 100%)
 # =====================================================================
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
-    /* Aplica Montserrat nos elementos de texto SEM sobrescrever a fonte de icones Material Symbols */
     html, body, .stApp, p, label, h1, h2, h3, h4, h5, h6, button, input, select, textarea, table, th, td {
         font-family: 'Montserrat', sans-serif !important;
     }
 
-    /* Garante que o botao de recolher/expandir sidebar mostre APENAS o icone de seta e nunca o texto 'keyboard_double_arrow_left' */
+    /* Preserva os icones Material Symbols (botao de recolher sidebar e icones de menu) */
     [data-testid="stIconMaterial"],
     span[data-testid="stIconMaterial"],
     [data-testid="stSidebarCollapseButton"] span,
@@ -385,7 +365,7 @@ st.markdown("""
         font-family: 'Material Symbols Rounded' !important;
         font-weight: normal !important;
         font-style: normal !important;
-        font-size: 22px !important;
+        font-size: 20px !important;
         line-height: 1 !important;
         letter-spacing: normal !important;
         text-transform: none !important;
@@ -400,13 +380,13 @@ st.markdown("""
 
     header[data-testid="stHeader"] {
         background: transparent !important;
-        height: 2.5rem !important;
+        height: 2.2rem !important;
     }
     .block-container {
-        padding-top: 0.5rem !important;
-        padding-left: 2.2rem !important;
-        padding-right: 2.2rem !important;
-        padding-bottom: 2.5rem !important;
+        padding-top: 0.4rem !important;
+        padding-left: 2.0rem !important;
+        padding-right: 2.0rem !important;
+        padding-bottom: 2.0rem !important;
         max-width: 100% !important;
     }
 
@@ -415,68 +395,129 @@ st.markdown("""
         color: #140c24 !important;
     }
 
-    /* Rotulos dos widgets sempre visiveis e escuros sobre o fundo claro */
     section.main [data-testid="stWidgetLabel"] p,
     section.main [data-testid="stWidgetLabel"] label,
     .stApp [data-testid="stWidgetLabel"] p,
     .stApp [data-testid="stWidgetLabel"] label {
         color: #1e1333 !important;
         font-weight: 600 !important;
-        font-size: 0.85rem !important;
+        font-size: 0.82rem !important;
     }
 
-    /* SIDEBAR: Obsidian-Violet Escuro (#11091f) combinando com o nucleo da logo */
+    /* =================================================================
+       SIDEBAR FIXA (NAO PODE SER REDIMENSIONADA ARRASTANDO) + ICON RAIL
+       ================================================================= */
+    div[data-testid="stSidebarResizeHandle"] {
+        display: none !important;
+        width: 0 !important;
+        pointer-events: none !important;
+        cursor: default !important;
+    }
     section[data-testid="stSidebar"] {
         background-color: #11091f !important;
         border-right: 1px solid #23143d !important;
     }
-    section[data-testid="stSidebar"] p,
-    section[data-testid="stSidebar"] div:not([data-testid="stIconMaterial"]),
-    section[data-testid="stSidebar"] button {
-        color: #d8cee8 !important;
+    @media (min-width: 769px) {
+        section[data-testid="stSidebar"][aria-expanded="true"] {
+            width: 248px !important;
+            min-width: 248px !important;
+            max-width: 248px !important;
+        }
+        /* Quando recolhida no Desktop, transforma em trilho compacto de icones (64px) */
+        section[data-testid="stSidebar"][aria-expanded="false"] {
+            width: 64px !important;
+            min-width: 64px !important;
+            max-width: 64px !important;
+            transform: none !important;
+            margin-left: 0 !important;
+            visibility: visible !important;
+        }
+        section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stSidebarContent"] {
+            padding-left: 6px !important;
+            padding-right: 6px !important;
+            overflow-x: hidden !important;
+        }
+        section[data-testid="stSidebar"][aria-expanded="false"] .sidebar-logo-free,
+        section[data-testid="stSidebar"][aria-expanded="false"] .sidebar-section-label,
+        section[data-testid="stSidebar"][aria-expanded="false"] .sidebar-tiny-research,
+        section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stHorizontalBlock"],
+        section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button [data-testid="stMarkdownContainer"] {
+            display: none !important;
+        }
+        section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button {
+            justify-content: center !important;
+            padding: 10px 0 !important;
+            width: 48px !important;
+            margin: 4px auto !important;
+        }
     }
 
-    /* Logo Oficial SOLTA na Sidebar (sem caixa/borda branca) */
+    /* Remove espacamento excessivo no topo da sidebar */
+    section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
+        padding-top: 0.4rem !important;
+    }
+
+    /* Botoes pequenos de idioma no topo da sidebar */
+    section[data-testid="stSidebar"] [data-testid="stHorizontalBlock"] {
+        gap: 4px !important;
+        margin-bottom: 6px !important;
+    }
+    section[data-testid="stSidebar"] [data-testid="stHorizontalBlock"] div.stButton > button {
+        padding: 3px 6px !important;
+        min-height: 24px !important;
+        height: 24px !important;
+        font-size: 0.68rem !important;
+        font-weight: 700 !important;
+        border-radius: 6px !important;
+        justify-content: center !important;
+        text-align: center !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Logo Oficial SOLTA na Sidebar */
     .sidebar-logo-free {
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
-        padding: 6px 2px 18px 2px;
-        margin: 0 0 6px 0;
+        padding: 2px 2px 10px 2px;
+        margin: 0 0 4px 0;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     .sidebar-logo-free img {
         width: 100%;
-        max-width: 215px;
+        max-width: 195px;
         height: auto;
         display: block;
         filter: brightness(1.38) contrast(1.06) drop-shadow(0 4px 14px rgba(168, 85, 247, 0.25));
     }
 
     .sidebar-section-label {
-        font-size: 0.67rem;
+        font-size: 0.62rem;
         font-weight: 700;
-        letter-spacing: 1.5px;
-        color: #8b7aa8 !important;
+        letter-spacing: 1.4px;
+        color: #7c6b99 !important;
         text-transform: uppercase;
-        margin: 16px 0 8px 6px;
+        margin: 12px 0 5px 6px;
     }
 
+    /* Botoes do menu lateral com icone a esquerda */
     section[data-testid="stSidebar"] div.stButton > button {
         width: 100%;
         text-align: left !important;
         justify-content: flex-start !important;
-        padding: 10px 14px !important;
-        border-radius: 11px !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 9px 12px !important;
+        border-radius: 10px !important;
         border: none !important;
         background-color: transparent !important;
         color: #b5a6cc !important;
         font-weight: 500 !important;
-        font-size: 0.85rem !important;
-        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        margin-bottom: 4px !important;
+        font-size: 0.81rem !important;
+        transition: all 0.18s ease;
+        margin-bottom: 3px !important;
     }
     section[data-testid="stSidebar"] div.stButton > button:hover {
         background-color: rgba(124, 58, 237, 0.16) !important;
@@ -486,179 +527,166 @@ st.markdown("""
         background-color: #6d28d9 !important;
         color: #ffffff !important;
         font-weight: 600 !important;
-        box-shadow: 0 8px 20px -4px rgba(109, 40, 217, 0.55) !important;
+        box-shadow: 0 6px 16px -3px rgba(109, 40, 217, 0.5) !important;
+    }
+    section[data-testid="stSidebar"] div.stButton > button p {
+        font-size: 0.81rem !important;
+        margin: 0 !important;
+        white-space: nowrap !important;
     }
 
-    /* CABECALHO DO SITE FLUTUANTE (SEM BORDAS COLORIDAS, SOMBRA DIFUSA MODERNA) */
+    /* Textinho discreto e pequeno da pesquisa no rodape do menu */
+    .sidebar-tiny-research {
+        font-size: 0.63rem !important;
+        line-height: 1.35 !important;
+        color: #6e5f8a !important;
+        margin-top: 18px !important;
+        padding: 8px 6px 0 6px !important;
+        border-top: 1px solid rgba(139, 122, 168, 0.14) !important;
+    }
+
+    /* =================================================================
+       CABECALHO OCUPANDO 100% DA TELA BRANCA E TITULOS MENORES
+       ================================================================= */
     .site-header {
         background-color: #ffffff;
         border: 1px solid rgba(226, 232, 240, 0.65);
-        border-radius: 18px;
-        padding: 24px 28px;
-        margin-bottom: 22px;
+        border-radius: 16px;
+        padding: 16px 24px;
+        margin-bottom: 16px;
+        width: 100%;
+        box-sizing: border-box;
+        box-shadow: 0 10px 26px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
+    }
+    .site-header-top {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 16px;
-        box-shadow: 0 14px 34px -6px rgba(20, 12, 36, 0.06), 0 4px 12px -2px rgba(109, 40, 217, 0.04);
-    }
-    .site-header-left {
-        max-width: 780px;
+        gap: 10px;
+        margin-bottom: 6px;
     }
     .site-eyebrow {
-        font-size: 0.70rem;
+        font-size: 0.66rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
+        letter-spacing: 1.4px;
         color: #6d28d9 !important;
-        margin: 0 0 6px 0;
-    }
-    .site-title {
-        font-size: 1.34rem;
-        font-weight: 800;
-        color: #140c24 !important;
-        margin: 0 0 8px 0;
-        line-height: 1.25;
-        letter-spacing: -0.02em;
-    }
-    .site-subtitle {
-        font-size: 0.86rem;
-        color: #524766 !important;
         margin: 0;
-        line-height: 1.6;
     }
     .site-header-badges {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         flex-wrap: wrap;
     }
     .status-pill {
         background-color: #f3e8ff;
         color: #6d28d9 !important;
-        padding: 6px 14px;
+        padding: 4px 11px;
         border-radius: 999px;
-        font-size: 0.73rem;
+        font-size: 0.69rem;
         font-weight: 600;
         white-space: nowrap;
     }
     .status-pill-dark {
         background-color: #190e30;
         color: #f8fafc !important;
-        padding: 6px 14px;
+        padding: 4px 11px;
         border-radius: 999px;
-        font-size: 0.73rem;
+        font-size: 0.69rem;
         font-weight: 600;
         white-space: nowrap;
     }
+    .site-title {
+        font-size: 1.06rem !important;
+        font-weight: 800 !important;
+        color: #140c24 !important;
+        margin: 0 0 4px 0 !important;
+        line-height: 1.28 !important;
+        width: 100% !important;
+    }
+    .site-subtitle {
+        font-size: 0.79rem !important;
+        color: #524766 !important;
+        margin: 0 !important;
+        line-height: 1.5 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 
-    /* CARTOES DE METRICAS FLUTUANTES (SEM BORDA COLORIDA, ELEVACAO POR SOMBRA) */
+    /* CARTOES DE METRICAS FLUTUANTES */
     .kpi-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
-        margin-top: 14px;
-        margin-bottom: 20px;
+        gap: 14px;
+        margin-top: 10px;
+        margin-bottom: 16px;
     }
     .kpi-card {
         background-color: #ffffff !important;
         border: 1px solid rgba(226, 232, 240, 0.6) !important;
-        border-radius: 16px;
-        padding: 20px 22px;
-        box-shadow: 0 12px 28px -6px rgba(20, 12, 36, 0.07), 0 4px 10px -2px rgba(109, 40, 217, 0.04);
+        border-radius: 14px;
+        padding: 15px 18px;
+        box-shadow: 0 10px 24px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .kpi-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 18px 36px -6px rgba(20, 12, 36, 0.10), 0 6px 14px -2px rgba(109, 40, 217, 0.07);
+        box-shadow: 0 16px 32px -6px rgba(20, 12, 36, 0.09), 0 6px 14px -2px rgba(109, 40, 217, 0.06);
     }
     .kpi-label {
-        font-size: 0.74rem;
+        font-size: 0.71rem;
         font-weight: 700;
         color: #64587a !important;
         text-transform: uppercase;
-        letter-spacing: 0.6px;
-        margin: 0 0 8px 0;
+        letter-spacing: 0.5px;
+        margin: 0 0 6px 0;
     }
     .kpi-value {
-        font-size: 1.62rem;
+        font-size: 1.46rem;
         font-weight: 800;
         color: #140c24 !important;
-        margin: 0 0 10px 0;
+        margin: 0 0 8px 0;
         line-height: 1.15;
-        letter-spacing: -0.02em;
     }
     .kpi-badge {
         display: inline-block;
         background-color: #f5f3ff;
         color: #6d28d9 !important;
-        font-size: 0.74rem;
+        font-size: 0.71rem;
         font-weight: 600;
-        padding: 4px 11px;
+        padding: 3px 10px;
         border-radius: 999px;
     }
 
-    /* CARD BRANCO FLUTUANTE (SEM BORDA COLORIDA) */
     .white-card {
         background-color: #ffffff;
         border: 1px solid rgba(226, 232, 240, 0.65);
-        border-radius: 16px;
-        padding: 18px 22px;
-        box-shadow: 0 12px 28px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
-        margin-bottom: 14px;
+        border-radius: 14px;
+        padding: 13px 16px;
+        box-shadow: 0 10px 24px -6px rgba(20, 12, 36, 0.05), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
+        margin-bottom: 10px;
     }
     .card-title {
-        font-size: 0.95rem;
+        font-size: 0.84rem;
         font-weight: 700;
         color: #140c24 !important;
-        margin-bottom: 4px;
+        margin-bottom: 3px;
     }
     .card-sub {
-        font-size: 0.83rem;
+        font-size: 0.78rem;
         color: #524766 !important;
         margin-bottom: 0;
-        line-height: 1.55;
-    }
-
-    /* BANNER DE VEREDITO ASTROFISICO SOLIDO (SEM DEGRADE E SEM BORDA LATERAL) */
-    .verdict-banner {
-        background-color: #190e30 !important;
-        color: #ffffff !important;
-        border: none !important;
-        border-radius: 16px;
-        padding: 20px 24px;
-        margin-top: 4px;
-        margin-bottom: 20px;
-        box-shadow: 0 16px 36px -8px rgba(25, 14, 48, 0.28), 0 4px 12px -2px rgba(109, 40, 217, 0.15);
-    }
-    .verdict-title {
-        font-size: 0.71rem;
-        font-weight: 700;
-        letter-spacing: 1.3px;
-        color: #c4b5fd !important;
-        text-transform: uppercase;
-        margin-bottom: 6px;
-    }
-    .verdict-main {
-        font-size: 0.98rem;
-        font-weight: 700;
-        color: #ffffff !important;
-        margin-bottom: 5px;
-    }
-    .verdict-desc {
-        font-size: 0.83rem;
-        color: #e9d5ff !important;
-        margin: 0;
-        line-height: 1.55;
+        line-height: 1.45;
     }
 
     /* Graficos Plotly dentro de superficie flutuante */
     div[data-testid="stPlotlyChart"] {
         background-color: #ffffff;
         border-radius: 16px;
-        padding: 8px;
-        box-shadow: 0 12px 28px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
+        padding: 6px;
+        box-shadow: 0 10px 26px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
         border: 1px solid rgba(226, 232, 240, 0.6);
     }
 
@@ -667,20 +695,20 @@ st.markdown("""
         background-color: #ffffff;
         border: 1px solid rgba(226, 232, 240, 0.65);
         border-radius: 16px;
-        padding: 18px 22px;
+        padding: 16px 20px;
         box-shadow: 0 12px 28px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
         overflow-x: auto;
     }
     .modern-table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.85rem;
+        font-size: 0.83rem;
         color: #140c24 !important;
     }
     .modern-table th {
         text-align: left;
-        padding: 12px 14px;
-        font-size: 0.73rem;
+        padding: 11px 14px;
+        font-size: 0.71rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.6px;
@@ -689,7 +717,7 @@ st.markdown("""
         background-color: #faf9fc;
     }
     .modern-table td {
-        padding: 13px 14px;
+        padding: 12px 14px;
         border-bottom: 1px solid #f1eef7;
         color: #1e1333 !important;
         font-weight: 500;
@@ -707,23 +735,22 @@ st.markdown("""
         font-weight: 700;
         padding: 3px 10px;
         border-radius: 999px;
-        font-size: 0.78rem;
+        font-size: 0.76rem;
     }
 
     .site-footer {
-        margin-top: 32px;
-        padding: 18px 20px;
+        margin-top: 24px;
+        padding: 14px 18px;
         border-top: 1px solid #e2dcf0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         gap: 10px;
-        font-size: 0.76rem;
+        font-size: 0.73rem;
         color: #64587a !important;
     }
 
-    /* RESPONSIVIDADE MOBILE (Celulares e Tablets) */
     @media (max-width: 992px) {
         .kpi-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -737,24 +764,19 @@ st.markdown("""
         }
         .kpi-grid {
             grid-template-columns: 1fr;
-            gap: 12px;
+            gap: 10px;
         }
         .site-header {
-            padding: 16px 18px;
-            margin-bottom: 14px;
+            padding: 14px 16px;
         }
         .site-title {
-            font-size: 1.08rem;
+            font-size: 0.96rem !important;
         }
         .site-subtitle {
-            font-size: 0.80rem;
-        }
-        .status-pill, .status-pill-dark {
-            font-size: 0.68rem;
-            padding: 4px 10px;
+            font-size: 0.75rem !important;
         }
         .kpi-value {
-            font-size: 1.38rem;
+            font-size: 1.32rem;
         }
     }
 </style>
@@ -762,7 +784,7 @@ st.markdown("""
 
 
 def render_kpi_grid(cards):
-    """Renderiza 4 cartoes de metricas flutuantes (sem borda colorida, com sombra suave)."""
+    """Renderiza 4 cartoes de metricas flutuantes com sombra suave."""
     blocos = []
     for c in cards:
         blocos.append(
@@ -849,7 +871,7 @@ CATALOGO_INFO = [
 ]
 
 # =====================================================================
-# 4. MENU LATERAL COM LOGO SOLTA E SELETOR DE IDIOMAS (PT / EN / ES)
+# 4. MENU LATERAL: IDIOMA COMPACTO NO TOPO + LOGO + ICONES A ESQUERDA
 # =====================================================================
 if "pagina_ativa" not in st.session_state:
     st.session_state["pagina_ativa"] = "previsao"
@@ -859,71 +881,93 @@ if "idioma" not in st.session_state:
 tr = I18N[st.session_state["idioma"]]
 
 with st.sidebar:
+    # 1. Botoes pequenos de idioma bem no topo do menu
+    l_col1, l_col2, l_col3 = st.columns(3)
+    with l_col1:
+        if st.button("PT", key="btn_pt", type="primary" if st.session_state["idioma"] == "PT" else "secondary"):
+            st.session_state["idioma"] = "PT"
+            st.rerun()
+    with l_col2:
+        if st.button("EN", key="btn_en", type="primary" if st.session_state["idioma"] == "EN" else "secondary"):
+            st.session_state["idioma"] = "EN"
+            st.rerun()
+    with l_col3:
+        if st.button("ES", key="btn_es", type="primary" if st.session_state["idioma"] == "ES" else "secondary"):
+            st.session_state["idioma"] = "ES"
+            st.rerun()
+
+    # 2. Logo oficial solta
     if logo_b64:
         st.markdown(
             f'<div class="sidebar-logo-free"><img src="data:image/png;base64,{logo_b64}" alt="CosmicFNO Logo"></div>',
             unsafe_allow_html=True
         )
 
-    st.markdown(f'<div class="sidebar-section-label">{tr["sec_lang"]}</div>', unsafe_allow_html=True)
-    l_col1, l_col2, l_col3 = st.columns(3)
-    with l_col1:
-        if st.button("PT", type="primary" if st.session_state["idioma"] == "PT" else "secondary"):
-            st.session_state["idioma"] = "PT"
-            st.rerun()
-    with l_col2:
-        if st.button("EN", type="primary" if st.session_state["idioma"] == "EN" else "secondary"):
-            st.session_state["idioma"] = "EN"
-            st.rerun()
-    with l_col3:
-        if st.button("ES", type="primary" if st.session_state["idioma"] == "ES" else "secondary"):
-            st.session_state["idioma"] = "ES"
-            st.rerun()
-
+    # 3. Submenus com icones do lado esquerdo (visiveis mesmo com menu recolhido)
     st.markdown(f'<div class="sidebar-section-label">{tr["sec_main"]}</div>', unsafe_allow_html=True)
 
-    if st.button(tr["nav_previsao"], type="primary" if st.session_state["pagina_ativa"] == "previsao" else "secondary"):
+    if st.button(
+        tr["nav_previsao"],
+        icon=":material/radar:",
+        type="primary" if st.session_state["pagina_ativa"] == "previsao" else "secondary"
+    ):
         st.session_state["pagina_ativa"] = "previsao"
         st.rerun()
 
-    if st.button(tr["nav_validacao"], type="primary" if st.session_state["pagina_ativa"] == "validacao" else "secondary"):
+    if st.button(
+        tr["nav_validacao"],
+        icon=":material/verified:",
+        type="primary" if st.session_state["pagina_ativa"] == "validacao" else "secondary"
+    ):
         st.session_state["pagina_ativa"] = "validacao"
         st.rerun()
 
     st.markdown(f'<div class="sidebar-section-label">{tr["sec_vis"]}</div>', unsafe_allow_html=True)
 
-    if st.button(tr["nav_espectro"], type="primary" if st.session_state["pagina_ativa"] == "espectro" else "secondary"):
+    if st.button(
+        tr["nav_espectro"],
+        icon=":material/graphic_eq:",
+        type="primary" if st.session_state["pagina_ativa"] == "espectro" else "secondary"
+    ):
         st.session_state["pagina_ativa"] = "espectro"
         st.rerun()
 
-    if st.button(tr["nav_colisao3d"], type="primary" if st.session_state["pagina_ativa"] == "colisao3d" else "secondary"):
+    if st.button(
+        tr["nav_colisao3d"],
+        icon=":material/3d_rotation:",
+        type="primary" if st.session_state["pagina_ativa"] == "colisao3d" else "secondary"
+    ):
         st.session_state["pagina_ativa"] = "colisao3d"
         st.rerun()
 
-    if st.button(tr["nav_tabela"], type="primary" if st.session_state["pagina_ativa"] == "tabela" else "secondary"):
+    if st.button(
+        tr["nav_tabela"],
+        icon=":material/table_chart:",
+        type="primary" if st.session_state["pagina_ativa"] == "tabela" else "secondary"
+    ):
         st.session_state["pagina_ativa"] = "tabela"
         st.rerun()
 
-    st.markdown(f'<div class="sidebar-section-label">{tr["sec_info"]}</div>', unsafe_allow_html=True)
-    st.caption(tr["info_caption"])
+    # 4. Rodape discreto e reduzido da pesquisa
+    st.markdown(f'<div class="sidebar-tiny-research">{tr["info_caption"]}</div>', unsafe_allow_html=True)
 
 
 # =====================================================================
-# 5. CABECALHO DO PORTAL CIENTIFICO FLUTUANTE
+# 5. CABECALHO DO PORTAL CIENTIFICO (100% DA LARGURA DA TELA BRANCA)
 # =====================================================================
 meta_atual = tr["pages"][st.session_state["pagina_ativa"]]
 
 st.markdown(f"""
 <div class="site-header">
-    <div class="site-header-left">
+    <div class="site-header-top">
         <p class="site-eyebrow">{meta_atual['eyebrow']}</p>
-        <h1 class="site-title">{meta_atual['titulo']}</h1>
-        <p class="site-subtitle">{meta_atual['subtitulo']}</p>
+        <div class="site-header-badges">
+            <span class="status-pill">{tr['pill_catalog']}</span>
+            <span class="status-pill-dark">{tr['pill_fid']}</span>
+        </div>
     </div>
-    <div class="site-header-badges">
-        <span class="status-pill">{tr['pill_catalog']}</span>
-        <span class="status-pill-dark">{tr['pill_fid']}</span>
-    </div>
+    <h1 class="site-title">{meta_atual['titulo']}</h1>
+    <p class="site-subtitle">{meta_atual['subtitulo']}</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -956,9 +1000,9 @@ if st.session_state["pagina_ativa"] == "previsao":
 
         with f_col3:
             st.markdown(f"""
-            <div class="white-card" style="padding: 14px 18px; margin-bottom: 0;">
-                <div class="card-title" style="font-size:0.84rem; margin-bottom: 3px;">{tr['cfg_pre']}</div>
-                <div class="card-sub" style="font-size:0.8rem;">
+            <div class="white-card" style="margin-bottom: 0;">
+                <div class="card-title">{tr['cfg_pre']}</div>
+                <div class="card-sub">
                     <b>m1:</b> {m1_sol:.1f} M_sol | <b>m2:</b> {m2_sol:.1f} M_sol | <b>{tr['cfg_prec']}:</b> {100.0 - b3300['erro_rel_massa']:.2f}%
                 </div>
             </div>
@@ -999,7 +1043,14 @@ if st.session_state["pagina_ativa"] == "previsao":
     mask_futuro = t_np > t_corte
     ov_futuro, _ = met.calcular_overlap_e_mismatch(h_real_np[mask_futuro], h_pred_np[mask_futuro])
 
-    # Cartoes de Metricas Flutuantes sem borda lateral colorida
+    if v_kick_pred_kms >= 300.0:
+        tag_fuga = tr["esc_tag_high"]
+    elif v_kick_pred_kms >= 130.0:
+        tag_fuga = tr["esc_tag_mid"]
+    else:
+        tag_fuga = tr["esc_tag_low"]
+
+    # Cartoes de Metricas Flutuantes (com status sintetico de ejeção embutido no 4o card, sem aquele bloco escuro gigante)
     render_kpi_grid([
         {
             "label": tr["kpi1_title"],
@@ -1019,29 +1070,9 @@ if st.session_state["pagina_ativa"] == "previsao":
         {
             "label": tr["kpi4_title"],
             "value": f"{v_kick_pred_kms:.1f} km/s",
-            "sub": f"{tr['kpi4_sub']}: {rem_real[2]:.1f} km/s",
+            "sub": f"{tag_fuga} · {tr['kpi4_sub']}: {rem_real[2]:.0f} km/s",
         },
     ])
-
-    if v_kick_pred_kms >= 300.0:
-        titulo_v = tr["v_high_t"]
-        desc_v = tr["v_high_d"].format(v=v_kick_pred_kms, vh=v_kick_pred_kms * 3600)
-    elif v_kick_pred_kms >= 130.0:
-        titulo_v = tr["v_mid_t"]
-        desc_v = tr["v_mid_d"].format(v=v_kick_pred_kms, vh=v_kick_pred_kms * 3600)
-    else:
-        titulo_v = tr["v_low_t"]
-        desc_v = tr["v_low_d"].format(v=v_kick_pred_kms)
-
-    cabecalho_v = tr["v_header"].format(n=b3300["n_total"], acc=b3300["acc_aglomerado"])
-
-    st.markdown(f"""
-    <div class="verdict-banner">
-        <div class="verdict-title">{cabecalho_v}</div>
-        <div class="verdict-main">{titulo_v}</div>
-        <p class="verdict-desc">{desc_v}</p>
-    </div>
-    """, unsafe_allow_html=True)
 
     g_col1, g_col2 = st.columns([1.65, 1.0], gap="medium")
 
@@ -1081,14 +1112,14 @@ if st.session_state["pagina_ativa"] == "previsao":
         )
         fig_onda.add_vline(x=t_corte, line_width=1.8, line_dash="dash", line_color="#6d28d9")
         fig_onda.update_layout(
-            title=dict(text=tr["p1_chart1_title"], font=dict(color="#140c24", size=14)),
-            height=410,
+            title=dict(text=tr["p1_chart1_title"], font=dict(color="#140c24", size=13)),
+            height=400,
             template="plotly_white",
             paper_bgcolor="#ffffff",
             plot_bgcolor="#faf9fc",
             font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(color="#140c24")),
-            margin=dict(l=45, r=20, t=65, b=40),
+            margin=dict(l=45, r=20, t=60, b=40),
             xaxis=dict(title=dict(text=tr["p1_x_time"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5"),
             yaxis=dict(title=dict(text="Strain Re(h_22)", font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5")
         )
@@ -1110,14 +1141,14 @@ if st.session_state["pagina_ativa"] == "previsao":
             )
         )
         fig_bar.update_layout(
-            title=dict(text=tr["p1_chart2_title"], font=dict(color="#140c24", size=14)),
-            height=410,
+            title=dict(text=tr["p1_chart2_title"], font=dict(color="#140c24", size=13)),
+            height=400,
             template="plotly_white",
             paper_bgcolor="#ffffff",
             plot_bgcolor="#faf9fc",
             font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
             showlegend=False,
-            margin=dict(l=40, r=20, t=65, b=40),
+            margin=dict(l=40, r=20, t=60, b=40),
             xaxis=dict(tickfont=dict(color="#524766"), gridcolor="#ede9f5"),
             yaxis=dict(title=dict(text=tr["p1_y_vel"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), range=[0, 650], gridcolor="#ede9f5")
         )
@@ -1228,7 +1259,7 @@ elif st.session_state["pagina_ativa"] == "validacao":
 
     fig_val.add_vline(x=0.0, line_width=1.2, line_dash="dot", line_color="#8b7aa8")
     fig_val.update_layout(
-        height=520,
+        height=500,
         template="plotly_white",
         paper_bgcolor="#ffffff",
         plot_bgcolor="#faf9fc",
@@ -1236,7 +1267,7 @@ elif st.session_state["pagina_ativa"] == "validacao":
         legend=dict(orientation="h", yanchor="bottom", y=1.03, xanchor="right", x=1, font=dict(color="#140c24")),
         margin=dict(l=45, r=20, t=55, b=40)
     )
-    fig_val.update_annotations(font=dict(color="#140c24", size=13))
+    fig_val.update_annotations(font=dict(color="#140c24", size=12))
     fig_val.update_yaxes(title_text="Strain Re(h_22)", row=1, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
     fig_val.update_yaxes(title_text="|Error|", row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
     fig_val.update_xaxes(title_text=tr["p1_x_time"], row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
@@ -1283,8 +1314,8 @@ elif st.session_state["pagina_ativa"] == "espectro":
             )
         )
         fig_t.update_layout(
-            title=dict(text=tr["p3_c1"].format(q=q_slider, s=spin_slider), font=dict(color="#140c24", size=14)),
-            height=430,
+            title=dict(text=tr["p3_c1"].format(q=q_slider, s=spin_slider), font=dict(color="#140c24", size=13)),
+            height=420,
             template="plotly_white",
             paper_bgcolor="#ffffff",
             plot_bgcolor="#faf9fc",
@@ -1304,8 +1335,8 @@ elif st.session_state["pagina_ativa"] == "espectro":
             )
         )
         fig_f.update_layout(
-            title=dict(text=tr["p3_c2"], font=dict(color="#140c24", size=14)),
-            height=430,
+            title=dict(text=tr["p3_c2"], font=dict(color="#140c24", size=13)),
+            height=420,
             template="plotly_white",
             paper_bgcolor="#ffffff",
             plot_bgcolor="#faf9fc",
@@ -1383,7 +1414,7 @@ elif st.session_state["pagina_ativa"] == "colisao3d":
     ]
 
     fig_3d.update_layout(
-        height=640,
+        height=620,
         template="plotly_white",
         paper_bgcolor="#ffffff",
         plot_bgcolor="#faf9fc",
@@ -1401,7 +1432,7 @@ elif st.session_state["pagina_ativa"] == "colisao3d":
         )],
         margin=dict(l=20, r=20, t=55, b=30)
     )
-    fig_3d.update_annotations(font=dict(color="#140c24", size=13))
+    fig_3d.update_annotations(font=dict(color="#140c24", size=12))
     fig_3d.update_scenes(
         xaxis=dict(range=[-2.3, 2.3], visible=False),
         yaxis=dict(range=[-2.3, 2.3], visible=False),
