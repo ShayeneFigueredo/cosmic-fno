@@ -1,0 +1,20 @@
+{
+  "title": "CosmicFNO: Emulação de Formas de Onda Gravitacionais e Predição de Recuo Relativístico em Sistemas Binários de Buracos Negros com Operadores Neurais de Fourier",
+  "description": "Plataforma de Aprendizado de Máquina Científico (SciML) baseada em Operadores Neurais de Fourier (1D-FNO) para emulação do modo quadrupolar dominante h22(t), previsão antecipada da colisão (pre-merger early warning) e estimativa de propriedades de buracos negros remanescentes e velocidade de recuo relativístico (recoil kick) utilizando o catálogo SXS v3.0.0.",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Figueredo, Shayene",
+      "affiliation": "Universidade Federal de Uberlândia (FACOM/UFU)"
+    }
+  ],
+  "keywords": [
+    "Scientific Machine Learning",
+    "Fourier Neural Operator",
+    "Gravitational Waves",
+    "Binary Black Holes",
+    "SXS Catalog",
+    "Numerical Relativity"
+  ]
+}

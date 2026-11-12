@@ -20,7 +20,6 @@ Descricao:
 
 import os
 import sys
-import sxs
 import numpy as np
 import torch
 import torch.nn as nn
@@ -82,6 +81,7 @@ def extrair_metadados_remanescentes_sxs(lista_ids):
     - remnant_spin_z (spin adimensional final)
     - v_kick_kms (velocidade de recuo / chute relativistico em km/s)
     """
+    import sxs
     dados_remanescentes = []
     print("[INFO] Extraindo metadados reais pos-colisao (Remanescente & Kick) do catalogo SXS...")
 

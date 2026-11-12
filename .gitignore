@@ -2,62 +2,47 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
-
-# Distribution / packaging
 .Python
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
 *.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual Environments
-# Pastas de ambientes virtuais
 venv/
 .venv/
 ENV/
 .env/
 env/
-
-# Jupyter Notebook checkpoints
 .ipynb_checkpoints
-# Arquivos gerados pelo Python
-__pycache__/
-*.pyc
 
-# Large datasets & binary models (evitar subir arquivos pesados para o Git)
+# Ignorar arquivos HDF5 brutos pesados
 *.h5
 *.hdf5
-*.pt
-*.pth
 *.onnx
-dados/raw/
-dados/cache/
-# Dados brutos e tensores pesados (Não subir pro GitHub)
-data/
 dataset/
-modelos_salvos/
 resultados/
+
+# Ignorar dados brutos exceto os tensores compactos necessarios para o Dashboard Cloud
+data/*
+!data/raw/
+data/raw/*
+!data/raw/dataset_sxs/
+data/raw/dataset_sxs/*
+!data/raw/dataset_sxs/dataset_t_fase_alinhada.pt
+!data/raw/dataset_sxs/dataset_h22_fase_alinhada.pt
+!data/raw/dataset_sxs/dataset_params_fase_alinhada.pt
+!data/raw/dataset_sxs/dataset_remanescente_sxs.pt
+
+# Ignorar checkpoints antigos exceto os modelos oficiais do Dashboard Cloud
+modelos_salvos/*
+!modelos_salvos/fno_fase_alinhada.pth
+!modelos_salvos/fno_pre_merger_forecaster.pth
+!modelos_salvos/remnant_predictor.pth
+!modelos_salvos/sxs_3300_remnant_model.pt
+!modelos_salvos/polar_fno_benchmark.pt
 
 # IDE, Agents & OS
 .agents/
 .claude/
-# Configurações de IDE
 .vscode/
 .idea/
 .DS_Store

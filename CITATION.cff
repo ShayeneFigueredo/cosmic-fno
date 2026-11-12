@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Se voce utilizar este software ou seus modelos em sua pesquisa, por favor cite conforme abaixo."
+title: "CosmicFNO: Emulacao de Formas de Onda Gravitacionais e Predicao de Recuo Relativistico em Sistemas Binarios de Buracos Negros com Operadores Neurais de Fourier"
+version: 1.0.0
+date-released: 2026-11-11
+url: "https://github.com/ShayeneFigueredo/cosmic-fno"
+repository-code: "https://github.com/ShayeneFigueredo/cosmic-fno"
+license: MIT
+authors:
+  - family-names: "Figueredo"
+    given-names: "Shayene"
+    affiliation: "Faculdade de Computacao (FACOM), Universidade Federal de Uberlandia (UFU)"
+keywords:
+  - "Scientific Machine Learning"
+  - "Fourier Neural Operators"
+  - "Gravitational Waves"
+  - "Numerical Relativity"
+  - "Binary Black Holes"
+  - "SXS Catalog"
