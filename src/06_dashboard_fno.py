@@ -387,73 +387,129 @@ st.markdown("""
         font-size: 0.81rem !important;
     }
 
+    /* Controles Dark-Mode-Proof (st.selectbox e menus flutuantes sempre claros) */
+    div[data-baseweb="select"] > div {
+        background-color: #ffffff !important;
+        color: #160e26 !important;
+        border: 1px solid #e2dcf0 !important;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 12px rgba(22, 14, 38, 0.03) !important;
+    }
+    div[data-baseweb="select"] span,
+    div[data-baseweb="select"] div,
+    div[data-baseweb="select"] input,
+    div[data-baseweb="select"] svg {
+        color: #160e26 !important;
+        fill: #160e26 !important;
+    }
+    div[data-baseweb="popover"],
+    ul[data-baseweb="menu"],
+    li[role="option"] {
+        background-color: #ffffff !important;
+        color: #160e26 !important;
+    }
+    li[role="option"]:hover,
+    li[role="option"][aria-selected="true"] {
+        background-color: #f3effb !important;
+        color: #5b21b6 !important;
+    }
+
     /* =================================================================
-       SIDEBAR FIXA (NAO PODE SER REDIMENSIONADA ARRASTANDO) + ICON RAIL
+       1. SIDEBAR 100% FIXA (248px), SEM RECUO E SEM ESPACO VAZIO NO TOPO
        ================================================================= */
+    [data-testid="stSidebarCollapseButton"],
+    [data-testid="collapsedControl"],
+    [data-testid="stExpandSidebarButton"],
     div[data-testid="stSidebarResizeHandle"] {
         display: none !important;
         width: 0 !important;
+        height: 0 !important;
         pointer-events: none !important;
-        cursor: default !important;
+        visibility: hidden !important;
+    }
+    div[data-testid="stSidebarHeader"] {
+        display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     section[data-testid="stSidebar"] {
         background-color: #11091f !important;
         border-right: 1px solid #211339 !important;
+        width: 248px !important;
+        min-width: 248px !important;
+        max-width: 248px !important;
+        transform: none !important;
+        margin-left: 0 !important;
+        visibility: visible !important;
     }
-    @media (min-width: 769px) {
-        section[data-testid="stSidebar"][aria-expanded="true"] {
-            width: 242px !important;
-            min-width: 242px !important;
-            max-width: 242px !important;
-        }
-        /* Quando recolhida no Desktop, mantem trilho de icones visivel (64px) */
-        section[data-testid="stSidebar"][aria-expanded="false"] {
-            width: 64px !important;
-            min-width: 64px !important;
-            max-width: 64px !important;
-            transform: none !important;
-            margin-left: 0 !important;
-            visibility: visible !important;
-        }
-        section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stSidebarContent"] {
-            padding-left: 6px !important;
-            padding-right: 6px !important;
-            overflow-x: hidden !important;
-        }
-        section[data-testid="stSidebar"][aria-expanded="false"] .sidebar-logo-free,
-        section[data-testid="stSidebar"][aria-expanded="false"] .sidebar-section-label,
-        section[data-testid="stSidebar"][aria-expanded="false"] .sidebar-tiny-research,
-        section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stHorizontalBlock"],
-        section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button [data-testid="stMarkdownContainer"] {
-            display: none !important;
-        }
-        section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button {
-            justify-content: center !important;
-            padding: 10px 0 !important;
-            width: 46px !important;
-            margin: 4px auto !important;
-        }
+    section[data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+        padding-top: 0 !important;
     }
-
     section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
-        padding-top: 0.25rem !important;
+        padding-top: 0.65rem !important;
+        padding-left: 0.9rem !important;
+        padding-right: 0.9rem !important;
     }
 
-    /* Botoes pequenos e discretos de idioma no topo da sidebar */
+    /* =================================================================
+       2. BOTOES DE IDIOMA (PT | EN | ES) COMPACTOS NO CANTO SUPERIOR ESQUERDO
+       ================================================================= */
     section[data-testid="stSidebar"] [data-testid="stHorizontalBlock"] {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
         gap: 4px !important;
-        margin-bottom: 4px !important;
+        margin-bottom: 6px !important;
+        width: 100% !important;
     }
+    section[data-testid="stSidebar"] [data-testid="stHorizontalBlock"] > div[data-testid="stColumn"],
+    section[data-testid="stSidebar"] [data-testid="stHorizontalBlock"] > div[data-testid="column"] {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+    }
+    .st-key-btn_pt,
+    .st-key-btn_en,
+    .st-key-btn_es,
+    .st-key-btn_pt div[data-testid="stButton"],
+    .st-key-btn_en div[data-testid="stButton"],
+    .st-key-btn_es div[data-testid="stButton"] {
+        width: 34px !important;
+        min-width: 34px !important;
+        max-width: 34px !important;
+        margin: 0 !important;
+    }
+    .st-key-btn_pt button,
+    .st-key-btn_en button,
+    .st-key-btn_es button,
+    section[data-testid="stSidebar"] [data-testid="stHorizontalBlock"] div[data-testid="stButton"] > button,
     section[data-testid="stSidebar"] [data-testid="stHorizontalBlock"] div.stButton > button {
-        padding: 2px 5px !important;
-        min-height: 22px !important;
-        height: 22px !important;
-        font-size: 0.65rem !important;
+        height: 24px !important;
+        min-height: 24px !important;
+        width: 34px !important;
+        min-width: 34px !important;
+        max-width: 34px !important;
+        padding: 2px 8px !important;
+        font-size: 0.68rem !important;
         font-weight: 600 !important;
-        border-radius: 5px !important;
+        border-radius: 6px !important;
         justify-content: center !important;
         text-align: center !important;
-        margin-bottom: 0 !important;
+        margin: 0 !important;
+        gap: 0 !important;
+    }
+    .st-key-btn_pt button p,
+    .st-key-btn_en button p,
+    .st-key-btn_es button p,
+    section[data-testid="stSidebar"] [data-testid="stHorizontalBlock"] div.stButton > button p {
+        font-size: 0.68rem !important;
+        line-height: 1 !important;
+        text-align: center !important;
+        margin: 0 !important;
     }
 
     /* Logo Oficial SOLTA na Sidebar */
@@ -461,7 +517,7 @@ st.markdown("""
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
-        padding: 4px 2px 12px 2px;
+        padding: 6px 2px 12px 2px;
         margin: 0 0 2px 0;
         display: flex;
         align-items: center;
@@ -483,14 +539,23 @@ st.markdown("""
         margin: 12px 0 4px 8px;
     }
 
+    /* =================================================================
+       3. BOTOES DE NAVEGACAO DA SIDEBAR COM 100% DE LARGURA E ALINHAMENTO ESQUERDO
+       ================================================================= */
+    section[data-testid="stSidebar"] div[data-testid="stButton"],
+    section[data-testid="stSidebar"] div.stButton {
+        width: 100% !important;
+    }
+    section[data-testid="stSidebar"] div[data-testid="stButton"] > button,
     section[data-testid="stSidebar"] div.stButton > button {
-        width: 100%;
+        width: 100% !important;
+        display: flex !important;
         text-align: left !important;
         justify-content: flex-start !important;
         align-items: center !important;
-        gap: 9px !important;
-        padding: 8px 12px !important;
-        border-radius: 9px !important;
+        gap: 10px !important;
+        padding: 10px 14px !important;
+        border-radius: 10px !important;
         border: none !important;
         background-color: transparent !important;
         color: #b5a6cc !important;
@@ -498,22 +563,58 @@ st.markdown("""
         font-size: 0.80rem !important;
         cursor: pointer !important;
         transition: background-color 0.16s ease, color 0.16s ease;
-        margin-bottom: 2px !important;
+        margin-bottom: 3px !important;
     }
+    section[data-testid="stSidebar"] div[data-testid="stButton"] > button > div,
+    section[data-testid="stSidebar"] div.stButton > button [data-testid="stMarkdownContainer"] {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+    }
+    section[data-testid="stSidebar"] div[data-testid="stButton"] > button:hover,
     section[data-testid="stSidebar"] div.stButton > button:hover {
         background-color: rgba(124, 58, 237, 0.15) !important;
         color: #ffffff !important;
     }
+    section[data-testid="stSidebar"] div[data-testid="stButton"] > button[kind="primary"],
     section[data-testid="stSidebar"] div.stButton > button[kind="primary"] {
         background-color: #6d28d9 !important;
         color: #ffffff !important;
         font-weight: 600 !important;
         box-shadow: 0 6px 16px -4px rgba(109, 40, 217, 0.45) !important;
     }
+    section[data-testid="stSidebar"] div[data-testid="stButton"] > button p,
     section[data-testid="stSidebar"] div.stButton > button p {
         font-size: 0.80rem !important;
         margin: 0 !important;
         white-space: nowrap !important;
+        text-align: left !important;
+    }
+    /* Reafirma centralizacao e tamanho compacto nos 3 botoes de idioma apos a regra geral */
+    .st-key-btn_pt button,
+    .st-key-btn_en button,
+    .st-key-btn_es button {
+        width: 34px !important;
+        min-width: 34px !important;
+        max-width: 34px !important;
+        height: 24px !important;
+        min-height: 24px !important;
+        padding: 2px 8px !important;
+        border-radius: 6px !important;
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 0 !important;
+    }
+    .st-key-btn_pt button > div,
+    .st-key-btn_en button > div,
+    .st-key-btn_es button > div,
+    .st-key-btn_pt button p,
+    .st-key-btn_en button p,
+    .st-key-btn_es button p {
+        justify-content: center !important;
+        text-align: center !important;
+        font-size: 0.68rem !important;
     }
 
     .sidebar-tiny-research {
@@ -862,7 +963,7 @@ if "idioma" not in st.session_state:
 tr = I18N[st.session_state["idioma"]]
 
 with st.sidebar:
-    l_col1, l_col2, l_col3 = st.columns(3)
+    l_col1, l_col2, l_col3, _ = st.columns([1, 1, 1, 2.8], gap="small")
     with l_col1:
         if st.button("PT", key="btn_pt", type="primary" if st.session_state["idioma"] == "PT" else "secondary"):
             st.session_state["idioma"] = "PT"
@@ -886,16 +987,20 @@ with st.sidebar:
 
     if st.button(
         tr["nav_previsao"],
+        key="nav_previsao",
         icon=":material/radar:",
-        type="primary" if st.session_state["pagina_ativa"] == "previsao" else "secondary"
+        type="primary" if st.session_state["pagina_ativa"] == "previsao" else "secondary",
+        use_container_width=True
     ):
         st.session_state["pagina_ativa"] = "previsao"
         st.rerun()
 
     if st.button(
         tr["nav_validacao"],
+        key="nav_validacao",
         icon=":material/verified:",
-        type="primary" if st.session_state["pagina_ativa"] == "validacao" else "secondary"
+        type="primary" if st.session_state["pagina_ativa"] == "validacao" else "secondary",
+        use_container_width=True
     ):
         st.session_state["pagina_ativa"] = "validacao"
         st.rerun()
@@ -904,24 +1009,30 @@ with st.sidebar:
 
     if st.button(
         tr["nav_espectro"],
+        key="nav_espectro",
         icon=":material/graphic_eq:",
-        type="primary" if st.session_state["pagina_ativa"] == "espectro" else "secondary"
+        type="primary" if st.session_state["pagina_ativa"] == "espectro" else "secondary",
+        use_container_width=True
     ):
         st.session_state["pagina_ativa"] = "espectro"
         st.rerun()
 
     if st.button(
         tr["nav_colisao3d"],
+        key="nav_colisao3d",
         icon=":material/3d_rotation:",
-        type="primary" if st.session_state["pagina_ativa"] == "colisao3d" else "secondary"
+        type="primary" if st.session_state["pagina_ativa"] == "colisao3d" else "secondary",
+        use_container_width=True
     ):
         st.session_state["pagina_ativa"] = "colisao3d"
         st.rerun()
 
     if st.button(
         tr["nav_tabela"],
+        key="nav_tabela",
         icon=":material/table_chart:",
-        type="primary" if st.session_state["pagina_ativa"] == "tabela" else "secondary"
+        type="primary" if st.session_state["pagina_ativa"] == "tabela" else "secondary",
+        use_container_width=True
     ):
         st.session_state["pagina_ativa"] = "tabela"
         st.rerun()

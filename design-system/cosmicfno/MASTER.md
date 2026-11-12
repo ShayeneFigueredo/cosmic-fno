@@ -1,214 +1,110 @@
-# Design System Master File
+# CosmicFNO — Design System Master File
 
-> **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
+> **LOGIC:** When building or refining a specific page or view, first check `design-system/cosmicfno/pages/[page-name].md`.
 > If that file exists, its rules **override** this Master file.
-> If not, strictly follow the rules below.
+> If not, strictly follow the rules and tokens defined below.
 
 ---
 
-**Project:** CosmicFNO
-**Generated:** 2026-11-12 00:47:53
-**Category:** Analytics Dashboard
+**Project:** CosmicFNO — Spectral Gravitational-Wave Observatory (PT / EN / ES)
+**Author:** Shayene Figueredo (BSI / UFU)
+**Category:** Data-Dense Scientific Observatory & SciML Analytics Dashboard
+**Governing Skills:** `ui-ux-pro-max`, `frontend-design` (Anthropic), `antigravity-design-expert`
 
 ---
 
-## Global Rules
+## 1. Global Design Tokens
 
-### Color Palette
+### Color Palette (Cosmic Purple & Weightless Light Observatory)
 
-| Role | Hex | CSS Variable |
-|------|-----|--------------|
-| Primary | `#1E40AF` | `--color-primary` |
-| On Primary | `#FFFFFF` | `--color-on-primary` |
-| Secondary | `#3B82F6` | `--color-secondary` |
-| On Secondary | `#000000` | `--color-on-secondary` |
-| Accent/CTA | `#D97706` | `--color-accent` |
-| On Accent/CTA | `#000000` | `--color-on-accent` |
-| Background | `#F8FAFC` | `--color-background` |
-| Foreground | `#1E3A8A` | `--color-foreground` |
-| Card | `#FFFFFF` | `--color-card` |
-| Card Foreground | `#1E3A8A` | `--color-card-foreground` |
-| Muted | `#E9EEF6` | `--color-muted` |
-| Muted Foreground | `#475569` | `--color-muted-foreground` |
-| Border | `#DBEAFE` | `--color-border` |
-| Destructive | `#DC2626` | `--color-destructive` |
-| On Destructive | `#FFFFFF` | `--color-on-destructive` |
-| Ring | `#1E40AF` | `--color-ring` |
+| Role | Hex | CSS Variable | Usage & Contrast Notes |
+|------|-----|--------------|------------------------|
+| Sidebar Background | `#11091f` | `--color-sidebar-bg` | Deep cosmic obsidian-violet rail (`248px` fixed) |
+| Sidebar Border | `#211339` | `--color-sidebar-border` | Subtle structural divider (`1px solid`) |
+| Primary Brand / Active Nav | `#6d28d9` | `--color-primary` | Active navigation pill, primary accents, spectral bars |
+| Primary Glow / Accent | `#7c3aed` | `--color-accent` | Forecast waveform trace (`dash`), active glow, kick bar |
+| Secondary Accent | `#c084fc` | `--color-secondary` | Polar-CosmicFNO trace (`dot`), secondary spectral highlights |
+| App Canvas Background | `#f7f6fb` | `--color-background` | Soft cosmic-tinted alabaster canvas (reduces eye strain) |
+| Primary Ink (Foreground) | `#160e26` | `--color-foreground` | Headings, KPI values, reference SXS waveform (`> 12:1` AAA) |
+| Secondary Ink (Muted Text) | `#554a6b` | `--color-muted-foreground` | Editorial subtitles, axis ticks, card descriptions (`> 5.8:1` AA) |
+| Sidebar Muted Text | `#b5a6cc` | `--color-sidebar-fg` | Inactive sidebar navigation items |
+| Sidebar Section Label | `#7c6b99` | `--color-sidebar-label` | Sentence-case group headers (`Módulos`, `Exploração`) |
+| Card Surface | `#ffffff` | `--color-card` | Floating weightless KPI cards, white cards, Plotly containers |
+| Plot Canvas Surface | `#faf9fc` | `--color-plot-bg` | Subtle inner plot area background |
+| Control & Input Border | `#e2dcf0` | `--color-border` | Selectboxes, dividers, table rules (`#e6e1f0`) |
+| Tag / Pill Surface | `#ede9fe` | `--color-muted` | Metadata tags and fidelity table pills (`#5b21b6` text) |
+| Deep Solid Badge | `#2e1065` | `--color-badge-solid` | High-salience fidelity badge (`#ffffff` text) |
 
-**Color Notes:** Blue data + amber highlights [Accent adjusted from #F59E0B]
+### Typography & Numeric Discipline
 
-### Typography
-
-- **Heading Font:** Fira Code
-- **Body Font:** Fira Sans
-- **Mood:** dashboard, data, analytics, code, technical, precise
-- **Google Fonts:** [Fira Code + Fira Sans](https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap)
+- **Primary Sans Font:** `Montserrat` (`400`, `500`, `600`, `700`, `800`)
+- **Technical / Monospace Font:** `Fira Code` (`500`, `600`)
+- **Icon Font:** `Material Symbols Rounded` (strictly preserved on `[data-testid="stIconMaterial"]`)
+- **Numeric Alignment:** `font-variant-numeric: tabular-nums` enforced on all KPI values (`.kpi-value`), scientific tables (`.modern-table`), and parameter summaries (`.card-sub`) to prevent horizontal jitter during real-time parameter sweeps.
+- **Editorial Hierarchy (Anthropic `frontend-design`):**
+  - Sentence-case section labels and titles (no tracked-out ALL-CAPS eyebrow clichés).
+  - Concise, high-signal scientific copy in Portuguese (`PT`), English (`EN`), and Spanish (`ES`).
 
 **CSS Import:**
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 ```
 
-### Spacing Variables
+### Elevation & Antigravity Weightless Shadows
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
-| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
-
-### Shadow Depths
-
-| Level | Value | Usage |
-|-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
+| `--shadow-card` | `0 20px 40px -15px rgba(22, 14, 38, 0.06), 0 4px 12px -2px rgba(109, 40, 217, 0.03)` | KPI cards, white cards, Plotly containers, table card |
+| `--shadow-control` | `0 4px 12px rgba(22, 14, 38, 0.03)` | Light-locked `st.selectbox` and interactive form controls |
+| `--shadow-nav-active` | `0 6px 16px -4px rgba(109, 40, 217, 0.45)` | Active sidebar navigation button (`#6d28d9`) |
 
 ---
 
-## Component Specs
+## 2. Layout & Component Architecture
 
-### Buttons
+### Fixed Cosmic Sidebar (`248px`)
+1. **No Collapse / No Resize / Zero Top Dead-Space:**
+   - `[data-testid="stSidebarCollapseButton"]`, `[data-testid="collapsedControl"]`, `[data-testid="stExpandSidebarButton"]`, and `div[data-testid="stSidebarResizeHandle"]` are permanently hidden (`display: none !important`).
+   - `div[data-testid="stSidebarHeader"]` has `display: none !important; height: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important;` to eliminate blank top space.
+   - Sidebar width is locked at `248px` (`width: 248px !important; min-width: 248px !important; max-width: 248px !important;`).
+2. **Compact Top-Left Language Cluster (`PT` | `EN` | `ES`):**
+   - Positioned tightly in the top-left corner using `st.columns([1, 1, 1, 2.8], gap="small")` and scoped CSS (`.st-key-btn_pt`, `.st-key-btn_en`, `.st-key-btn_es`).
+   - Button dimensions: `height: 24px !important; min-height: 24px !important; width: 34px !important; padding: 2px 8px !important; font-size: 0.68rem !important; border-radius: 6px !important; justify-content: center !important; text-align: center !important;`.
+3. **Full-Width Left-Aligned Navigation Buttons:**
+   - All 5 module buttons pass `use_container_width=True`.
+   - CSS enforces `width: 100% !important; justify-content: flex-start !important; text-align: left !important; padding: 10px 14px !important; border-radius: 10px !important;`.
 
+### Dark-Mode-Proof Light Controls (`st.selectbox`)
+To prevent browser dark-mode preferences from rendering black dropdown inputs against the light `#f7f6fb` observatory canvas:
 ```css
-/* Primary Button */
-.btn-primary {
-  background: #D97706;
-  color: #000000;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
+div[data-baseweb="select"] > div {
+    background-color: #ffffff !important;
+    color: #160e26 !important;
+    border: 1px solid #e2dcf0 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 12px rgba(22, 14, 38, 0.03) !important;
 }
-
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-/* Secondary Button */
-.btn-secondary {
-  background: transparent;
-  color: #1E40AF;
-  border: 2px solid #1E40AF;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
+div[data-baseweb="select"] span,
+div[data-baseweb="select"] div,
+div[data-baseweb="select"] svg {
+    color: #160e26 !important;
+    fill: #160e26 !important;
 }
 ```
 
-### Cards
-
-```css
-.card {
-  background: #F8FAFC;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow-md);
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-```
-
-### Inputs
-
-```css
-.input {
-  padding: 12px 16px;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 200ms ease;
-}
-
-.input:focus {
-  border-color: #1E40AF;
-  outline: none;
-  box-shadow: 0 0 0 3px #1E40AF20;
-}
-```
-
-### Modals
-
-```css
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.modal {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: var(--shadow-xl);
-  max-width: 500px;
-  width: 90%;
-}
-```
+### Weightless KPI Grid & Scientific Plots
+- **KPI Grid:** 4-column responsive CSS grid (`.kpi-grid`) with `backdrop-filter: blur(12px)`, diffused elevation, and staggered entrance animation (`floatIn`) that respects `@media (prefers-reduced-motion: reduce)`.
+- **Plotly Surfaces:** Explicitly locked to `template="plotly_white"`, `paper_bgcolor="#ffffff"`, `plot_bgcolor="#faf9fc"`, and `theme=None` on `st.plotly_chart` calls.
 
 ---
 
-## Style Guidelines
+## 3. Anti-Patterns & Pre-Delivery Checklist
 
-**Style:** Data-Dense Dashboard
-
-**Keywords:** Multiple charts/widgets, data tables, KPI cards, minimal padding, grid layout, space-efficient, maximum data visibility
-
-**Best For:** Business intelligence dashboards, financial analytics, enterprise reporting, operational dashboards, data warehousing
-
-**Key Effects:** Hover tooltips, chart zoom on click, row highlighting on hover, smooth filter animations, data loading spinners
-
-### Page Pattern
-
-**Pattern Name:** Enterprise Gateway
-
-- **Conversion Strategy:** Path selection (I am a...). Mega menu navigation. Trust signals prominent. Provide pause/stop for video and rotating logos; stop on focus and reduced motion. Logo carousel controls must be keyboard operable; pause moving media offscreen/hidden and render a static final state under reduced motion.
-- **CTA Placement:** Contact Sales (Primary) + Login (Secondary)
-- **Section Order:** Hero (Video/Mission) > Solutions by Industry > Solutions by Role > Client Logos > Contact Sales
-
----
-
-## Anti-Patterns (Do NOT Use)
-
-- ❌ Ornate design
-- ❌ No filtering
-
-### Additional Forbidden Patterns
-
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
-- ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
-- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
-- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
-- ❌ **Instant state changes** — Always use transitions (150-300ms)
-- ❌ **Invisible focus states** — Focus states must be visible for a11y
-
----
-
-## Pre-Delivery Checklist
-
-Before delivering any UI code, verify:
-
-- [ ] No emojis used as icons (use SVG instead)
-- [ ] All icons from consistent icon set (Heroicons/Lucide)
-- [ ] `cursor-pointer` on all clickable elements
-- [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
-- [ ] Focus states visible for keyboard navigation
-- [ ] `prefers-reduced-motion` respected
-- [ ] Responsive: 375px, 768px, 1024px, 1440px
-- [ ] No content hidden behind fixed navbars
-- [ ] No horizontal scroll on mobile
+- [x] Sidebar is fixed at `248px` with zero top header dead-space and no collapse/resize handles.
+- [x] Language switcher (`PT` | `EN` | `ES`) is compact (`34px × 24px`, `4px` gap) and anchored at the top-left of the sidebar.
+- [x] All 5 sidebar navigation buttons span `100%` of the sidebar width (`use_container_width=True`) with left-aligned icon + label.
+- [x] `st.selectbox` and popover menus are explicitly styled in light tokens (`#ffffff` surface, `#160e26` text, `#e2dcf0` border) regardless of OS/browser dark theme.
+- [x] Material Symbols icons (`:material/...:`) render as crisp ligatures without font-family override regression.
+- [x] All quantitative metrics use `tabular-nums` and maintain WCAG AA/AAA contrast (`>= 4.5:1`).
+- [x] `prefers-reduced-motion: reduce` disables entrance animations cleanly.
