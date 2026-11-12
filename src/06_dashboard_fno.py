@@ -662,6 +662,54 @@ st.markdown("""
         border: 1px solid rgba(226, 232, 240, 0.6);
     }
 
+    /* Tabela Moderna Flutuante */
+    .table-card {
+        background-color: #ffffff;
+        border: 1px solid rgba(226, 232, 240, 0.65);
+        border-radius: 16px;
+        padding: 18px 22px;
+        box-shadow: 0 12px 28px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
+        overflow-x: auto;
+    }
+    .modern-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+        color: #140c24 !important;
+    }
+    .modern-table th {
+        text-align: left;
+        padding: 12px 14px;
+        font-size: 0.73rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: #64587a !important;
+        border-bottom: 2px solid #ede9f5;
+        background-color: #faf9fc;
+    }
+    .modern-table td {
+        padding: 13px 14px;
+        border-bottom: 1px solid #f1eef7;
+        color: #1e1333 !important;
+        font-weight: 500;
+    }
+    .modern-table tr:last-child td {
+        border-bottom: none;
+    }
+    .modern-table tr:hover td {
+        background-color: #faf8ff;
+    }
+    .tbl-pill {
+        display: inline-block;
+        background-color: #f3e8ff;
+        color: #6d28d9 !important;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+    }
+
     .site-footer {
         margin-top: 32px;
         padding: 18px 20px;
@@ -1374,30 +1422,36 @@ elif st.session_state["pagina_ativa"] == "tabela":
     b3300 = env["bench_3300"]
 
     render_kpi_grid([
-        {"label": tr["p5_k1_t"], "value": f"{b3300['n_total']:,}".replace(",", "."), "sub": tr["p5_k1_s"].format(n=b3300["n_test"])},
+        {"label": tr["p5_k1_t"], "value": f"{b3300['n_total']:,}".replace(",", "."), "sub": tr["p5_k1_s"].format(n=b3300["n_teste"])},
         {"label": tr["p5_k2_t"], "value": f"{100.0 - b3300['erro_rel_massa']:.2f}%", "sub": tr["p5_k2_s"].format(e=b3300["erro_rel_massa"])},
-        {"label": tr["p5_k3_t"], "value": f"{b3300['r2_spin']*100:.2f}%", "sub": f"MAE Spin: {b3300['mae_spin']:.4f} c"},
+        {"label": tr["p5_k3_t"], "value": f"{b3300['r2_spin']*100:.2f}%", "sub": f"R² Kick: {b3300['r2_kick']*100:.1f}%"},
         {"label": tr["p5_k4_t"], "value": f"{b3300['acc_aglomerado']:.2f}%", "sub": tr["p5_k4_s"]},
     ])
 
-    st.dataframe(
-        {
-            "Experiment / Hold-Out Scenario": [
-                "Exp 1 — Baseline 1D-CNN Reconstruction (SXS:BBH:0305)",
-                "Exp 2 — Initial Blind Test (4 train sims, q=5.00 unaligned phase)",
-                "Exp 3 — Phase-Aligned Blind Test (4 train sims, q=5.00)",
-                "Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0113, q=5.00) [Polar-FNO]",
-                "Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0113, q=5.00) [Direct FNO]",
-                "Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0201, q=2.32) [Direct FNO]",
-                "Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0593, q=1.50) [Direct FNO]",
-                "Exp 5 — Pre-Merger Hidden Future Forecast (t > -50M, SXS:BBH:0167)",
-            ],
-            "Relative L2 Error": ["96.67%", "115.46%", "39.66%", "11.50%", "4.34%", "2.66%", "1.81%", "1.48%"],
-            "Overlap (Fidelity)": ["25.88%", "16.70%", "94.16%", "99.34%", "99.91%", "99.97%", "99.98%", "99.99%"],
-            "Mismatch (1 - Overlap)": ["0.741196", "0.832960", "0.058402", "0.006640", "0.000920", "0.000300", "0.000160", "0.000100"],
-        },
-        use_container_width=True,
-        hide_index=True
+    linhas_tabela = [
+        ("Exp 1 — Baseline 1D-CNN Reconstruction (SXS:BBH:0305)", "96.67%", "25.88%", "0.741196"),
+        ("Exp 2 — Initial Blind Test (4 train sims, q=5.00 unaligned phase)", "115.46%", "16.70%", "0.832960"),
+        ("Exp 3 — Phase-Aligned Blind Test (4 train sims, q=5.00)", "39.66%", "94.16%", "0.058402"),
+        ("Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0113, q=5.00) [Polar-FNO]", "11.50%", "99.34%", "0.006640"),
+        ("Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0113, q=5.00) [Direct FNO]", "4.34%", "99.91%", "0.000920"),
+        ("Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0201, q=2.32) [Direct FNO]", "2.66%", "99.97%", "0.000300"),
+        ("Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0593, q=1.50) [Direct FNO]", "1.81%", "99.98%", "0.000160"),
+        ("Exp 5 — Pre-Merger Hidden Future Forecast (t > -50M, SXS:BBH:0167)", "1.48%", "99.99%", "0.000100"),
+    ]
+
+    trs_html = "".join(
+        f'<tr><td>{cen}</td><td>{l2}</td><td><span class="tbl-pill">{ov}</span></td><td>{mis}</td></tr>'
+        for cen, l2, ov, mis in linhas_tabela
+    )
+
+    st.markdown(
+        f'<div class="table-card">'
+        f'<table class="modern-table">'
+        f'<thead><tr><th>Experiment / Hold-Out Scenario</th><th>Relative L2 Error</th><th>Overlap (Fidelity)</th><th>Mismatch (1 - Overlap)</th></tr></thead>'
+        f'<tbody>{trs_html}</tbody>'
+        f'</table>'
+        f'</div>',
+        unsafe_allow_html=True
     )
 
 # =====================================================================
