@@ -2,12 +2,10 @@
 CosmicFNO - Plataforma Visual e Observatorio SciML (PT / EN / ES)
 Autora: Shayene Figueredo (BSI/UFU)
 
-Descricao:
-    Portal cientifico responsivo (Desktop e Mobile) com Design System Roxo Cosmico:
-    - Menu lateral de largura fixa (sem redimensionamento por arrasto) e modo recolhido em trilho de icones (Icon Rail)
-    - Seletor compacto de idiomas (PT / EN / ES) no topo do menu
-    - Cabecalho ocupando 100% da largura util com tipografia refinada
-    - Cards flutuantes com sombras difusas (sem bordas coloridas e sem blocos pesados desnecessarios)
+Design System regido pelas 3 Skills instaladas em .agents/skills/:
+    1. ui-ux-pro-max (Data-Dense Scientific Observatory, contraste > 4.5:1, tabular-nums)
+    2. frontend-design (Anthropic: sem eyebrows em CAIXA ALTA, sem cliches de pills repetitivas, hierarquia editorial limpa)
+    3. antigravity-design-expert (Weightless floating cards com sombras difusas 0 20px 40px rgba(0,0,0,0.05), glassmorphism sutil e animacao staggered com prefers-reduced-motion)
 """
 
 import os
@@ -25,7 +23,7 @@ PASTA_BASE = os.path.dirname(PASTA_SRC)
 CAMINHO_LOGO = os.path.join(PASTA_BASE, "docs", "assets", "Cosmicfno-LOGO.png")
 
 st.set_page_config(
-    page_title="CosmicFNO | Gravitational Wave Portal",
+    page_title="CosmicFNO | Gravitational Wave Observatory",
     page_icon=CAMINHO_LOGO if os.path.exists(CAMINHO_LOGO) else None,
     layout="wide",
     initial_sidebar_state="expanded"
@@ -43,312 +41,297 @@ def carregar_logo_base64():
 logo_b64 = carregar_logo_base64()
 
 # =====================================================================
-# 1. DICIONARIO MULTILINGUE COMPLETO (PT / EN / ES)
+# 1. DICIONARIO MULTILINGUE (SENTENCE CASE EDITORIAL — ANTHROPIC SKILL)
 # =====================================================================
 I18N = {
     "PT": {
-        "sec_main": "MODULOS",
-        "sec_vis": "EXPLORACAO",
+        "sec_main": "Módulos",
+        "sec_vis": "Exploração",
         "nav_previsao": "Pre-Merger e Kick",
-        "nav_validacao": "Validacao Hold-Out",
+        "nav_validacao": "Validação Hold-Out",
         "nav_espectro": "Emulador e FFT",
-        "nav_colisao3d": "Colisao 3D",
-        "nav_tabela": "Tabela de Metricas",
-        "info_caption": "3.435 Simulacoes SXS · 14 Ondas Alinhadas · UFU",
-        "pill_catalog": "Catálogo SXS v3.0.0 · 3.435 Colisões",
-        "pill_fid": "Fidelidade > 99.9%",
+        "nav_colisao3d": "Coalescência 3D",
+        "nav_tabela": "Tabela de Métricas",
+        "info_caption": "UFU · 3.435 simulações SXS",
+        "pill_catalog": "Catálogo SXS v3.0.0 (3.435 fusões)",
+        "pill_fid": "Overlap > 99.9%",
         "pages": {
             "previsao": {
-                "eyebrow": "OBSERVATORIO ESPECTRAL DE ONDAS GRAVITACIONAIS",
-                "titulo": "Previsão Antecipada da Colisão (Pre-Merger) e Diagnóstico de Fuga Galáctica",
-                "subtitulo": "O operador neural observa apenas a fase inicial da espiral (antes de t = -50M, com o impacto oculto) para prever a forma de onda da fusão e estimar a massa final, o spin e a velocidade de ejeção (Recoil Kick) do buraco negro remanescente."
+                "titulo": "Previsão antecipada da colisão e diagnóstico de recuo relativístico",
+                "subtitulo": "A rede observa apenas a espiral inicial (antes de t = -50M, com a fusão oculta) para reconstruir a forma de onda completa e estimar massa final, spin e velocidade de ejeção do buraco negro formado."
             },
             "validacao": {
-                "eyebrow": "BENCHMARK CIENTIFICO DE RELATIVIDADE NUMERICA",
-                "titulo": "Validação Hold-Out Cega em Formas de Onda Inéditas (99.98% de Fidelidade)",
-                "subtitulo": "Avaliação rigorosa do modelo em simulações SXS nunca vistas durante o treinamento, comparando a parametrização espectral direta (CosmicFNO Direto) com a decomposição polar explícita (Amplitude-Fase)."
+                "titulo": "Validação cega (Hold-Out) em formas de onda inéditas",
+                "subtitulo": "Avaliação em simulações de relatividade numérica nunca vistas no treinamento, comparando a parametrização espectral direta com a decomposição polar em amplitude e fase."
             },
             "espectro": {
-                "eyebrow": "LABORATORIO DE INFERENCIA EM TEMPO REAL",
-                "titulo": "Emulador Contínuo de Espaço de Parâmetros e Espectro de Fourier (FFT)",
-                "subtitulo": "Explore continuamente a razão de massa (q) e o spin orbital para inspecionar a onda gravitacional gerada em milissegundos e os 32 modos espectrais de Fourier filtrados pelo operador neural."
+                "titulo": "Emulador contínuo de parâmetros e espectro de Fourier",
+                "subtitulo": "Varie continuamente a razão de massa (q) e o spin orbital para inspecionar a onda gravitacional gerada em milissegundos e os 32 modos espectrais filtrados pelo FNO."
             },
             "colisao3d": {
-                "eyebrow": "VISUALIZACAO DINAMICA DE ESPACO-TEMPO",
-                "titulo": "Coalescência Binária 3D Sincronizada com o Sinal Gravitacional",
-                "subtitulo": "Simulação tridimensional das órbitas relativísticas dos buracos negros sincronizada passo a passo com a emissão do modo dominante quadrupolar h_22(t) até o instante da fusão (t = 0)."
+                "titulo": "Coalescência binária 3D sincronizada com o sinal gravitacional",
+                "subtitulo": "Evolução tridimensional das órbitas relativísticas dos buracos negros sincronizada passo a passo com a emissão quadrupolar h_22(t) até o instante da fusão (t = 0)."
             },
             "tabela": {
-                "eyebrow": "RELATORIO CONSOLIDADO DE METRICAS",
-                "titulo": "Síntese Quantitativa dos Experimentos — Catálogo SXS v3.0.0",
-                "subtitulo": "Comparativo completo de Erro Relativo L2, Fidelidade de Fase (Overlap) e Mismatch em todas as etapas evolutivas da pesquisa."
+                "titulo": "Síntese quantitativa dos experimentos no catálogo SXS",
+                "subtitulo": "Comparativo consolidado de erro relativo L2, fidelidade de fase (Overlap) e Mismatch em todas as etapas da pesquisa."
             },
         },
-        "lbl_evento": "Evento Binário Monitorado:",
-        "lbl_massa": "Massa Total Inicial (Massas Solares):",
-        "cfg_pre": "Configuração Pré-Impacto",
+        "lbl_evento": "Simulação binária monitorada",
+        "lbl_massa": "Massa total inicial (massas solares)",
+        "cfg_pre": "Parâmetros pré-impacto",
         "cfg_prec": "Precisão SXS-3435",
-        "kpi1_title": "Fidelidade Pre-Merger",
-        "kpi1_sub": "Futuro Oculto (t > -50M)",
-        "kpi2_title": "Novo Buraco Negro (M_f)",
-        "kpi2_sub": "M_sol irradiados",
-        "kpi3_title": "Spin Final Previsto",
-        "kpi3_sub": "SXS Real",
-        "kpi4_title": "Chute Relativístico (Kick)",
-        "kpi4_sub": "SXS Real",
-        "esc_tag_high": "Fuga Galáctica (>300 km/s)",
-        "esc_tag_mid": "Ejeção de Galáxia Anã (>150 km/s)",
-        "esc_tag_low": "Ejeção de Aglomerado (>50 km/s)",
-        "p1_chart1_title": "Previsão Antecipada da Colisão (Pre-Merger em t = -50M)",
-        "p1_tr_obs": "Espiral Observada (Entrada)",
-        "p1_tr_real": "Impacto Real SXS (Oculto)",
-        "p1_tr_pred": "Previsão Futura CosmicFNO",
-        "p1_x_time": "Tempo Físico Alinhado (M)",
-        "p1_chart2_title": "Chute Relativístico vs Velocidade de Escape",
-        "p1_bars": ["Aglomerado", "Galáxia Anã", "CHUTE IA", "Gal. Média", "Via Láctea"],
+        "kpi1_title": "Fidelidade pré-merger",
+        "kpi1_sub": "Região futura oculta (t > -50M)",
+        "kpi2_title": "Massa do buraco negro final",
+        "kpi2_sub": "M_sol irradiados em ondas",
+        "kpi3_title": "Spin adimensional final",
+        "kpi3_sub": "Referência SXS",
+        "kpi4_title": "Velocidade de recuo (Kick)",
+        "kpi4_sub": "SXS",
+        "esc_tag_high": "Fuga galáctica (>300 km/s)",
+        "esc_tag_mid": "Ejeção de galáxia anã (>150 km/s)",
+        "esc_tag_low": "Ejeção de aglomerado (>50 km/s)",
+        "p1_chart1_title": "Reconstrução futura da fusão a partir de t = -50M",
+        "p1_tr_obs": "Espiral observada (entrada)",
+        "p1_tr_real": "Fusão real SXS (oculta)",
+        "p1_tr_pred": "Previsão CosmicFNO",
+        "p1_x_time": "Tempo físico alinhado no pico da fusão (M)",
+        "p1_chart2_title": "Recuo previsto vs velocidade de escape astrofísica",
+        "p1_bars": ["Aglomerado", "Galáxia anã", "Recuo IA", "Gal. média", "Via Láctea"],
         "p1_y_vel": "Velocidade (km/s)",
-        "p2_sim_lbl": "Simulação Secreta de Teste Cego:",
-        "p2_arq_lbl": "Arquitetura Neural Exibida:",
-        "p2_arq_opts": ["CosmicFNO Espectral Direto (Melhor)", "Polar-CosmicFNO (Amplitude-Fase)", "Ambas Sobrepostas"],
-        "p2_zoom_lbl": "Janela de Tempo Físico (M):",
-        "p2_k1_t": "Overlap (Teste Cego)",
+        "p2_sim_lbl": "Simulação de teste cego",
+        "p2_arq_lbl": "Parametrização neural",
+        "p2_arq_opts": ["CosmicFNO espectral direto", "Polar-CosmicFNO (amplitude e fase)", "Ambas sobrepostas"],
+        "p2_zoom_lbl": "Janela temporal (M)",
+        "p2_k1_t": "Fidelidade de fase (Overlap)",
         "p2_k2_t": "Mismatch (1 - Overlap)",
-        "p2_k2_s": "Meta LIGO < 0.00100",
-        "p2_k3_t": "Erro Relativo L2",
-        "p2_k4_t": "Amostras de Treino",
-        "p2_k4_v": "11 Simulações SXS",
-        "p2_k4_s": "Grade q in [1.0, 8.0]",
-        "p2_sub1": "Teste Cego Hold-Out: {id} (q = {q:.2f} — Simulação Inédita)",
-        "p2_sub2": "Erro Absoluto Instantâneo |h_SXS(t) - h_FNO(t)|",
-        "p2_ref": "Onda de Referência SXS",
-        "p3_q": "Razão de Massa (q = m1/m2)",
-        "p3_spin": "Spin Orbital (chi_1z)",
-        "p3_c1": "Forma de Onda Emulada no Tempo (q={q:.1f}, chi_1z={s:+.2f})",
-        "p3_c2": "Espectro de Fourier (32 Modos Ativos no FNO)",
-        "p3_xk": "Modo de Frequência k",
-        "p3_yf": "Amplitude |FFT|",
-        "p4_slider": "Selecione a Razão de Massa (q) da Simulação SXS:",
-        "p4_sub1": "Coalescência Binária 3D (q = {q:.2f})",
-        "p4_sub2": "Formação Sincronizada da Onda Gravitacional Re(h_22)",
-        "p4_play": "Reproduzir Colisão",
+        "p2_k2_s": "Limiar LIGO < 0.00100",
+        "p2_k3_t": "Erro relativo L2",
+        "p2_k4_t": "Conjunto de treinamento",
+        "p2_k4_v": "11 simulações SXS",
+        "p2_k4_s": "Malha q entre 1.0 e 8.0",
+        "p2_sub1": "Teste cego: {id} (q = {q:.2f})",
+        "p2_sub2": "Resíduo absoluto instantâneo |h_SXS(t) - h_FNO(t)|",
+        "p2_ref": "Referência SXS",
+        "p3_q": "Razão de massa (q = m1/m2)",
+        "p3_spin": "Spin orbital alinhado (chi_1z)",
+        "p3_c1": "Sinal gravitacional emulado no tempo (q={q:.1f}, chi_1z={s:+.2f})",
+        "p3_c2": "Espectro de Fourier (32 modos ativos no operador)",
+        "p3_xk": "Modo de frequência k",
+        "p3_yf": "Amplitude espectral |FFT|",
+        "p4_slider": "Razão de massa (q) da simulação SXS",
+        "p4_sub1": "Trajetória orbital 3D (q = {q:.2f})",
+        "p4_sub2": "Emissão sincronizada da onda Re(h_22)",
+        "p4_play": "Iniciar simulação",
         "p4_pause": "Pausar",
-        "p4_bh1": "Buraco Negro 1 (m1)",
-        "p4_bh2": "Buraco Negro 2 (m2)",
-        "p5_k1_t": "Colisões SXS Analisadas",
-        "p5_k1_s": "Teste Cego: {n} colisões",
-        "p5_k2_t": "Precisão Massa Final (M_f)",
-        "p5_k2_s": "Erro Relativo: {e:.2f}%",
-        "p5_k3_t": "Correlação Spin Final (R²)",
-        "p5_k4_t": "Fuga de Aglomerados",
-        "p5_k4_s": "Classificação > 50 km/s",
-        "footer_l": "<b>CosmicFNO</b> · Observatório Espectral de Ondas Gravitacionais (Fourier Neural Operators)",
+        "p4_bh1": "Buraco negro primário (m1)",
+        "p4_bh2": "Buraco negro secundário (m2)",
+        "p5_k1_t": "Colisões SXS avaliadas",
+        "p5_k1_s": "Teste cego: {n} simulações",
+        "p5_k2_t": "Acurácia na massa final",
+        "p5_k2_s": "Erro médio: {e:.2f}%",
+        "p5_k3_t": "Variância explicada no spin (R²)",
+        "p5_k4_t": "Classificação de ejeção (>50 km/s)",
+        "p5_k4_s": "Aglomerados globulares",
+        "footer_l": "<b>CosmicFNO</b> — Observatório Espectral de Ondas Gravitacionais",
         "footer_r": "Universidade Federal de Uberlândia (UFU) · Catálogo SXS v3.0.0",
     },
     "EN": {
-        "sec_main": "MODULES",
-        "sec_vis": "EXPLORATION",
+        "sec_main": "Modules",
+        "sec_vis": "Exploration",
         "nav_previsao": "Pre-Merger & Kick",
         "nav_validacao": "Hold-Out Validation",
         "nav_espectro": "Emulator & FFT",
         "nav_colisao3d": "3D Coalescence",
         "nav_tabela": "Metrics Table",
-        "info_caption": "3,435 SXS Simulations · 14 Aligned Waveforms · UFU",
-        "pill_catalog": "SXS Catalog v3.0.0 · 3,435 Mergers",
-        "pill_fid": "Fidelity > 99.9%",
+        "info_caption": "UFU · 3,435 SXS simulations",
+        "pill_catalog": "SXS Catalog v3.0.0 (3,435 mergers)",
+        "pill_fid": "Overlap > 99.9%",
         "pages": {
             "previsao": {
-                "eyebrow": "SPECTRAL GRAVITATIONAL-WAVE OBSERVATORY",
-                "titulo": "Pre-Merger Early-Warning Forecasting & Galactic Escape Diagnostics",
-                "subtitulo": "The neural operator observes only the early inspiral phase (before t = -50M, with the merger hidden) to forecast the full collision waveform and estimate the final mass, spin, and relativistic recoil kick of the remnant black hole."
+                "titulo": "Pre-merger collision forecasting and relativistic recoil diagnostics",
+                "subtitulo": "The neural operator observes only the early inspiral (before t = -50M, with the merger hidden) to reconstruct the full waveform and estimate the final mass, spin, and recoil kick of the remnant black hole."
             },
             "validacao": {
-                "eyebrow": "NUMERICAL RELATIVITY SCIENTIFIC BENCHMARK",
-                "titulo": "Blind Hold-Out Validation on Unseen Waveforms (99.98% Overlap)",
-                "subtitulo": "Rigorous evaluation on SXS simulations never seen during training, comparing direct spectral parameterization (Direct CosmicFNO) against explicit polar amplitude-phase decomposition."
+                "titulo": "Blind hold-out validation on unseen numerical relativity waveforms",
+                "subtitulo": "Evaluation on SXS simulations held out during training, comparing direct spectral parameterization against explicit polar amplitude-phase decomposition."
             },
             "espectro": {
-                "eyebrow": "REAL-TIME INFERENCE LABORATORY",
-                "titulo": "Continuous Parameter-Space Emulator & Fourier Spectrum (FFT)",
-                "subtitulo": "Continuously vary the mass ratio (q) and orbital spin to inspect the millisecond-generated gravitational waveform and the 32 Fourier spectral modes filtered by the neural operator."
+                "titulo": "Continuous parameter-space emulator and Fourier spectrum",
+                "subtitulo": "Vary mass ratio (q) and orbital spin continuously to inspect millisecond waveform synthesis and the 32 spectral modes retained by the neural operator."
             },
             "colisao3d": {
-                "eyebrow": "DYNAMIC SPACETIME VISUALIZATION",
-                "titulo": "3D Binary Coalescence Synchronized with Gravitational Strain",
-                "subtitulo": "Three-dimensional relativistic orbital evolution synchronized step-by-step with the dominant quadrupole wave emission h_22(t) up to the merger instant (t = 0)."
+                "titulo": "3D binary coalescence synchronized with gravitational strain",
+                "subtitulo": "Three-dimensional relativistic orbital evolution synchronized step-by-step with the dominant quadrupole wave emission h_22(t) through merger (t = 0)."
             },
             "tabela": {
-                "eyebrow": "CONSOLIDATED METRICS REPORT",
-                "titulo": "Quantitative Experimental Summary — SXS Catalog v3.0.0",
-                "subtitulo": "Complete comparison of Relative L2 Error, Phase Fidelity (Overlap), and Mismatch across all research milestones."
+                "titulo": "Quantitative experimental summary across the SXS catalog",
+                "subtitulo": "Consolidated benchmark of relative L2 error, phase overlap, and mismatch across all research stages."
             },
         },
-        "lbl_evento": "Monitored Binary Event:",
-        "lbl_massa": "Initial Total Mass (Solar Masses):",
-        "cfg_pre": "Pre-Merger Configuration",
-        "cfg_prec": "SXS-3435 Accuracy",
-        "kpi1_title": "Pre-Merger Fidelity",
-        "kpi1_sub": "Hidden Future (t > -50M)",
-        "kpi2_title": "Remnant Black Hole (M_f)",
-        "kpi2_sub": "M_sol radiated",
-        "kpi3_title": "Predicted Final Spin",
-        "kpi3_sub": "True SXS",
-        "kpi4_title": "Relativistic Recoil Kick",
-        "kpi4_sub": "True SXS",
-        "esc_tag_high": "Galactic Escape (>300 km/s)",
-        "esc_tag_mid": "Dwarf Galaxy Ejection (>150 km/s)",
-        "esc_tag_low": "Cluster Ejection (>50 km/s)",
-        "p1_chart1_title": "Early-Warning Collision Forecast (Pre-Merger at t = -50M)",
-        "p1_tr_obs": "Observed Inspiral (Input)",
-        "p1_tr_real": "True SXS Merger (Hidden)",
-        "p1_tr_pred": "CosmicFNO Future Forecast",
-        "p1_x_time": "Merger-Aligned Physical Time (M)",
-        "p1_chart2_title": "Relativistic Kick vs Escape Velocity",
-        "p1_bars": ["Glob. Cluster", "Dwarf Gal.", "AI KICK", "Medium Gal.", "Milky Way"],
+        "lbl_evento": "Monitored binary simulation",
+        "lbl_massa": "Initial total mass (solar masses)",
+        "cfg_pre": "Pre-impact parameters",
+        "cfg_prec": "SXS-3435 accuracy",
+        "kpi1_title": "Pre-merger fidelity",
+        "kpi1_sub": "Hidden future window (t > -50M)",
+        "kpi2_title": "Remnant black hole mass",
+        "kpi2_sub": "M_sol radiated in waves",
+        "kpi3_title": "Predicted final spin",
+        "kpi3_sub": "SXS reference",
+        "kpi4_title": "Relativistic recoil kick",
+        "kpi4_sub": "SXS",
+        "esc_tag_high": "Galactic escape (>300 km/s)",
+        "esc_tag_mid": "Dwarf galaxy ejection (>150 km/s)",
+        "esc_tag_low": "Cluster ejection (>50 km/s)",
+        "p1_chart1_title": "Future merger waveform reconstruction from t = -50M",
+        "p1_tr_obs": "Observed inspiral (input)",
+        "p1_tr_real": "True SXS merger (hidden)",
+        "p1_tr_pred": "CosmicFNO forecast",
+        "p1_x_time": "Merger-aligned physical time (M)",
+        "p1_chart2_title": "Predicted kick vs astrophysical escape velocity",
+        "p1_bars": ["Glob. cluster", "Dwarf galaxy", "AI kick", "Medium gal.", "Milky Way"],
         "p1_y_vel": "Velocity (km/s)",
-        "p2_sim_lbl": "Blind Hold-Out Test Simulation:",
-        "p2_arq_lbl": "Displayed Neural Architecture:",
-        "p2_arq_opts": ["Direct Spectral CosmicFNO (Best)", "Polar-CosmicFNO (Amplitude-Phase)", "Both Overlaid"],
-        "p2_zoom_lbl": "Physical Time Window (M):",
-        "p2_k1_t": "Overlap (Blind Test)",
+        "p2_sim_lbl": "Blind hold-out test simulation",
+        "p2_arq_lbl": "Neural parameterization",
+        "p2_arq_opts": ["Direct spectral CosmicFNO", "Polar-CosmicFNO (amplitude & phase)", "Both overlaid"],
+        "p2_zoom_lbl": "Physical time window (M)",
+        "p2_k1_t": "Phase fidelity (Overlap)",
         "p2_k2_t": "Mismatch (1 - Overlap)",
-        "p2_k2_s": "LIGO Target < 0.00100",
-        "p2_k3_t": "Relative L2 Error",
-        "p2_k4_t": "Training Set",
-        "p2_k4_v": "11 SXS Simulations",
-        "p2_k4_s": "Grid q in [1.0, 8.0]",
-        "p2_sub1": "Blind Hold-Out Test: {id} (q = {q:.2f} — Unseen Simulation)",
-        "p2_sub2": "Instantaneous Absolute Error |h_SXS(t) - h_FNO(t)|",
-        "p2_ref": "SXS Reference Waveform",
-        "p3_q": "Mass Ratio (q = m1/m2)",
-        "p3_spin": "Orbital Spin (chi_1z)",
-        "p3_c1": "Time-Domain Emulated Waveform (q={q:.1f}, chi_1z={s:+.2f})",
-        "p3_c2": "Fourier Spectrum (32 Active FNO Modes)",
-        "p3_xk": "Frequency Mode k",
-        "p3_yf": "Amplitude |FFT|",
-        "p4_slider": "Select SXS Simulation Mass Ratio (q):",
-        "p4_sub1": "3D Binary Coalescence (q = {q:.2f})",
-        "p4_sub2": "Synchronized Gravitational Strain Re(h_22)",
-        "p4_play": "Play Collision",
+        "p2_k2_s": "LIGO threshold < 0.00100",
+        "p2_k3_t": "Relative L2 error",
+        "p2_k4_t": "Training set",
+        "p2_k4_v": "11 SXS simulations",
+        "p2_k4_s": "Grid q from 1.0 to 8.0",
+        "p2_sub1": "Blind test: {id} (q = {q:.2f})",
+        "p2_sub2": "Instantaneous absolute residual |h_SXS(t) - h_FNO(t)|",
+        "p2_ref": "SXS reference",
+        "p3_q": "Mass ratio (q = m1/m2)",
+        "p3_spin": "Aligned orbital spin (chi_1z)",
+        "p3_c1": "Time-domain emulated strain (q={q:.1f}, chi_1z={s:+.2f})",
+        "p3_c2": "Fourier spectrum (32 active operator modes)",
+        "p3_xk": "Frequency mode k",
+        "p3_yf": "Spectral amplitude |FFT|",
+        "p4_slider": "SXS simulation mass ratio (q)",
+        "p4_sub1": "3D orbital trajectory (q = {q:.2f})",
+        "p4_sub2": "Synchronized wave emission Re(h_22)",
+        "p4_play": "Start simulation",
         "p4_pause": "Pause",
-        "p4_bh1": "Black Hole 1 (m1)",
-        "p4_bh2": "Black Hole 2 (m2)",
-        "p5_k1_t": "Analyzed SXS Mergers",
-        "p5_k1_s": "Blind Test: {n} mergers",
-        "p5_k2_t": "Final Mass Accuracy (M_f)",
-        "p5_k2_s": "Relative Error: {e:.2f}%",
-        "p5_k3_t": "Final Spin Correlation (R²)",
-        "p5_k4_t": "Cluster Escape Accuracy",
-        "p5_k4_s": "Classification > 50 km/s",
-        "footer_l": "<b>CosmicFNO</b> · Spectral Gravitational-Wave Observatory (Fourier Neural Operators)",
+        "p4_bh1": "Primary black hole (m1)",
+        "p4_bh2": "Secondary black hole (m2)",
+        "p5_k1_t": "Evaluated SXS mergers",
+        "p5_k1_s": "Blind test: {n} simulations",
+        "p5_k2_t": "Final mass accuracy",
+        "p5_k2_s": "Mean error: {e:.2f}%",
+        "p5_k3_t": "Final spin explained variance (R²)",
+        "p5_k4_t": "Ejection classification (>50 km/s)",
+        "p5_k4_s": "Globular clusters",
+        "footer_l": "<b>CosmicFNO</b> — Spectral Gravitational-Wave Observatory",
         "footer_r": "Federal University of Uberlândia (UFU) · SXS Catalog v3.0.0",
     },
     "ES": {
-        "sec_main": "MODULOS",
-        "sec_vis": "EXPLORACION",
+        "sec_main": "Módulos",
+        "sec_vis": "Exploración",
         "nav_previsao": "Pre-Merger y Kick",
-        "nav_validacao": "Validacion Hold-Out",
+        "nav_validacao": "Validación Hold-Out",
         "nav_espectro": "Emulador y FFT",
-        "nav_colisao3d": "Colision 3D",
-        "nav_tabela": "Tabla de Metricas",
-        "info_caption": "3.435 Simulaciones SXS · 14 Ondas Alineadas · UFU",
-        "pill_catalog": "Catálogo SXS v3.0.0 · 3.435 Colisiones",
-        "pill_fid": "Fidelidad > 99.9%",
+        "nav_colisao3d": "Coalescencia 3D",
+        "nav_tabela": "Tabla de Métricas",
+        "info_caption": "UFU · 3.435 simulaciones SXS",
+        "pill_catalog": "Catálogo SXS v3.0.0 (3.435 fusiones)",
+        "pill_fid": "Overlap > 99.9%",
         "pages": {
             "previsao": {
-                "eyebrow": "OBSERVATORIO ESPECTRAL DE ONDAS GRAVITACIONALES",
-                "titulo": "Predicción Anticipada de la Colisión (Pre-Merger) y Diagnóstico de Escape Galáctico",
-                "subtitulo": "El operador neuronal observa únicamente la fase inicial de la espiral (antes de t = -50M, con el impacto oculto) para predecir la onda completa de la fusión y estimar la masa final, el espín y la velocidad de eyección (Recoil Kick) del agujero negro remanente."
+                "titulo": "Predicción anticipada de la colisión y diagnóstico de retroceso relativista",
+                "subtitulo": "El operador neuronal observa solo la espiral inicial (antes de t = -50M, con la fusión oculta) para reconstruir la forma de onda completa y estimar masa final, espín y velocidad de eyección del agujero negro."
             },
             "validacao": {
-                "eyebrow": "BENCHMARK CIENTIFICO DE RELATIVIDAD NUMERICA",
-                "titulo": "Validación Hold-Out Ciega en Formas de Onda Inéditas (99.98% de Fidelidad)",
-                "subtitulo": "Evaluación rigurosa en simulaciones SXS nunca vistas durante el entrenamiento, comparando la parametrización espectral directa (CosmicFNO Directo) con la descomposición polar explícita (Amplitud-Fase)."
+                "titulo": "Validación ciega (Hold-Out) en formas de onda inéditas",
+                "subtitulo": "Evaluación en simulaciones de relatividad numérica nunca vistas en el entrenamiento, comparando la parametrización espectral directa con la descomposición polar en amplitud y fase."
             },
             "espectro": {
-                "eyebrow": "LABORATORIO DE INFERENCIA EN TIEMPO REAL",
-                "titulo": "Emulador Continuo del Espacio de Parámetros y Espectro de Fourier (FFT)",
-                "subtitulo": "Explore continuamente la razón de masa (q) y el espín orbital para inspeccionar la onda gravitacional generada en milisegundos y los 32 modos espectrales de Fourier filtrados por el operador neuronal."
+                "titulo": "Emulador continuo de parámetros y espectro de Fourier",
+                "subtitulo": "Varíe continuamente la razón de masa (q) y el espín orbital para inspeccionar la onda gravitacional generada en milisegundos y los 32 modos espectrales filtrados por el FNO."
             },
             "colisao3d": {
-                "eyebrow": "VISUALIZACION DINAMICA DEL ESPACIO-TIEMPO",
-                "titulo": "Coalescencia Binaria 3D Sincronizada con la Señal Gravitacional",
-                "subtitulo": "Simulación tridimensional de las órbitas relativistas de los agujeros negros sincronizada paso a paso con la emisión del modo dominante cuadrupolar h_22(t) hasta el instante de la fusión (t = 0)."
+                "titulo": "Coalescencia binaria 3D sincronizada con la señal gravitacional",
+                "subtitulo": "Evolución tridimensional de las órbitas relativistas de los agujeros negros sincronizada paso a paso con la emisión cuadrupolar h_22(t) hasta el instante de la fusión (t = 0)."
             },
             "tabela": {
-                "eyebrow": "INFORME CONSOLIDADO DE METRICAS",
-                "titulo": "Síntesis Cuantitativa de los Experimentos — Catálogo SXS v3.0.0",
-                "subtitulo": "Comparativa completa de Error Relativo L2, Fidelidad de Fase (Overlap) y Mismatch en todas las etapas evolutivas de la investigación."
+                "titulo": "Síntesis cuantitativa de los experimentos en el catálogo SXS",
+                "subtitulo": "Comparativa consolidada de error relativo L2, fidelidad de fase (Overlap) y Mismatch en todas las etapas de la investigación."
             },
         },
-        "lbl_evento": "Evento Binario Monitoreado:",
-        "lbl_massa": "Masa Total Inicial (Masas Solares):",
-        "cfg_pre": "Configuración Pre-Impacto",
+        "lbl_evento": "Simulación binaria monitoreada",
+        "lbl_massa": "Masa total inicial (masas solares)",
+        "cfg_pre": "Parámetros pre-impacto",
         "cfg_prec": "Precisión SXS-3435",
-        "kpi1_title": "Fidelidad Pre-Merger",
-        "kpi1_sub": "Futuro Oculto (t > -50M)",
-        "kpi2_title": "Nuevo Agujero Negro (M_f)",
-        "kpi2_sub": "M_sol irradiados",
-        "kpi3_title": "Espín Final Previsto",
-        "kpi3_sub": "SXS Real",
-        "kpi4_title": "Patada Relativista (Kick)",
-        "kpi4_sub": "SXS Real",
-        "esc_tag_high": "Escape Galáctico (>300 km/s)",
-        "esc_tag_mid": "Eyección Gal. Enana (>150 km/s)",
-        "esc_tag_low": "Eyección de Cúmulo (>50 km/s)",
-        "p1_chart1_title": "Predicción Anticipada de la Colisión (Pre-Merger en t = -50M)",
-        "p1_tr_obs": "Espiral Observada (Entrada)",
-        "p1_tr_real": "Impacto Real SXS (Oculto)",
-        "p1_tr_pred": "Predicción Futura CosmicFNO",
-        "p1_x_time": "Tiempo Físico Alineado (M)",
-        "p1_chart2_title": "Patada Relativista vs Velocidad de Escape",
-        "p1_bars": ["Cúmulo Glob.", "Gal. Enana", "PATADA IA", "Gal. Media", "Vía Láctea"],
+        "kpi1_title": "Fidelidad pre-merger",
+        "kpi1_sub": "Región futura oculta (t > -50M)",
+        "kpi2_title": "Masa del agujero negro final",
+        "kpi2_sub": "M_sol irradiados en ondas",
+        "kpi3_title": "Espín adimensional final",
+        "kpi3_sub": "Referencia SXS",
+        "kpi4_title": "Velocidad de retroceso (Kick)",
+        "kpi4_sub": "SXS",
+        "esc_tag_high": "Escape galáctico (>300 km/s)",
+        "esc_tag_mid": "Eyección galaxia enana (>150 km/s)",
+        "esc_tag_low": "Eyección de cúmulo (>50 km/s)",
+        "p1_chart1_title": "Reconstrucción futura de la fusión a partir de t = -50M",
+        "p1_tr_obs": "Espiral observada (entrada)",
+        "p1_tr_real": "Fusión real SXS (oculta)",
+        "p1_tr_pred": "Predicción CosmicFNO",
+        "p1_x_time": "Tiempo físico alineado en el pico de la fusión (M)",
+        "p1_chart2_title": "Retroceso previsto vs velocidad de escape astrofísica",
+        "p1_bars": ["Cúmulo glob.", "Gal. enana", "Retroceso IA", "Gal. media", "Vía Láctea"],
         "p1_y_vel": "Velocidad (km/s)",
-        "p2_sim_lbl": "Simulación Secreta de Prueba Ciega:",
-        "p2_arq_lbl": "Arquitectura Neuronal Mostrada:",
-        "p2_arq_opts": ["CosmicFNO Espectral Directo (Mejor)", "Polar-CosmicFNO (Amplitud-Fase)", "Ambas Superpuestas"],
-        "p2_zoom_lbl": "Ventana de Tiempo Físico (M):",
-        "p2_k1_t": "Overlap (Prueba Ciega)",
+        "p2_sim_lbl": "Simulación de prueba ciega",
+        "p2_arq_lbl": "Parametrización neuronal",
+        "p2_arq_opts": ["CosmicFNO espectral directo", "Polar-CosmicFNO (amplitud y fase)", "Ambas superpuestas"],
+        "p2_zoom_lbl": "Ventana temporal (M)",
+        "p2_k1_t": "Fidelidad de fase (Overlap)",
         "p2_k2_t": "Mismatch (1 - Overlap)",
-        "p2_k2_s": "Meta LIGO < 0.00100",
-        "p2_k3_t": "Error Relativo L2",
-        "p2_k4_t": "Muestras de Entrenamiento",
-        "p2_k4_v": "11 Simulaciones SXS",
-        "p2_k4_s": "Malla q in [1.0, 8.0]",
-        "p2_sub1": "Prueba Ciega Hold-Out: {id} (q = {q:.2f} — Simulación Inédita)",
-        "p2_sub2": "Error Absoluto Instantáneo |h_SXS(t) - h_FNO(t)|",
-        "p2_ref": "Onda de Referencia SXS",
-        "p3_q": "Razón de Masa (q = m1/m2)",
-        "p3_spin": "Espín Orbital (chi_1z)",
-        "p3_c1": "Forma de Onda Emulada en el Tiempo (q={q:.1f}, chi_1z={s:+.2f})",
-        "p3_c2": "Espectro de Fourier (32 Modos Activos en el FNO)",
-        "p3_xk": "Modo de Frecuencia k",
-        "p3_yf": "Amplitud |FFT|",
-        "p4_slider": "Seleccione la Razón de Masa (q) de la Simulación SXS:",
-        "p4_sub1": "Coalescencia Binaria 3D (q = {q:.2f})",
-        "p4_sub2": "Formación Sincronizada de la Onda Gravitacional Re(h_22)",
-        "p4_play": "Reproducir Colisión",
+        "p2_k2_s": "Umbral LIGO < 0.00100",
+        "p2_k3_t": "Error relativo L2",
+        "p2_k4_t": "Conjunto de entrenamiento",
+        "p2_k4_v": "11 simulaciones SXS",
+        "p2_k4_s": "Malla q entre 1.0 y 8.0",
+        "p2_sub1": "Prueba ciega: {id} (q = {q:.2f})",
+        "p2_sub2": "Residuo absoluto instantáneo |h_SXS(t) - h_FNO(t)|",
+        "p2_ref": "Referencia SXS",
+        "p3_q": "Razón de masa (q = m1/m2)",
+        "p3_spin": "Espín orbital alineado (chi_1z)",
+        "p3_c1": "Señal gravitacional emulada en el tiempo (q={q:.1f}, chi_1z={s:+.2f})",
+        "p3_c2": "Espectro de Fourier (32 modos activos en el operador)",
+        "p3_xk": "Modo de frecuencia k",
+        "p3_yf": "Amplitud espectral |FFT|",
+        "p4_slider": "Razón de masa (q) de la simulación SXS",
+        "p4_sub1": "Trayectoria orbital 3D (q = {q:.2f})",
+        "p4_sub2": "Emisión sincronizada de la onda Re(h_22)",
+        "p4_play": "Iniciar simulación",
         "p4_pause": "Pausar",
-        "p4_bh1": "Agujero Negro 1 (m1)",
-        "p4_bh2": "Agujero Negro 2 (m2)",
-        "p5_k1_t": "Colisiones SXS Analizadas",
-        "p5_k1_s": "Prueba Ciega: {n} colisiones",
-        "p5_k2_t": "Precisión Masa Final (M_f)",
-        "p5_k2_s": "Error Relativo: {e:.2f}%",
-        "p5_k3_t": "Correlación Espín Final (R²)",
-        "p5_k4_t": "Escape de Cúmulos",
-        "p5_k4_s": "Clasificación > 50 km/s",
-        "footer_l": "<b>CosmicFNO</b> · Observatorio Espectral de Ondas Gravitacionales (Fourier Neural Operators)",
+        "p4_bh1": "Agujero negro primario (m1)",
+        "p4_bh2": "Agujero negro secundario (m2)",
+        "p5_k1_t": "Colisiones SXS evaluadas",
+        "p5_k1_s": "Prueba ciega: {n} simulaciones",
+        "p5_k2_t": "Precisión en la masa final",
+        "p5_k2_s": "Error medio: {e:.2f}%",
+        "p5_k3_t": "Varianza explicada en espín (R²)",
+        "p5_k4_t": "Clasificación de eyección (>50 km/s)",
+        "p5_k4_s": "Cúmulos globulares",
+        "footer_l": "<b>CosmicFNO</b> — Observatorio Espectral de Ondas Gravitacionales",
         "footer_r": "Universidad Federal de Uberlândia (UFU) · Catálogo SXS v3.0.0",
     },
 }
 
 
 # =====================================================================
-# 2. DESIGN SYSTEM MODERNO (SIDEBAR FIXA + ICON RAIL + CABECALHO 100%)
+# 2. DESIGN SYSTEM (UI/UX PRO MAX + FRONTEND-DESIGN + ANTIGRAVITY)
 # =====================================================================
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
     html, body, .stApp, p, label, h1, h2, h3, h4, h5, h6, button, input, select, textarea, table, th, td {
@@ -380,28 +363,28 @@ st.markdown("""
 
     header[data-testid="stHeader"] {
         background: transparent !important;
-        height: 2.2rem !important;
+        height: 2.0rem !important;
     }
     .block-container {
-        padding-top: 0.4rem !important;
-        padding-left: 2.0rem !important;
-        padding-right: 2.0rem !important;
+        padding-top: 0.25rem !important;
+        padding-left: 2.2rem !important;
+        padding-right: 2.2rem !important;
         padding-bottom: 2.0rem !important;
         max-width: 100% !important;
     }
 
     .stApp {
-        background-color: #f6f5fa !important;
-        color: #140c24 !important;
+        background-color: #f7f6fb !important;
+        color: #160e26 !important;
     }
 
     section.main [data-testid="stWidgetLabel"] p,
     section.main [data-testid="stWidgetLabel"] label,
     .stApp [data-testid="stWidgetLabel"] p,
     .stApp [data-testid="stWidgetLabel"] label {
-        color: #1e1333 !important;
+        color: #24183b !important;
         font-weight: 600 !important;
-        font-size: 0.82rem !important;
+        font-size: 0.81rem !important;
     }
 
     /* =================================================================
@@ -415,15 +398,15 @@ st.markdown("""
     }
     section[data-testid="stSidebar"] {
         background-color: #11091f !important;
-        border-right: 1px solid #23143d !important;
+        border-right: 1px solid #211339 !important;
     }
     @media (min-width: 769px) {
         section[data-testid="stSidebar"][aria-expanded="true"] {
-            width: 248px !important;
-            min-width: 248px !important;
-            max-width: 248px !important;
+            width: 242px !important;
+            min-width: 242px !important;
+            max-width: 242px !important;
         }
-        /* Quando recolhida no Desktop, transforma em trilho compacto de icones (64px) */
+        /* Quando recolhida no Desktop, mantem trilho de icones visivel (64px) */
         section[data-testid="stSidebar"][aria-expanded="false"] {
             width: 64px !important;
             min-width: 64px !important;
@@ -447,28 +430,27 @@ st.markdown("""
         section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button {
             justify-content: center !important;
             padding: 10px 0 !important;
-            width: 48px !important;
+            width: 46px !important;
             margin: 4px auto !important;
         }
     }
 
-    /* Remove espacamento excessivo no topo da sidebar */
     section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
-        padding-top: 0.4rem !important;
+        padding-top: 0.25rem !important;
     }
 
-    /* Botoes pequenos de idioma no topo da sidebar */
+    /* Botoes pequenos e discretos de idioma no topo da sidebar */
     section[data-testid="stSidebar"] [data-testid="stHorizontalBlock"] {
         gap: 4px !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 4px !important;
     }
     section[data-testid="stSidebar"] [data-testid="stHorizontalBlock"] div.stButton > button {
-        padding: 3px 6px !important;
-        min-height: 24px !important;
-        height: 24px !important;
-        font-size: 0.68rem !important;
-        font-weight: 700 !important;
-        border-radius: 6px !important;
+        padding: 2px 5px !important;
+        min-height: 22px !important;
+        height: 22px !important;
+        font-size: 0.65rem !important;
+        font-weight: 600 !important;
+        border-radius: 5px !important;
         justify-content: center !important;
         text-align: center !important;
         margin-bottom: 0 !important;
@@ -479,246 +461,241 @@ st.markdown("""
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
-        padding: 2px 2px 10px 2px;
-        margin: 0 0 4px 0;
+        padding: 4px 2px 12px 2px;
+        margin: 0 0 2px 0;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     .sidebar-logo-free img {
         width: 100%;
-        max-width: 195px;
+        max-width: 188px;
         height: auto;
         display: block;
-        filter: brightness(1.38) contrast(1.06) drop-shadow(0 4px 14px rgba(168, 85, 247, 0.25));
+        filter: brightness(1.38) contrast(1.06) drop-shadow(0 4px 14px rgba(168, 85, 247, 0.22));
     }
 
+    /* Labels de secao em sentence-case (sem ALL-CAPS cliche de IA - Anthropic frontend-design) */
     .sidebar-section-label {
-        font-size: 0.62rem;
-        font-weight: 700;
-        letter-spacing: 1.4px;
+        font-size: 0.68rem;
+        font-weight: 600;
         color: #7c6b99 !important;
-        text-transform: uppercase;
-        margin: 12px 0 5px 6px;
+        margin: 12px 0 4px 8px;
     }
 
-    /* Botoes do menu lateral com icone a esquerda */
     section[data-testid="stSidebar"] div.stButton > button {
         width: 100%;
         text-align: left !important;
         justify-content: flex-start !important;
         align-items: center !important;
-        gap: 8px !important;
-        padding: 9px 12px !important;
-        border-radius: 10px !important;
+        gap: 9px !important;
+        padding: 8px 12px !important;
+        border-radius: 9px !important;
         border: none !important;
         background-color: transparent !important;
         color: #b5a6cc !important;
         font-weight: 500 !important;
-        font-size: 0.81rem !important;
-        transition: all 0.18s ease;
-        margin-bottom: 3px !important;
+        font-size: 0.80rem !important;
+        cursor: pointer !important;
+        transition: background-color 0.16s ease, color 0.16s ease;
+        margin-bottom: 2px !important;
     }
     section[data-testid="stSidebar"] div.stButton > button:hover {
-        background-color: rgba(124, 58, 237, 0.16) !important;
+        background-color: rgba(124, 58, 237, 0.15) !important;
         color: #ffffff !important;
     }
     section[data-testid="stSidebar"] div.stButton > button[kind="primary"] {
         background-color: #6d28d9 !important;
         color: #ffffff !important;
         font-weight: 600 !important;
-        box-shadow: 0 6px 16px -3px rgba(109, 40, 217, 0.5) !important;
+        box-shadow: 0 6px 16px -4px rgba(109, 40, 217, 0.45) !important;
     }
     section[data-testid="stSidebar"] div.stButton > button p {
-        font-size: 0.81rem !important;
+        font-size: 0.80rem !important;
         margin: 0 !important;
         white-space: nowrap !important;
     }
 
-    /* Textinho discreto e pequeno da pesquisa no rodape do menu */
     .sidebar-tiny-research {
-        font-size: 0.63rem !important;
-        line-height: 1.35 !important;
-        color: #6e5f8a !important;
-        margin-top: 18px !important;
-        padding: 8px 6px 0 6px !important;
-        border-top: 1px solid rgba(139, 122, 168, 0.14) !important;
+        font-size: 0.62rem !important;
+        line-height: 1.3 !important;
+        color: #63547d !important;
+        margin-top: 16px !important;
+        padding: 8px 8px 0 8px !important;
+        border-top: 1px solid rgba(139, 122, 168, 0.12) !important;
     }
 
     /* =================================================================
-       CABECALHO OCUPANDO 100% DA TELA BRANCA E TITULOS MENORES
+       CABECALHO EDITORIAL 100% LARGURA (ANTHROPIC FRONTEND-DESIGN SKILL)
+       Sem caixa redundante ou ALL-CAPS eyebrow cliche; ocupa toda a largura util
        ================================================================= */
-    .site-header {
-        background-color: #ffffff;
-        border: 1px solid rgba(226, 232, 240, 0.65);
-        border-radius: 16px;
-        padding: 16px 24px;
-        margin-bottom: 16px;
+    .editorial-header {
         width: 100%;
-        box-sizing: border-box;
-        box-shadow: 0 10px 26px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
+        padding: 6px 2px 14px 2px;
+        margin-bottom: 14px;
+        border-bottom: 1px solid #e6e1f0;
     }
-    .site-header-top {
+    .editorial-title-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 10px;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
+        width: 100%;
     }
-    .site-eyebrow {
-        font-size: 0.66rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1.4px;
-        color: #6d28d9 !important;
-        margin: 0;
+    .editorial-title {
+        font-size: 1.05rem !important;
+        font-weight: 700 !important;
+        color: #160e26 !important;
+        margin: 0 !important;
+        line-height: 1.3 !important;
+        letter-spacing: -0.015em;
     }
-    .site-header-badges {
+    .editorial-badges {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
         flex-wrap: wrap;
     }
-    .status-pill {
-        background-color: #f3e8ff;
-        color: #6d28d9 !important;
-        padding: 4px 11px;
-        border-radius: 999px;
-        font-size: 0.69rem;
+    .meta-tag {
+        font-size: 0.71rem;
         font-weight: 600;
+        color: #5b21b6 !important;
+        background-color: #ede9fe;
+        padding: 3px 10px;
+        border-radius: 6px;
         white-space: nowrap;
     }
-    .status-pill-dark {
-        background-color: #190e30;
-        color: #f8fafc !important;
-        padding: 4px 11px;
-        border-radius: 999px;
-        font-size: 0.69rem;
+    .meta-tag-solid {
+        font-size: 0.71rem;
         font-weight: 600;
+        color: #ffffff !important;
+        background-color: #2e1065;
+        padding: 3px 10px;
+        border-radius: 6px;
         white-space: nowrap;
     }
-    .site-title {
-        font-size: 1.06rem !important;
-        font-weight: 800 !important;
-        color: #140c24 !important;
-        margin: 0 0 4px 0 !important;
-        line-height: 1.28 !important;
-        width: 100% !important;
-    }
-    .site-subtitle {
+    .editorial-subtitle {
         font-size: 0.79rem !important;
-        color: #524766 !important;
+        color: #554a6b !important;
         margin: 0 !important;
         line-height: 1.5 !important;
         width: 100% !important;
         max-width: 100% !important;
     }
 
-    /* CARTOES DE METRICAS FLUTUANTES */
+    /* =================================================================
+       ANTIGRAVITY WEIGHTLESS FLOATING CARDS + UI/UX PRO MAX TABULAR NUMS
+       ================================================================= */
+    @keyframes floatIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
     .kpi-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        margin-top: 10px;
+        gap: 16px;
+        margin-top: 8px;
         margin-bottom: 16px;
     }
     .kpi-card {
-        background-color: #ffffff !important;
-        border: 1px solid rgba(226, 232, 240, 0.6) !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.9) !important;
         border-radius: 14px;
-        padding: 15px 18px;
-        box-shadow: 0 10px 24px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        padding: 16px 18px;
+        box-shadow: 0 20px 40px -15px rgba(22, 14, 38, 0.06), 0 4px 12px -2px rgba(109, 40, 217, 0.03);
+        animation: floatIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-    .kpi-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 16px 32px -6px rgba(20, 12, 36, 0.09), 0 6px 14px -2px rgba(109, 40, 217, 0.06);
-    }
+    .kpi-card:nth-child(2) { animation-delay: 0.04s; }
+    .kpi-card:nth-child(3) { animation-delay: 0.08s; }
+    .kpi-card:nth-child(4) { animation-delay: 0.12s; }
+
     .kpi-label {
-        font-size: 0.71rem;
-        font-weight: 700;
-        color: #64587a !important;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #5e5275 !important;
         margin: 0 0 6px 0;
     }
     .kpi-value {
-        font-size: 1.46rem;
+        font-family: 'Montserrat', sans-serif !important;
+        font-variant-numeric: tabular-nums;
+        font-size: 1.48rem;
         font-weight: 800;
-        color: #140c24 !important;
-        margin: 0 0 8px 0;
+        color: #160e26 !important;
+        margin: 0 0 6px 0;
         line-height: 1.15;
+        letter-spacing: -0.02em;
     }
-    .kpi-badge {
-        display: inline-block;
-        background-color: #f5f3ff;
+    .kpi-sub {
+        font-size: 0.72rem;
+        font-weight: 500;
         color: #6d28d9 !important;
-        font-size: 0.71rem;
-        font-weight: 600;
-        padding: 3px 10px;
-        border-radius: 999px;
+        margin: 0;
     }
 
     .white-card {
-        background-color: #ffffff;
-        border: 1px solid rgba(226, 232, 240, 0.65);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.9);
         border-radius: 14px;
         padding: 13px 16px;
-        box-shadow: 0 10px 24px -6px rgba(20, 12, 36, 0.05), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
+        box-shadow: 0 20px 40px -15px rgba(22, 14, 38, 0.06), 0 4px 12px -2px rgba(109, 40, 217, 0.03);
         margin-bottom: 10px;
     }
     .card-title {
-        font-size: 0.84rem;
+        font-size: 0.81rem;
         font-weight: 700;
-        color: #140c24 !important;
+        color: #160e26 !important;
         margin-bottom: 3px;
     }
     .card-sub {
-        font-size: 0.78rem;
-        color: #524766 !important;
+        font-size: 0.77rem;
+        font-variant-numeric: tabular-nums;
+        color: #554a6b !important;
         margin-bottom: 0;
         line-height: 1.45;
     }
 
-    /* Graficos Plotly dentro de superficie flutuante */
+    /* Superficie flutuante dos graficos Plotly */
     div[data-testid="stPlotlyChart"] {
         background-color: #ffffff;
         border-radius: 16px;
         padding: 6px;
-        box-shadow: 0 10px 26px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
-        border: 1px solid rgba(226, 232, 240, 0.6);
+        box-shadow: 0 20px 40px -15px rgba(22, 14, 38, 0.06), 0 4px 12px -2px rgba(109, 40, 217, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.9);
     }
 
     /* Tabela Moderna Flutuante */
     .table-card {
         background-color: #ffffff;
-        border: 1px solid rgba(226, 232, 240, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.9);
         border-radius: 16px;
         padding: 16px 20px;
-        box-shadow: 0 12px 28px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
+        box-shadow: 0 20px 40px -15px rgba(22, 14, 38, 0.06), 0 4px 12px -2px rgba(109, 40, 217, 0.03);
         overflow-x: auto;
     }
     .modern-table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.83rem;
-        color: #140c24 !important;
+        font-size: 0.82rem;
+        font-variant-numeric: tabular-nums;
+        color: #160e26 !important;
     }
     .modern-table th {
         text-align: left;
         padding: 11px 14px;
-        font-size: 0.71rem;
+        font-size: 0.74rem;
         font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.6px;
-        color: #64587a !important;
-        border-bottom: 2px solid #ede9f5;
+        color: #554a6b !important;
+        border-bottom: 1px solid #e6e1f0;
         background-color: #faf9fc;
     }
     .modern-table td {
         padding: 12px 14px;
-        border-bottom: 1px solid #f1eef7;
+        border-bottom: 1px solid #f2eff8;
         color: #1e1333 !important;
         font-weight: 500;
     }
@@ -730,25 +707,32 @@ st.markdown("""
     }
     .tbl-pill {
         display: inline-block;
-        background-color: #f3e8ff;
-        color: #6d28d9 !important;
+        background-color: #ede9fe;
+        color: #5b21b6 !important;
         font-weight: 700;
-        padding: 3px 10px;
-        border-radius: 999px;
+        padding: 2px 9px;
+        border-radius: 6px;
         font-size: 0.76rem;
     }
 
     .site-footer {
-        margin-top: 24px;
-        padding: 14px 18px;
-        border-top: 1px solid #e2dcf0;
+        margin-top: 22px;
+        padding: 12px 4px;
+        border-top: 1px solid #e6e1f0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         gap: 10px;
-        font-size: 0.73rem;
+        font-size: 0.72rem;
         color: #64587a !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .kpi-card {
+            animation: none !important;
+            transition: none !important;
+        }
     }
 
     @media (max-width: 992px) {
@@ -766,17 +750,14 @@ st.markdown("""
             grid-template-columns: 1fr;
             gap: 10px;
         }
-        .site-header {
-            padding: 14px 16px;
+        .editorial-title {
+            font-size: 0.95rem !important;
         }
-        .site-title {
-            font-size: 0.96rem !important;
-        }
-        .site-subtitle {
+        .editorial-subtitle {
             font-size: 0.75rem !important;
         }
         .kpi-value {
-            font-size: 1.32rem;
+            font-size: 1.30rem;
         }
     }
 </style>
@@ -784,14 +765,14 @@ st.markdown("""
 
 
 def render_kpi_grid(cards):
-    """Renderiza 4 cartoes de metricas flutuantes com sombra suave."""
+    """Renderiza 4 cartoes flutuantes com tipografia editorial e tabular-nums (sem cliches de IA)."""
     blocos = []
     for c in cards:
         blocos.append(
             f'<div class="kpi-card">'
             f'<div class="kpi-label">{c["label"]}</div>'
             f'<div class="kpi-value">{c["value"]}</div>'
-            f'<span class="kpi-badge">{c["sub"]}</span>'
+            f'<p class="kpi-sub">{c["sub"]}</p>'
             f'</div>'
         )
     st.markdown(f'<div class="kpi-grid">{"".join(blocos)}</div>', unsafe_allow_html=True)
@@ -881,7 +862,6 @@ if "idioma" not in st.session_state:
 tr = I18N[st.session_state["idioma"]]
 
 with st.sidebar:
-    # 1. Botoes pequenos de idioma bem no topo do menu
     l_col1, l_col2, l_col3 = st.columns(3)
     with l_col1:
         if st.button("PT", key="btn_pt", type="primary" if st.session_state["idioma"] == "PT" else "secondary"):
@@ -896,14 +876,12 @@ with st.sidebar:
             st.session_state["idioma"] = "ES"
             st.rerun()
 
-    # 2. Logo oficial solta
     if logo_b64:
         st.markdown(
             f'<div class="sidebar-logo-free"><img src="data:image/png;base64,{logo_b64}" alt="CosmicFNO Logo"></div>',
             unsafe_allow_html=True
         )
 
-    # 3. Submenus com icones do lado esquerdo (visiveis mesmo com menu recolhido)
     st.markdown(f'<div class="sidebar-section-label">{tr["sec_main"]}</div>', unsafe_allow_html=True)
 
     if st.button(
@@ -948,26 +926,24 @@ with st.sidebar:
         st.session_state["pagina_ativa"] = "tabela"
         st.rerun()
 
-    # 4. Rodape discreto e reduzido da pesquisa
     st.markdown(f'<div class="sidebar-tiny-research">{tr["info_caption"]}</div>', unsafe_allow_html=True)
 
 
 # =====================================================================
-# 5. CABECALHO DO PORTAL CIENTIFICO (100% DA LARGURA DA TELA BRANCA)
+# 5. CABECALHO EDITORIAL 100% LARGURA (SEM CAIXA REDUNDANTE)
 # =====================================================================
 meta_atual = tr["pages"][st.session_state["pagina_ativa"]]
 
 st.markdown(f"""
-<div class="site-header">
-    <div class="site-header-top">
-        <p class="site-eyebrow">{meta_atual['eyebrow']}</p>
-        <div class="site-header-badges">
-            <span class="status-pill">{tr['pill_catalog']}</span>
-            <span class="status-pill-dark">{tr['pill_fid']}</span>
+<div class="editorial-header">
+    <div class="editorial-title-row">
+        <h1 class="editorial-title">{meta_atual['titulo']}</h1>
+        <div class="editorial-badges">
+            <span class="meta-tag">{tr['pill_catalog']}</span>
+            <span class="meta-tag-solid">{tr['pill_fid']}</span>
         </div>
     </div>
-    <h1 class="site-title">{meta_atual['titulo']}</h1>
-    <p class="site-subtitle">{meta_atual['subtitulo']}</p>
+    <p class="editorial-subtitle">{meta_atual['subtitulo']}</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -981,7 +957,7 @@ if st.session_state["pagina_ativa"] == "previsao":
     with st.container():
         f_col1, f_col2, f_col3 = st.columns([1.5, 1.2, 1.3])
         with f_col1:
-            opcoes_pred = [f"{item['id']} — q = {item['q']:.2f} ({item['tipo']})" for item in CATALOGO_INFO]
+            opcoes_pred = [f"{item['id']} (q = {item['q']:.2f}, {item['tipo']})" for item in CATALOGO_INFO]
             escolha_pred = st.selectbox(tr["lbl_evento"], opcoes_pred, index=0)
             info_p = CATALOGO_INFO[opcoes_pred.index(escolha_pred)]
 
@@ -1003,7 +979,7 @@ if st.session_state["pagina_ativa"] == "previsao":
             <div class="white-card" style="margin-bottom: 0;">
                 <div class="card-title">{tr['cfg_pre']}</div>
                 <div class="card-sub">
-                    <b>m1:</b> {m1_sol:.1f} M_sol | <b>m2:</b> {m2_sol:.1f} M_sol | <b>{tr['cfg_prec']}:</b> {100.0 - b3300['erro_rel_massa']:.2f}%
+                    <b>m1:</b> {m1_sol:.1f} M_sol &nbsp;|&nbsp; <b>m2:</b> {m2_sol:.1f} M_sol &nbsp;|&nbsp; <b>{tr['cfg_prec']}:</b> {100.0 - b3300['erro_rel_massa']:.2f}%
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -1050,7 +1026,6 @@ if st.session_state["pagina_ativa"] == "previsao":
     else:
         tag_fuga = tr["esc_tag_low"]
 
-    # Cartoes de Metricas Flutuantes (com status sintetico de ejeção embutido no 4o card, sem aquele bloco escuro gigante)
     render_kpi_grid([
         {
             "label": tr["kpi1_title"],
@@ -1070,7 +1045,7 @@ if st.session_state["pagina_ativa"] == "previsao":
         {
             "label": tr["kpi4_title"],
             "value": f"{v_kick_pred_kms:.1f} km/s",
-            "sub": f"{tag_fuga} · {tr['kpi4_sub']}: {rem_real[2]:.0f} km/s",
+            "sub": f"{tag_fuga} ({tr['kpi4_sub']}: {rem_real[2]:.0f} km/s)",
         },
     ])
 
@@ -1086,7 +1061,7 @@ if st.session_state["pagina_ativa"] == "previsao":
                 x=t_np[mask_obs], y=h_real_np[mask_obs],
                 mode="lines",
                 name=tr["p1_tr_obs"],
-                line=dict(color="#94a3b8", width=2.4)
+                line=dict(color="#94a3b8", width=2.3)
             )
         )
         fig_onda.add_trace(
@@ -1094,7 +1069,7 @@ if st.session_state["pagina_ativa"] == "previsao":
                 x=t_np[mask_fut_plot], y=h_real_np[mask_fut_plot],
                 mode="lines",
                 name=tr["p1_tr_real"],
-                line=dict(color="#190e30", width=3.0)
+                line=dict(color="#190e30", width=2.9)
             )
         )
         fig_onda.add_trace(
@@ -1102,26 +1077,26 @@ if st.session_state["pagina_ativa"] == "previsao":
                 x=t_np[mask_fut_plot], y=h_pred_np[mask_fut_plot],
                 mode="lines",
                 name=tr["p1_tr_pred"],
-                line=dict(color="#7c3aed", width=2.6, dash="dash")
+                line=dict(color="#7c3aed", width=2.5, dash="dash")
             )
         )
         fig_onda.add_vrect(
             x0=t_corte, x1=80.0,
-            fillcolor="rgba(124, 58, 237, 0.07)",
+            fillcolor="rgba(124, 58, 237, 0.06)",
             layer="below", line_width=0
         )
-        fig_onda.add_vline(x=t_corte, line_width=1.8, line_dash="dash", line_color="#6d28d9")
+        fig_onda.add_vline(x=t_corte, line_width=1.6, line_dash="dash", line_color="#6d28d9")
         fig_onda.update_layout(
-            title=dict(text=tr["p1_chart1_title"], font=dict(color="#140c24", size=13)),
-            height=400,
+            title=dict(text=tr["p1_chart1_title"], font=dict(color="#160e26", size=13)),
+            height=395,
             template="plotly_white",
             paper_bgcolor="#ffffff",
             plot_bgcolor="#faf9fc",
-            font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(color="#140c24")),
-            margin=dict(l=45, r=20, t=60, b=40),
-            xaxis=dict(title=dict(text=tr["p1_x_time"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5"),
-            yaxis=dict(title=dict(text="Strain Re(h_22)", font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5")
+            font=dict(family="Montserrat, sans-serif", color="#160e26", size=11),
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(color="#160e26")),
+            margin=dict(l=45, r=20, t=58, b=38),
+            xaxis=dict(title=dict(text=tr["p1_x_time"], font=dict(color="#160e26")), tickfont=dict(color="#554a6b"), gridcolor="#ede9f5"),
+            yaxis=dict(title=dict(text="Strain Re(h_22)", font=dict(color="#160e26")), tickfont=dict(color="#554a6b"), gridcolor="#ede9f5")
         )
         st.plotly_chart(fig_onda, use_container_width=True, theme=None)
 
@@ -1137,20 +1112,20 @@ if st.session_state["pagina_ativa"] == "previsao":
                 marker_color=cores_esc,
                 text=[f"{v:.0f} km/s" for v in valores_esc],
                 textposition="outside",
-                textfont=dict(color="#140c24", size=11)
+                textfont=dict(color="#160e26", size=11)
             )
         )
         fig_bar.update_layout(
-            title=dict(text=tr["p1_chart2_title"], font=dict(color="#140c24", size=13)),
-            height=400,
+            title=dict(text=tr["p1_chart2_title"], font=dict(color="#160e26", size=13)),
+            height=395,
             template="plotly_white",
             paper_bgcolor="#ffffff",
             plot_bgcolor="#faf9fc",
-            font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
+            font=dict(family="Montserrat, sans-serif", color="#160e26", size=11),
             showlegend=False,
-            margin=dict(l=40, r=20, t=60, b=40),
-            xaxis=dict(tickfont=dict(color="#524766"), gridcolor="#ede9f5"),
-            yaxis=dict(title=dict(text=tr["p1_y_vel"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), range=[0, 650], gridcolor="#ede9f5")
+            margin=dict(l=40, r=20, t=58, b=38),
+            xaxis=dict(tickfont=dict(color="#554a6b"), gridcolor="#ede9f5"),
+            yaxis=dict(title=dict(text=tr["p1_y_vel"], font=dict(color="#160e26")), tickfont=dict(color="#554a6b"), range=[0, 650], gridcolor="#ede9f5")
         )
         st.plotly_chart(fig_bar, use_container_width=True, theme=None)
 
@@ -1163,7 +1138,7 @@ elif st.session_state["pagina_ativa"] == "validacao":
 
     v_col1, v_col2, v_col3 = st.columns([1.3, 1.3, 1.4])
     with v_col1:
-        opcoes_bench = [f"{r['id']} — q = {r['q']:.2f} (Overlap: {r['ov_dir']*100:.2f}%)" for r in res_lista]
+        opcoes_bench = [f"{r['id']} (q = {r['q']:.2f}, Overlap: {r['ov_dir']*100:.2f}%)" for r in res_lista]
         escolha_b = st.selectbox(tr["p2_sim_lbl"], opcoes_bench, index=0)
         r_sel = res_lista[opcoes_bench.index(escolha_b)]
 
@@ -1218,7 +1193,7 @@ elif st.session_state["pagina_ativa"] == "validacao":
             x=t_zoom, y=ref_zoom,
             mode="lines",
             name=tr["p2_ref"],
-            line=dict(color="#190e30", width=3.0)
+            line=dict(color="#190e30", width=2.9)
         ),
         row=1, col=1
     )
@@ -1259,19 +1234,19 @@ elif st.session_state["pagina_ativa"] == "validacao":
 
     fig_val.add_vline(x=0.0, line_width=1.2, line_dash="dot", line_color="#8b7aa8")
     fig_val.update_layout(
-        height=500,
+        height=495,
         template="plotly_white",
         paper_bgcolor="#ffffff",
         plot_bgcolor="#faf9fc",
-        font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
-        legend=dict(orientation="h", yanchor="bottom", y=1.03, xanchor="right", x=1, font=dict(color="#140c24")),
-        margin=dict(l=45, r=20, t=55, b=40)
+        font=dict(family="Montserrat, sans-serif", color="#160e26", size=11),
+        legend=dict(orientation="h", yanchor="bottom", y=1.03, xanchor="right", x=1, font=dict(color="#160e26")),
+        margin=dict(l=45, r=20, t=52, b=38)
     )
-    fig_val.update_annotations(font=dict(color="#140c24", size=12))
-    fig_val.update_yaxes(title_text="Strain Re(h_22)", row=1, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
-    fig_val.update_yaxes(title_text="|Error|", row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
-    fig_val.update_xaxes(title_text=tr["p1_x_time"], row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
-    fig_val.update_xaxes(tickfont=dict(color="#524766"), row=1, col=1, gridcolor="#ede9f5")
+    fig_val.update_annotations(font=dict(color="#160e26", size=12))
+    fig_val.update_yaxes(title_text="Strain Re(h_22)", row=1, col=1, gridcolor="#ede9f5", tickfont=dict(color="#554a6b"), title_font=dict(color="#160e26"))
+    fig_val.update_yaxes(title_text="|Error|", row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#554a6b"), title_font=dict(color="#160e26"))
+    fig_val.update_xaxes(title_text=tr["p1_x_time"], row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#554a6b"), title_font=dict(color="#160e26"))
+    fig_val.update_xaxes(tickfont=dict(color="#554a6b"), row=1, col=1, gridcolor="#ede9f5")
 
     st.plotly_chart(fig_val, use_container_width=True, theme=None)
 
@@ -1314,15 +1289,15 @@ elif st.session_state["pagina_ativa"] == "espectro":
             )
         )
         fig_t.update_layout(
-            title=dict(text=tr["p3_c1"].format(q=q_slider, s=spin_slider), font=dict(color="#140c24", size=13)),
-            height=420,
+            title=dict(text=tr["p3_c1"].format(q=q_slider, s=spin_slider), font=dict(color="#160e26", size=13)),
+            height=415,
             template="plotly_white",
             paper_bgcolor="#ffffff",
             plot_bgcolor="#faf9fc",
-            font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
-            margin=dict(l=45, r=20, t=55, b=40),
-            xaxis=dict(title=dict(text=tr["p1_x_time"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5"),
-            yaxis=dict(title=dict(text="Strain Re(h_22)", font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5")
+            font=dict(family="Montserrat, sans-serif", color="#160e26", size=11),
+            margin=dict(l=45, r=20, t=52, b=38),
+            xaxis=dict(title=dict(text=tr["p1_x_time"], font=dict(color="#160e26")), tickfont=dict(color="#554a6b"), gridcolor="#ede9f5"),
+            yaxis=dict(title=dict(text="Strain Re(h_22)", font=dict(color="#160e26")), tickfont=dict(color="#554a6b"), gridcolor="#ede9f5")
         )
         st.plotly_chart(fig_t, use_container_width=True, theme=None)
 
@@ -1335,15 +1310,15 @@ elif st.session_state["pagina_ativa"] == "espectro":
             )
         )
         fig_f.update_layout(
-            title=dict(text=tr["p3_c2"], font=dict(color="#140c24", size=13)),
-            height=420,
+            title=dict(text=tr["p3_c2"], font=dict(color="#160e26", size=13)),
+            height=415,
             template="plotly_white",
             paper_bgcolor="#ffffff",
             plot_bgcolor="#faf9fc",
-            font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
-            margin=dict(l=45, r=20, t=55, b=40),
-            xaxis=dict(title=dict(text=tr["p3_xk"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5"),
-            yaxis=dict(title=dict(text=tr["p3_yf"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5")
+            font=dict(family="Montserrat, sans-serif", color="#160e26", size=11),
+            margin=dict(l=45, r=20, t=52, b=38),
+            xaxis=dict(title=dict(text=tr["p3_xk"], font=dict(color="#160e26")), tickfont=dict(color="#554a6b"), gridcolor="#ede9f5"),
+            yaxis=dict(title=dict(text=tr["p3_yf"], font=dict(color="#160e26")), tickfont=dict(color="#554a6b"), gridcolor="#ede9f5")
         )
         st.plotly_chart(fig_f, use_container_width=True, theme=None)
 
@@ -1414,25 +1389,25 @@ elif st.session_state["pagina_ativa"] == "colisao3d":
     ]
 
     fig_3d.update_layout(
-        height=620,
+        height=610,
         template="plotly_white",
         paper_bgcolor="#ffffff",
         plot_bgcolor="#faf9fc",
-        font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
-        legend=dict(font=dict(color="#140c24")),
+        font=dict(family="Montserrat, sans-serif", color="#160e26", size=11),
+        legend=dict(font=dict(color="#160e26")),
         updatemenus=[dict(
             type="buttons",
             showactive=False,
-            font=dict(color="#140c24"),
+            font=dict(color="#160e26"),
             buttons=[
                 dict(label=tr["p4_play"], method="animate", args=[None, dict(frame=dict(duration=40, redraw=True), fromcurrent=True)]),
                 dict(label=tr["p4_pause"], method="animate", args=[[None], dict(frame=dict(duration=0, redraw=False), mode="immediate")])
             ],
             x=0.5, y=1.09, xanchor="center", yanchor="top"
         )],
-        margin=dict(l=20, r=20, t=55, b=30)
+        margin=dict(l=20, r=20, t=52, b=30)
     )
-    fig_3d.update_annotations(font=dict(color="#140c24", size=12))
+    fig_3d.update_annotations(font=dict(color="#160e26", size=12))
     fig_3d.update_scenes(
         xaxis=dict(range=[-2.3, 2.3], visible=False),
         yaxis=dict(range=[-2.3, 2.3], visible=False),
@@ -1440,8 +1415,8 @@ elif st.session_state["pagina_ativa"] == "colisao3d":
         bgcolor="#faf9fc",
         camera=dict(eye=dict(x=1.15, y=1.15, z=0.85))
     )
-    fig_3d.update_xaxes(range=[float(t_anim.min()), float(t_anim.max())], title_text=tr["p1_x_time"], row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
-    fig_3d.update_yaxes(range=[float(h_anim.min()*1.25), float(h_anim.max()*1.25)], title_text="Strain Re(h_22)", row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
+    fig_3d.update_xaxes(range=[float(t_anim.min()), float(t_anim.max())], title_text=tr["p1_x_time"], row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#554a6b"), title_font=dict(color="#160e26"))
+    fig_3d.update_yaxes(range=[float(h_anim.min()*1.25), float(h_anim.max()*1.25)], title_text="Strain Re(h_22)", row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#554a6b"), title_font=dict(color="#160e26"))
 
     st.plotly_chart(fig_3d, use_container_width=True, theme=None)
 
@@ -1460,14 +1435,14 @@ elif st.session_state["pagina_ativa"] == "tabela":
     ])
 
     linhas_tabela = [
-        ("Exp 1 — Baseline 1D-CNN Reconstruction (SXS:BBH:0305)", "96.67%", "25.88%", "0.741196"),
-        ("Exp 2 — Initial Blind Test (4 train sims, q=5.00 unaligned phase)", "115.46%", "16.70%", "0.832960"),
-        ("Exp 3 — Phase-Aligned Blind Test (4 train sims, q=5.00)", "39.66%", "94.16%", "0.058402"),
-        ("Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0113, q=5.00) [Polar-FNO]", "11.50%", "99.34%", "0.006640"),
-        ("Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0113, q=5.00) [Direct FNO]", "4.34%", "99.91%", "0.000920"),
-        ("Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0201, q=2.32) [Direct FNO]", "2.66%", "99.97%", "0.000300"),
-        ("Exp 4 — SXS Scale Blind Test (11 train sims -> SXS:BBH:0593, q=1.50) [Direct FNO]", "1.81%", "99.98%", "0.000160"),
-        ("Exp 5 — Pre-Merger Hidden Future Forecast (t > -50M, SXS:BBH:0167)", "1.48%", "99.99%", "0.000100"),
+        ("Exp 1 · Baseline 1D-CNN Reconstruction (SXS:BBH:0305)", "96.67%", "25.88%", "0.741196"),
+        ("Exp 2 · Initial Blind Test (4 train sims, q=5.00 unaligned phase)", "115.46%", "16.70%", "0.832960"),
+        ("Exp 3 · Phase-Aligned Blind Test (4 train sims, q=5.00)", "39.66%", "94.16%", "0.058402"),
+        ("Exp 4 · SXS Scale Blind Test (11 train sims -> SXS:BBH:0113, q=5.00) [Polar-FNO]", "11.50%", "99.34%", "0.006640"),
+        ("Exp 4 · SXS Scale Blind Test (11 train sims -> SXS:BBH:0113, q=5.00) [Direct FNO]", "4.34%", "99.91%", "0.000920"),
+        ("Exp 4 · SXS Scale Blind Test (11 train sims -> SXS:BBH:0201, q=2.32) [Direct FNO]", "2.66%", "99.97%", "0.000300"),
+        ("Exp 4 · SXS Scale Blind Test (11 train sims -> SXS:BBH:0593, q=1.50) [Direct FNO]", "1.81%", "99.98%", "0.000160"),
+        ("Exp 5 · Pre-Merger Hidden Future Forecast (t > -50M, SXS:BBH:0167)", "1.48%", "99.99%", "0.000100"),
     ]
 
     trs_html = "".join(
