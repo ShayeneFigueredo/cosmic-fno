@@ -3,10 +3,11 @@ CosmicFNO - Plataforma Visual e Observatorio SciML (PT / EN / ES)
 Autora: Shayene Figueredo (BSI/UFU)
 
 Descricao:
-    Portal cientifico responsivo (Desktop e Mobile) em formato de site:
-    - Logo oficial CosmicFNO solta (sem fundo/borda branca) no menu lateral (#081226)
-    - Cartoes de metricas em HTML com alto contraste (imunes ao modo escuro do navegador)
-    - Graficos Plotly com theme=None e fontes escuras nitidas
+    Portal cientifico responsivo (Desktop e Mobile) projetado com Design System moderno:
+    - Paleta Roxo/Violeta Cosmico alinhada a logo oficial CosmicFNO
+    - Cards flutuantes com sombras difusas em camadas (sem bordas laterais coloridas)
+    - Banner de diagnostico em cor solida (sem degrade)
+    - Icones nativos Material Symbols corrigidos (recolher/expandir sidebar sem texto quebrado)
     - Seletor de idioma instantaneo: Portugues (PT), English (EN) e Espanol (ES)
 """
 
@@ -57,7 +58,7 @@ I18N = {
         "nav_colisao3d": "Colisao 3D Sincronizada",
         "nav_tabela": "Tabela de Metricas",
         "info_caption": "3.435 Simulacoes SXS BBH\n14 Formas de Onda Alinhadas\nUniversidade Federal de Uberlandia (UFU)",
-        "pill_catalog": "Catalogo SXS v3.0.0 · 3.435 Colisoes",
+        "pill_catalog": "Catálogo SXS v3.0.0 · 3.435 Colisões",
         "pill_fid": "Fidelidade > 99.9%",
         "pages": {
             "previsao": {
@@ -86,7 +87,6 @@ I18N = {
                 "subtitulo": "Comparativo completo de Erro Relativo L2, Fidelidade de Fase (Overlap) e Mismatch em todas as etapas evolutivas da pesquisa."
             },
         },
-        # Pagina 1
         "lbl_evento": "Evento Binário Monitorado:",
         "lbl_massa": "Massa Total Inicial (Massas Solares):",
         "cfg_pre": "Configuração Pré-Impacto",
@@ -114,7 +114,6 @@ I18N = {
         "p1_chart2_title": "Chute Relativístico vs Velocidade de Escape",
         "p1_bars": ["Aglomerado", "Galáxia Anã", "CHUTE IA", "Gal. Média", "Via Láctea"],
         "p1_y_vel": "Velocidade (km/s)",
-        # Pagina 2
         "p2_sim_lbl": "Simulação Secreta de Teste Cego:",
         "p2_arq_lbl": "Arquitetura Neural Exibida:",
         "p2_arq_opts": ["CosmicFNO Espectral Direto (Melhor)", "Polar-CosmicFNO (Amplitude-Fase)", "Ambas Sobrepostas"],
@@ -129,14 +128,12 @@ I18N = {
         "p2_sub1": "Teste Cego Hold-Out: {id} (q = {q:.2f} — Simulação Inédita)",
         "p2_sub2": "Erro Absoluto Instantâneo |h_SXS(t) - h_FNO(t)|",
         "p2_ref": "Onda de Referência SXS",
-        # Pagina 3
         "p3_q": "Razão de Massa (q = m1/m2)",
         "p3_spin": "Spin Orbital (chi_1z)",
         "p3_c1": "Forma de Onda Emulada no Tempo (q={q:.1f}, chi_1z={s:+.2f})",
         "p3_c2": "Espectro de Fourier (32 Modos Ativos no FNO)",
         "p3_xk": "Modo de Frequência k",
         "p3_yf": "Amplitude |FFT|",
-        # Pagina 4
         "p4_slider": "Selecione a Razão de Massa (q) da Simulação SXS:",
         "p4_sub1": "Coalescência Binária 3D (q = {q:.2f})",
         "p4_sub2": "Formação Sincronizada da Onda Gravitacional Re(h_22)",
@@ -144,7 +141,6 @@ I18N = {
         "p4_pause": "Pausar",
         "p4_bh1": "Buraco Negro 1 (m1)",
         "p4_bh2": "Buraco Negro 2 (m2)",
-        # Pagina 5
         "p5_k1_t": "Colisões SXS Analisadas",
         "p5_k1_s": "Teste Cego: {n} colisões",
         "p5_k2_t": "Precisão Massa Final (M_f)",
@@ -367,14 +363,39 @@ I18N = {
 
 
 # =====================================================================
-# 2. CSS CUSTOMIZADO E RESPONSIVO (ALTO CONTRASTE + LOGO SOLTA)
+# 2. DESIGN SYSTEM MODERNO (ROXO COSMICO + SOMBRAS FLUTUANTES + ICONES PUROS)
 # =====================================================================
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
-    html, body, [class*="css"], .stApp, p, div, span, label, h1, h2, h3, h4, h5, h6, button, input, select, textarea, table, th, td {
+    /* Aplica Montserrat nos elementos de texto SEM sobrescrever a fonte de icones Material Symbols */
+    html, body, .stApp, p, label, h1, h2, h3, h4, h5, h6, button, input, select, textarea, table, th, td {
         font-family: 'Montserrat', sans-serif !important;
+    }
+
+    /* Garante que o botao de recolher/expandir sidebar mostre APENAS o icone de seta e nunca o texto 'keyboard_double_arrow_left' */
+    [data-testid="stIconMaterial"],
+    span[data-testid="stIconMaterial"],
+    [data-testid="stSidebarCollapseButton"] span,
+    [data-testid="collapsedControl"] span,
+    [data-testid="stExpandSidebarButton"] span,
+    .material-symbols-rounded {
+        font-family: 'Material Symbols Rounded' !important;
+        font-weight: normal !important;
+        font-style: normal !important;
+        font-size: 22px !important;
+        line-height: 1 !important;
+        letter-spacing: normal !important;
+        text-transform: none !important;
+        display: inline-block !important;
+        white-space: nowrap !important;
+        word-wrap: normal !important;
+        direction: ltr !important;
+        -webkit-font-feature-settings: 'liga' !important;
+        font-feature-settings: 'liga' !important;
+        -webkit-font-smoothing: antialiased !important;
     }
 
     header[data-testid="stHeader"] {
@@ -383,35 +404,36 @@ st.markdown("""
     }
     .block-container {
         padding-top: 0.5rem !important;
-        padding-left: 2.0rem !important;
-        padding-right: 2.0rem !important;
+        padding-left: 2.2rem !important;
+        padding-right: 2.2rem !important;
         padding-bottom: 2.5rem !important;
         max-width: 100% !important;
     }
 
     .stApp {
-        background-color: #f4f6f9 !important;
-        color: #0f172a !important;
+        background-color: #f6f5fa !important;
+        color: #140c24 !important;
     }
 
-    /* Forca cor escura visivel nos rotulos de controles na area principal mesmo se o navegador estiver em Dark Mode */
+    /* Rotulos dos widgets sempre visiveis e escuros sobre o fundo claro */
     section.main [data-testid="stWidgetLabel"] p,
     section.main [data-testid="stWidgetLabel"] label,
     .stApp [data-testid="stWidgetLabel"] p,
     .stApp [data-testid="stWidgetLabel"] label {
-        color: #0f172a !important;
+        color: #1e1333 !important;
         font-weight: 600 !important;
-        font-size: 0.86rem !important;
+        font-size: 0.85rem !important;
     }
 
-    /* SIDEBAR: Azul Marinho Bem Escuro (#081226) */
+    /* SIDEBAR: Obsidian-Violet Escuro (#11091f) combinando com o nucleo da logo */
     section[data-testid="stSidebar"] {
-        background-color: #081226 !important;
-        border-right: 1px solid #132347 !important;
+        background-color: #11091f !important;
+        border-right: 1px solid #23143d !important;
     }
-    section[data-testid="stSidebar"] * {
-        color: #cbd5e1 !important;
-        font-family: 'Montserrat', sans-serif !important;
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] div:not([data-testid="stIconMaterial"]),
+    section[data-testid="stSidebar"] button {
+        color: #d8cee8 !important;
     }
 
     /* Logo Oficial SOLTA na Sidebar (sem caixa/borda branca) */
@@ -419,8 +441,8 @@ st.markdown("""
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
-        padding: 4px 2px 18px 2px;
-        margin: 0 0 8px 0;
+        padding: 6px 2px 18px 2px;
+        margin: 0 0 6px 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -430,14 +452,14 @@ st.markdown("""
         max-width: 215px;
         height: auto;
         display: block;
-        filter: brightness(1.35) contrast(1.08) drop-shadow(0 2px 10px rgba(147, 197, 253, 0.18));
+        filter: brightness(1.38) contrast(1.06) drop-shadow(0 4px 14px rgba(168, 85, 247, 0.25));
     }
 
     .sidebar-section-label {
-        font-size: 0.68rem;
+        font-size: 0.67rem;
         font-weight: 700;
-        letter-spacing: 1.4px;
-        color: #64748b !important;
+        letter-spacing: 1.5px;
+        color: #8b7aa8 !important;
         text-transform: uppercase;
         margin: 16px 0 8px 6px;
     }
@@ -447,40 +469,39 @@ st.markdown("""
         text-align: left !important;
         justify-content: flex-start !important;
         padding: 10px 14px !important;
-        border-radius: 10px !important;
-        border: 1px solid transparent !important;
+        border-radius: 11px !important;
+        border: none !important;
         background-color: transparent !important;
-        color: #94a3b8 !important;
+        color: #b5a6cc !important;
         font-weight: 500 !important;
         font-size: 0.85rem !important;
-        transition: all 0.18s ease;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         margin-bottom: 4px !important;
     }
     section[data-testid="stSidebar"] div.stButton > button:hover {
-        background-color: rgba(37, 99, 235, 0.18) !important;
+        background-color: rgba(124, 58, 237, 0.16) !important;
         color: #ffffff !important;
     }
     section[data-testid="stSidebar"] div.stButton > button[kind="primary"] {
-        background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 100%) !important;
+        background-color: #6d28d9 !important;
         color: #ffffff !important;
         font-weight: 600 !important;
-        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45) !important;
+        box-shadow: 0 8px 20px -4px rgba(109, 40, 217, 0.55) !important;
     }
 
-    /* CABECALHO DO SITE (HERO BAR INSTITUCIONAL) */
+    /* CABECALHO DO SITE FLUTUANTE (SEM BORDAS COLORIDAS, SOMBRA DIFUSA MODERNA) */
     .site-header {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-top: 4px solid #1d4ed8;
-        border-radius: 14px;
-        padding: 20px 26px;
-        margin-bottom: 18px;
+        background-color: #ffffff;
+        border: 1px solid rgba(226, 232, 240, 0.65);
+        border-radius: 18px;
+        padding: 24px 28px;
+        margin-bottom: 22px;
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 16px;
-        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+        box-shadow: 0 14px 34px -6px rgba(20, 12, 36, 0.06), 0 4px 12px -2px rgba(109, 40, 217, 0.04);
     }
     .site-header-left {
         max-width: 780px;
@@ -489,22 +510,23 @@ st.markdown("""
         font-size: 0.70rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1.4px;
-        color: #2563eb !important;
-        margin: 0 0 5px 0;
+        letter-spacing: 1.5px;
+        color: #6d28d9 !important;
+        margin: 0 0 6px 0;
     }
     .site-title {
-        font-size: 1.30rem;
+        font-size: 1.34rem;
         font-weight: 800;
-        color: #081226 !important;
-        margin: 0 0 6px 0;
+        color: #140c24 !important;
+        margin: 0 0 8px 0;
         line-height: 1.25;
+        letter-spacing: -0.02em;
     }
     .site-subtitle {
-        font-size: 0.85rem;
-        color: #475569 !important;
+        font-size: 0.86rem;
+        color: #524766 !important;
         margin: 0;
-        line-height: 1.55;
+        line-height: 1.6;
     }
     .site-header-badges {
         display: flex;
@@ -513,129 +535,144 @@ st.markdown("""
         flex-wrap: wrap;
     }
     .status-pill {
-        background-color: #eff6ff;
-        color: #1d4ed8 !important;
-        border: 1px solid #bfdbfe;
-        padding: 6px 13px;
+        background-color: #f3e8ff;
+        color: #6d28d9 !important;
+        padding: 6px 14px;
         border-radius: 999px;
         font-size: 0.73rem;
         font-weight: 600;
         white-space: nowrap;
     }
     .status-pill-dark {
-        background-color: #081226;
+        background-color: #190e30;
         color: #f8fafc !important;
-        padding: 6px 13px;
+        padding: 6px 14px;
         border-radius: 999px;
         font-size: 0.73rem;
         font-weight: 600;
         white-space: nowrap;
     }
 
-    /* CARTOES DE METRICAS CUSTOMIZADOS (ALTO CONTRASTE GARANTIDO NO FUNDO BRANCO) */
+    /* CARTOES DE METRICAS FLUTUANTES (SEM BORDA COLORIDA, ELEVACAO POR SOMBRA) */
     .kpi-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        margin-top: 12px;
-        margin-bottom: 16px;
+        gap: 18px;
+        margin-top: 14px;
+        margin-bottom: 20px;
     }
     .kpi-card {
         background-color: #ffffff !important;
-        border: 1px solid #cbd5e1 !important;
-        border-left: 5px solid #1d4ed8 !important;
-        border-radius: 12px;
-        padding: 15px 18px;
-        box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
+        border: 1px solid rgba(226, 232, 240, 0.6) !important;
+        border-radius: 16px;
+        padding: 20px 22px;
+        box-shadow: 0 12px 28px -6px rgba(20, 12, 36, 0.07), 0 4px 10px -2px rgba(109, 40, 217, 0.04);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .kpi-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 36px -6px rgba(20, 12, 36, 0.10), 0 6px 14px -2px rgba(109, 40, 217, 0.07);
     }
     .kpi-label {
-        font-size: 0.76rem;
+        font-size: 0.74rem;
         font-weight: 700;
-        color: #475569 !important;
+        color: #64587a !important;
         text-transform: uppercase;
-        letter-spacing: 0.4px;
-        margin: 0 0 6px 0;
+        letter-spacing: 0.6px;
+        margin: 0 0 8px 0;
     }
     .kpi-value {
-        font-size: 1.55rem;
+        font-size: 1.62rem;
         font-weight: 800;
-        color: #081226 !important;
-        margin: 0 0 8px 0;
+        color: #140c24 !important;
+        margin: 0 0 10px 0;
         line-height: 1.15;
+        letter-spacing: -0.02em;
     }
     .kpi-badge {
         display: inline-block;
-        background-color: #eff6ff;
-        color: #1d4ed8 !important;
-        border: 1px solid #bfdbfe;
+        background-color: #f5f3ff;
+        color: #6d28d9 !important;
         font-size: 0.74rem;
         font-weight: 600;
-        padding: 3px 10px;
+        padding: 4px 11px;
         border-radius: 999px;
     }
 
+    /* CARD BRANCO FLUTUANTE (SEM BORDA COLORIDA) */
     .white-card {
         background-color: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 14px;
+        border: 1px solid rgba(226, 232, 240, 0.65);
+        border-radius: 16px;
         padding: 18px 22px;
-        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+        box-shadow: 0 12px 28px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
         margin-bottom: 14px;
     }
     .card-title {
-        font-size: 0.98rem;
+        font-size: 0.95rem;
         font-weight: 700;
-        color: #081226 !important;
-        margin-bottom: 6px;
+        color: #140c24 !important;
+        margin-bottom: 4px;
     }
     .card-sub {
-        font-size: 0.84rem;
-        color: #334155 !important;
+        font-size: 0.83rem;
+        color: #524766 !important;
         margin-bottom: 0;
         line-height: 1.55;
     }
 
+    /* BANNER DE VEREDITO ASTROFISICO SOLIDO (SEM DEGRADE E SEM BORDA LATERAL) */
     .verdict-banner {
-        background: linear-gradient(90deg, #081226 0%, #1e3a8a 100%);
+        background-color: #190e30 !important;
         color: #ffffff !important;
-        border-radius: 12px;
-        padding: 16px 20px;
-        margin-top: 6px;
-        margin-bottom: 16px;
-        border-left: 5px solid #3b82f6;
+        border: none !important;
+        border-radius: 16px;
+        padding: 20px 24px;
+        margin-top: 4px;
+        margin-bottom: 20px;
+        box-shadow: 0 16px 36px -8px rgba(25, 14, 48, 0.28), 0 4px 12px -2px rgba(109, 40, 217, 0.15);
     }
     .verdict-title {
-        font-size: 0.72rem;
+        font-size: 0.71rem;
         font-weight: 700;
-        letter-spacing: 1.2px;
-        color: #93c5fd !important;
+        letter-spacing: 1.3px;
+        color: #c4b5fd !important;
         text-transform: uppercase;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
     }
     .verdict-main {
-        font-size: 0.96rem;
+        font-size: 0.98rem;
         font-weight: 700;
         color: #ffffff !important;
-        margin-bottom: 3px;
+        margin-bottom: 5px;
     }
     .verdict-desc {
-        font-size: 0.82rem;
-        color: #dbeafe !important;
+        font-size: 0.83rem;
+        color: #e9d5ff !important;
         margin: 0;
-        line-height: 1.5;
+        line-height: 1.55;
+    }
+
+    /* Graficos Plotly dentro de superficie flutuante */
+    div[data-testid="stPlotlyChart"] {
+        background-color: #ffffff;
+        border-radius: 16px;
+        padding: 8px;
+        box-shadow: 0 12px 28px -6px rgba(20, 12, 36, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
+        border: 1px solid rgba(226, 232, 240, 0.6);
     }
 
     .site-footer {
-        margin-top: 28px;
-        padding: 16px 20px;
-        border-top: 1px solid #cbd5e1;
+        margin-top: 32px;
+        padding: 18px 20px;
+        border-top: 1px solid #e2dcf0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         gap: 10px;
         font-size: 0.76rem;
-        color: #475569 !important;
+        color: #64587a !important;
     }
 
     /* RESPONSIVIDADE MOBILE (Celulares e Tablets) */
@@ -652,14 +689,14 @@ st.markdown("""
         }
         .kpi-grid {
             grid-template-columns: 1fr;
-            gap: 10px;
+            gap: 12px;
         }
         .site-header {
-            padding: 15px 16px;
+            padding: 16px 18px;
             margin-bottom: 14px;
         }
         .site-title {
-            font-size: 1.06rem;
+            font-size: 1.08rem;
         }
         .site-subtitle {
             font-size: 0.80rem;
@@ -669,7 +706,7 @@ st.markdown("""
             padding: 4px 10px;
         }
         .kpi-value {
-            font-size: 1.35rem;
+            font-size: 1.38rem;
         }
     }
 </style>
@@ -677,7 +714,7 @@ st.markdown("""
 
 
 def render_kpi_grid(cards):
-    """Renderiza 4 cartoes de metricas em HTML com alto contraste garantido no fundo branco."""
+    """Renderiza 4 cartoes de metricas flutuantes (sem borda colorida, com sombra suave)."""
     blocos = []
     for c in cards:
         blocos.append(
@@ -824,7 +861,7 @@ with st.sidebar:
 
 
 # =====================================================================
-# 5. CABECALHO DO PORTAL CIENTIFICO (FORMATO DE SITE)
+# 5. CABECALHO DO PORTAL CIENTIFICO FLUTUANTE
 # =====================================================================
 meta_atual = tr["pages"][st.session_state["pagina_ativa"]]
 
@@ -871,7 +908,7 @@ if st.session_state["pagina_ativa"] == "previsao":
 
         with f_col3:
             st.markdown(f"""
-            <div class="white-card" style="padding: 12px 16px; margin-bottom: 0; border-left: 4px solid #081226;">
+            <div class="white-card" style="padding: 14px 18px; margin-bottom: 0;">
                 <div class="card-title" style="font-size:0.84rem; margin-bottom: 3px;">{tr['cfg_pre']}</div>
                 <div class="card-sub" style="font-size:0.8rem;">
                     <b>m1:</b> {m1_sol:.1f} M_sol | <b>m2:</b> {m2_sol:.1f} M_sol | <b>{tr['cfg_prec']}:</b> {100.0 - b3300['erro_rel_massa']:.2f}%
@@ -914,7 +951,7 @@ if st.session_state["pagina_ativa"] == "previsao":
     mask_futuro = t_np > t_corte
     ov_futuro, _ = met.calcular_overlap_e_mismatch(h_real_np[mask_futuro], h_pred_np[mask_futuro])
 
-    # Cartoes de Metricas em HTML com Alto Contraste
+    # Cartoes de Metricas Flutuantes sem borda lateral colorida
     render_kpi_grid([
         {
             "label": tr["kpi1_title"],
@@ -970,7 +1007,7 @@ if st.session_state["pagina_ativa"] == "previsao":
                 x=t_np[mask_obs], y=h_real_np[mask_obs],
                 mode="lines",
                 name=tr["p1_tr_obs"],
-                line=dict(color="#64748b", width=2.4)
+                line=dict(color="#94a3b8", width=2.4)
             )
         )
         fig_onda.add_trace(
@@ -978,7 +1015,7 @@ if st.session_state["pagina_ativa"] == "previsao":
                 x=t_np[mask_fut_plot], y=h_real_np[mask_fut_plot],
                 mode="lines",
                 name=tr["p1_tr_real"],
-                line=dict(color="#081226", width=3.0)
+                line=dict(color="#190e30", width=3.0)
             )
         )
         fig_onda.add_trace(
@@ -986,33 +1023,33 @@ if st.session_state["pagina_ativa"] == "previsao":
                 x=t_np[mask_fut_plot], y=h_pred_np[mask_fut_plot],
                 mode="lines",
                 name=tr["p1_tr_pred"],
-                line=dict(color="#2563eb", width=2.5, dash="dash")
+                line=dict(color="#7c3aed", width=2.6, dash="dash")
             )
         )
         fig_onda.add_vrect(
             x0=t_corte, x1=80.0,
-            fillcolor="rgba(37, 99, 235, 0.07)",
+            fillcolor="rgba(124, 58, 237, 0.07)",
             layer="below", line_width=0
         )
-        fig_onda.add_vline(x=t_corte, line_width=1.8, line_dash="dash", line_color="#1d4ed8")
+        fig_onda.add_vline(x=t_corte, line_width=1.8, line_dash="dash", line_color="#6d28d9")
         fig_onda.update_layout(
-            title=dict(text=tr["p1_chart1_title"], font=dict(color="#081226", size=14)),
+            title=dict(text=tr["p1_chart1_title"], font=dict(color="#140c24", size=14)),
             height=410,
             template="plotly_white",
             paper_bgcolor="#ffffff",
-            plot_bgcolor="#f8fafc",
-            font=dict(family="Montserrat, sans-serif", color="#0f172a", size=11),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(color="#0f172a")),
+            plot_bgcolor="#faf9fc",
+            font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(color="#140c24")),
             margin=dict(l=45, r=20, t=65, b=40),
-            xaxis=dict(title=dict(text=tr["p1_x_time"], font=dict(color="#0f172a")), tickfont=dict(color="#334155"), gridcolor="#e2e8f0"),
-            yaxis=dict(title=dict(text="Strain Re(h_22)", font=dict(color="#0f172a")), tickfont=dict(color="#334155"), gridcolor="#e2e8f0")
+            xaxis=dict(title=dict(text=tr["p1_x_time"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5"),
+            yaxis=dict(title=dict(text="Strain Re(h_22)", font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5")
         )
         st.plotly_chart(fig_onda, use_container_width=True, theme=None)
 
     with g_col2:
         categorias_esc = tr["p1_bars"]
         valores_esc = [50.0, 150.0, v_kick_pred_kms, 300.0, 550.0]
-        cores_esc = ["#cbd5e1", "#94a3b8", "#2563eb", "#64748b", "#081226"]
+        cores_esc = ["#dcd6e8", "#b5a6cc", "#7c3aed", "#64587a", "#190e30"]
 
         fig_bar = go.Figure(
             go.Bar(
@@ -1021,20 +1058,20 @@ if st.session_state["pagina_ativa"] == "previsao":
                 marker_color=cores_esc,
                 text=[f"{v:.0f} km/s" for v in valores_esc],
                 textposition="outside",
-                textfont=dict(color="#081226", size=11)
+                textfont=dict(color="#140c24", size=11)
             )
         )
         fig_bar.update_layout(
-            title=dict(text=tr["p1_chart2_title"], font=dict(color="#081226", size=14)),
+            title=dict(text=tr["p1_chart2_title"], font=dict(color="#140c24", size=14)),
             height=410,
             template="plotly_white",
             paper_bgcolor="#ffffff",
-            plot_bgcolor="#f8fafc",
-            font=dict(family="Montserrat, sans-serif", color="#0f172a", size=11),
+            plot_bgcolor="#faf9fc",
+            font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
             showlegend=False,
             margin=dict(l=40, r=20, t=65, b=40),
-            xaxis=dict(tickfont=dict(color="#334155"), gridcolor="#e2e8f0"),
-            yaxis=dict(title=dict(text=tr["p1_y_vel"], font=dict(color="#0f172a")), tickfont=dict(color="#334155"), range=[0, 650], gridcolor="#e2e8f0")
+            xaxis=dict(tickfont=dict(color="#524766"), gridcolor="#ede9f5"),
+            yaxis=dict(title=dict(text=tr["p1_y_vel"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), range=[0, 650], gridcolor="#ede9f5")
         )
         st.plotly_chart(fig_bar, use_container_width=True, theme=None)
 
@@ -1102,7 +1139,7 @@ elif st.session_state["pagina_ativa"] == "validacao":
             x=t_zoom, y=ref_zoom,
             mode="lines",
             name=tr["p2_ref"],
-            line=dict(color="#081226", width=3.0)
+            line=dict(color="#190e30", width=3.0)
         ),
         row=1, col=1
     )
@@ -1113,7 +1150,7 @@ elif st.session_state["pagina_ativa"] == "validacao":
                 x=t_zoom, y=r_sel["pred_dir"][mask],
                 mode="lines",
                 name=f"CosmicFNO ({r_sel['ov_dir']*100:.2f}% Overlap)",
-                line=dict(color="#2563eb", width=2.5, dash="dash")
+                line=dict(color="#7c3aed", width=2.5, dash="dash")
             ),
             row=1, col=1
         )
@@ -1124,7 +1161,7 @@ elif st.session_state["pagina_ativa"] == "validacao":
                 x=t_zoom, y=r_sel["pred_polar"][mask],
                 mode="lines",
                 name=f"Polar-CosmicFNO ({r_sel['ov_pol']*100:.2f}% Overlap)",
-                line=dict(color="#06b6d4", width=2.2, dash="dot")
+                line=dict(color="#c084fc", width=2.2, dash="dot")
             ),
             row=1, col=1
         )
@@ -1134,28 +1171,28 @@ elif st.session_state["pagina_ativa"] == "validacao":
             x=t_zoom, y=erro_zoom,
             mode="lines",
             name="|Delta h|",
-            line=dict(color="#0284c7", width=1.6),
+            line=dict(color="#6d28d9", width=1.6),
             fill="tozeroy",
-            fillcolor="rgba(37, 99, 235, 0.12)"
+            fillcolor="rgba(124, 58, 237, 0.12)"
         ),
         row=2, col=1
     )
 
-    fig_val.add_vline(x=0.0, line_width=1.2, line_dash="dot", line_color="#64748b")
+    fig_val.add_vline(x=0.0, line_width=1.2, line_dash="dot", line_color="#8b7aa8")
     fig_val.update_layout(
         height=520,
         template="plotly_white",
         paper_bgcolor="#ffffff",
-        plot_bgcolor="#f8fafc",
-        font=dict(family="Montserrat, sans-serif", color="#0f172a", size=11),
-        legend=dict(orientation="h", yanchor="bottom", y=1.03, xanchor="right", x=1, font=dict(color="#0f172a")),
+        plot_bgcolor="#faf9fc",
+        font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
+        legend=dict(orientation="h", yanchor="bottom", y=1.03, xanchor="right", x=1, font=dict(color="#140c24")),
         margin=dict(l=45, r=20, t=55, b=40)
     )
-    fig_val.update_annotations(font=dict(color="#081226", size=13))
-    fig_val.update_yaxes(title_text="Strain Re(h_22)", row=1, col=1, gridcolor="#e2e8f0", tickfont=dict(color="#334155"), title_font=dict(color="#0f172a"))
-    fig_val.update_yaxes(title_text="|Error|", row=2, col=1, gridcolor="#e2e8f0", tickfont=dict(color="#334155"), title_font=dict(color="#0f172a"))
-    fig_val.update_xaxes(title_text=tr["p1_x_time"], row=2, col=1, gridcolor="#e2e8f0", tickfont=dict(color="#334155"), title_font=dict(color="#0f172a"))
-    fig_val.update_xaxes(tickfont=dict(color="#334155"), row=1, col=1, gridcolor="#e2e8f0")
+    fig_val.update_annotations(font=dict(color="#140c24", size=13))
+    fig_val.update_yaxes(title_text="Strain Re(h_22)", row=1, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
+    fig_val.update_yaxes(title_text="|Error|", row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
+    fig_val.update_xaxes(title_text=tr["p1_x_time"], row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
+    fig_val.update_xaxes(tickfont=dict(color="#524766"), row=1, col=1, gridcolor="#ede9f5")
 
     st.plotly_chart(fig_val, use_container_width=True, theme=None)
 
@@ -1194,19 +1231,19 @@ elif st.session_state["pagina_ativa"] == "espectro":
                 x=t_arr, y=onda_emulada,
                 mode="lines",
                 name="Strain h_22(t)",
-                line=dict(color="#1d4ed8", width=2.4)
+                line=dict(color="#6d28d9", width=2.4)
             )
         )
         fig_t.update_layout(
-            title=dict(text=tr["p3_c1"].format(q=q_slider, s=spin_slider), font=dict(color="#081226", size=14)),
+            title=dict(text=tr["p3_c1"].format(q=q_slider, s=spin_slider), font=dict(color="#140c24", size=14)),
             height=430,
             template="plotly_white",
             paper_bgcolor="#ffffff",
-            plot_bgcolor="#f8fafc",
-            font=dict(family="Montserrat, sans-serif", color="#0f172a", size=11),
+            plot_bgcolor="#faf9fc",
+            font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
             margin=dict(l=45, r=20, t=55, b=40),
-            xaxis=dict(title=dict(text=tr["p1_x_time"], font=dict(color="#0f172a")), tickfont=dict(color="#334155"), gridcolor="#e2e8f0"),
-            yaxis=dict(title=dict(text="Strain Re(h_22)", font=dict(color="#0f172a")), tickfont=dict(color="#334155"), gridcolor="#e2e8f0")
+            xaxis=dict(title=dict(text=tr["p1_x_time"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5"),
+            yaxis=dict(title=dict(text="Strain Re(h_22)", font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5")
         )
         st.plotly_chart(fig_t, use_container_width=True, theme=None)
 
@@ -1215,19 +1252,19 @@ elif st.session_state["pagina_ativa"] == "espectro":
             go.Bar(
                 x=modos_idx[:64],
                 y=espectro_amp[:64],
-                marker_color=["#1d4ed8" if k < 32 else "#cbd5e1" for k in range(64)]
+                marker_color=["#6d28d9" if k < 32 else "#dcd6e8" for k in range(64)]
             )
         )
         fig_f.update_layout(
-            title=dict(text=tr["p3_c2"], font=dict(color="#081226", size=14)),
+            title=dict(text=tr["p3_c2"], font=dict(color="#140c24", size=14)),
             height=430,
             template="plotly_white",
             paper_bgcolor="#ffffff",
-            plot_bgcolor="#f8fafc",
-            font=dict(family="Montserrat, sans-serif", color="#0f172a", size=11),
+            plot_bgcolor="#faf9fc",
+            font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
             margin=dict(l=45, r=20, t=55, b=40),
-            xaxis=dict(title=dict(text=tr["p3_xk"], font=dict(color="#0f172a")), tickfont=dict(color="#334155"), gridcolor="#e2e8f0"),
-            yaxis=dict(title=dict(text=tr["p3_yf"], font=dict(color="#0f172a")), tickfont=dict(color="#334155"), gridcolor="#e2e8f0")
+            xaxis=dict(title=dict(text=tr["p3_xk"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5"),
+            yaxis=dict(title=dict(text=tr["p3_yf"], font=dict(color="#140c24")), tickfont=dict(color="#524766"), gridcolor="#ede9f5")
         )
         st.plotly_chart(fig_f, use_container_width=True, theme=None)
 
@@ -1279,10 +1316,10 @@ elif st.session_state["pagina_ativa"] == "colisao3d":
     tam_bh1 = max(11, int(22 * (q_3d / (1.0 + q_3d))))
     tam_bh2 = max(7, int(22 * (1.0 / (1.0 + q_3d))))
 
-    fig_3d.add_trace(go.Scatter3d(x=x1[:1], y=y1[:1], z=z1[:1], mode="markers", marker=dict(size=tam_bh1, color="#081226"), name=tr["p4_bh1"]), row=1, col=1)
-    fig_3d.add_trace(go.Scatter3d(x=x2[:1], y=y2[:1], z=z2[:1], mode="markers", marker=dict(size=tam_bh2, color="#2563eb"), name=tr["p4_bh2"]), row=1, col=1)
-    fig_3d.add_trace(go.Scatter(x=t_anim[:1], y=h_anim[:1], mode="lines", line=dict(color="#1d4ed8", width=2.8), name="h_22(t)"), row=2, col=1)
-    fig_3d.add_trace(go.Scatter(x=[t_anim[0]], y=[h_anim[0]], mode="markers", marker=dict(color="#081226", size=9), showlegend=False), row=2, col=1)
+    fig_3d.add_trace(go.Scatter3d(x=x1[:1], y=y1[:1], z=z1[:1], mode="markers", marker=dict(size=tam_bh1, color="#190e30"), name=tr["p4_bh1"]), row=1, col=1)
+    fig_3d.add_trace(go.Scatter3d(x=x2[:1], y=y2[:1], z=z2[:1], mode="markers", marker=dict(size=tam_bh2, color="#7c3aed"), name=tr["p4_bh2"]), row=1, col=1)
+    fig_3d.add_trace(go.Scatter(x=t_anim[:1], y=h_anim[:1], mode="lines", line=dict(color="#6d28d9", width=2.8), name="h_22(t)"), row=2, col=1)
+    fig_3d.add_trace(go.Scatter(x=[t_anim[0]], y=[h_anim[0]], mode="markers", marker=dict(color="#190e30", size=9), showlegend=False), row=2, col=1)
 
     fig_3d.frames = [
         go.Frame(
@@ -1301,13 +1338,13 @@ elif st.session_state["pagina_ativa"] == "colisao3d":
         height=640,
         template="plotly_white",
         paper_bgcolor="#ffffff",
-        plot_bgcolor="#f8fafc",
-        font=dict(family="Montserrat, sans-serif", color="#0f172a", size=11),
-        legend=dict(font=dict(color="#0f172a")),
+        plot_bgcolor="#faf9fc",
+        font=dict(family="Montserrat, sans-serif", color="#140c24", size=11),
+        legend=dict(font=dict(color="#140c24")),
         updatemenus=[dict(
             type="buttons",
             showactive=False,
-            font=dict(color="#081226"),
+            font=dict(color="#140c24"),
             buttons=[
                 dict(label=tr["p4_play"], method="animate", args=[None, dict(frame=dict(duration=40, redraw=True), fromcurrent=True)]),
                 dict(label=tr["p4_pause"], method="animate", args=[[None], dict(frame=dict(duration=0, redraw=False), mode="immediate")])
@@ -1316,16 +1353,16 @@ elif st.session_state["pagina_ativa"] == "colisao3d":
         )],
         margin=dict(l=20, r=20, t=55, b=30)
     )
-    fig_3d.update_annotations(font=dict(color="#081226", size=13))
+    fig_3d.update_annotations(font=dict(color="#140c24", size=13))
     fig_3d.update_scenes(
         xaxis=dict(range=[-2.3, 2.3], visible=False),
         yaxis=dict(range=[-2.3, 2.3], visible=False),
         zaxis=dict(range=[-1.5, 1.5], visible=False),
-        bgcolor="#f8fafc",
+        bgcolor="#faf9fc",
         camera=dict(eye=dict(x=1.15, y=1.15, z=0.85))
     )
-    fig_3d.update_xaxes(range=[float(t_anim.min()), float(t_anim.max())], title_text=tr["p1_x_time"], row=2, col=1, gridcolor="#e2e8f0", tickfont=dict(color="#334155"), title_font=dict(color="#0f172a"))
-    fig_3d.update_yaxes(range=[float(h_anim.min()*1.25), float(h_anim.max()*1.25)], title_text="Strain Re(h_22)", row=2, col=1, gridcolor="#e2e8f0", tickfont=dict(color="#334155"), title_font=dict(color="#0f172a"))
+    fig_3d.update_xaxes(range=[float(t_anim.min()), float(t_anim.max())], title_text=tr["p1_x_time"], row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
+    fig_3d.update_yaxes(range=[float(h_anim.min()*1.25), float(h_anim.max()*1.25)], title_text="Strain Re(h_22)", row=2, col=1, gridcolor="#ede9f5", tickfont=dict(color="#524766"), title_font=dict(color="#140c24"))
 
     st.plotly_chart(fig_3d, use_container_width=True, theme=None)
 
