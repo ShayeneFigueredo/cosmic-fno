@@ -2,6 +2,10 @@
   <img src="docs/assets/Cosmicfno-LOGO.png" alt="CosmicFNO Logo" width="380">
 </p>
 
+<p align="center">
+  <a href="https://cosmicfno.streamlit.app/" target="_blank"><b>Acesse a Plataforma Interativa Online: https://cosmicfno.streamlit.app/</b></a>
+</p>
+
 # CosmicFNO: Operadores Neurais de Fourier na Emulacao, Alerta Pre-Merger e Diagnostico de Remanescentes de Ondas Gravitacionais
 
 **CosmicFNO** e um projeto de pesquisa em *Scientific Machine Learning* (SciML) desenvolvido na **Universidade Federal de Uberlandia (UFU)** que investiga a aplicacao de **Fourier Neural Operators (FNOs)** na emulacao de formas de onda gravitacionais (*waveforms*), previsao antecipada de colisoes (*Pre-Merger Early Warning*) e estimativa de recuo relativistico (*Gravitational Wave Recoil Kick*) em sistemas binarios de buracos negros (BBH) do catalogo **SXS v3.0.0** (*Simulating eXtreme Spacetimes*).
