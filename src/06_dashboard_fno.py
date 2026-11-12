@@ -133,63 +133,81 @@ st.markdown("""
         box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45) !important;
     }
 
-    /* TOPBAR Branca Organizada */
-    .topbar {
-        background-color: #ffffff;
+    /* CABECALHO DO SITE (HERO BAR INSTITUCIONAL SEM PERFIL PESSOAL) */
+    .site-header {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
         border: 1px solid #e2e8f0;
+        border-top: 4px solid #1d4ed8;
         border-radius: 14px;
-        padding: 14px 22px;
+        padding: 20px 26px;
         margin-bottom: 18px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 10px;
-        box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+        gap: 16px;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
     }
-    .topbar-left {
-        display: flex;
-        align-items: center;
-        gap: 14px;
+    .site-header-left {
+        max-width: 760px;
     }
-    .topbar-greeting {
-        font-size: 1.08rem;
+    .site-eyebrow {
+        font-size: 0.70rem;
         font-weight: 700;
-        color: #0f172a;
-        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
+        color: #2563eb;
+        margin: 0 0 5px 0;
     }
-    .topbar-sub {
-        font-size: 0.78rem;
-        color: #64748b;
-        margin: 0;
+    .site-title {
+        font-size: 1.28rem;
+        font-weight: 800;
+        color: #081226;
+        margin: 0 0 6px 0;
+        line-height: 1.25;
     }
-    .topbar-right {
+    .site-subtitle {
+        font-size: 0.85rem;
+        color: #475569;
+        margin: 0;
+        line-height: 1.55;
+    }
+    .site-header-badges {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 8px;
+        flex-wrap: wrap;
     }
     .status-pill {
         background-color: #eff6ff;
         color: #1d4ed8;
         border: 1px solid #bfdbfe;
-        padding: 5px 12px;
+        padding: 6px 13px;
         border-radius: 999px;
-        font-size: 0.74rem;
+        font-size: 0.73rem;
         font-weight: 600;
         white-space: nowrap;
     }
-    .avatar-circle {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #081226, #1d4ed8);
-        color: #ffffff;
+    .status-pill-dark {
+        background-color: #081226;
+        color: #f8fafc;
+        padding: 6px 13px;
+        border-radius: 999px;
+        font-size: 0.73rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    .site-footer {
+        margin-top: 28px;
+        padding: 16px 20px;
+        border-top: 1px solid #e2e8f0;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 0.78rem;
-        flex-shrink: 0;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 0.76rem;
+        color: #64748b;
     }
 
     /* Cartoes de Metricas */
@@ -260,16 +278,19 @@ st.markdown("""
             padding-right: 0.85rem !important;
             padding-top: 0.25rem !important;
         }
-        .topbar {
-            padding: 12px 14px;
-            margin-bottom: 12px;
+        .site-header {
+            padding: 15px 16px;
+            margin-bottom: 14px;
         }
-        .topbar-greeting {
-            font-size: 0.98rem;
+        .site-title {
+            font-size: 1.06rem;
         }
-        .status-pill {
+        .site-subtitle {
+            font-size: 0.80rem;
+        }
+        .status-pill, .status-pill-dark {
             font-size: 0.68rem;
-            padding: 4px 9px;
+            padding: 4px 10px;
         }
         .white-card {
             padding: 14px 16px;
@@ -403,19 +424,48 @@ with st.sidebar:
 
 
 # =====================================================================
-# 4. TOPBAR BRANCA ORGANIZADA (RESPONSIVA DESKTOP & MOBILE)
+# 4. CABECALHO DO PORTAL CIENTIFICO (FORMATO DE SITE, SEM PERFIL PESSOAL)
 # =====================================================================
-st.markdown("""
-<div class="topbar">
-    <div class="topbar-left">
-        <div>
-            <p class="topbar-greeting">Olá, Shayene</p>
-            <p class="topbar-sub">Plataforma de Emulação Espectral e Diagnóstico de Buracos Negros Binários</p>
-        </div>
+META_PAGINAS = {
+    "previsao": {
+        "eyebrow": "OBSERVATORIO ESPECTRAL DE ONDAS GRAVITACIONAIS",
+        "titulo": "Previsão Antecipada da Colisão (Pre-Merger) e Diagnóstico de Fuga Galáctica",
+        "subtitulo": "O operador neural observa apenas a fase inicial da espiral (antes de t = -50M, com o impacto oculto) para prever a forma de onda da fusão e diagnosticar a massa final, o spin e a velocidade de ejeção (Recoil Kick) do buraco negro remanescente."
+    },
+    "validacao": {
+        "eyebrow": "BENCHMARK CIENTIFICO DE RELATIVIDADE NUMERICA",
+        "titulo": "Validação Hold-Out Cega em Formas de Onda Inéditas (99.98% de Fidelidade)",
+        "subtitulo": "Avaliação rigorosa do modelo em simulações SXS nunca vistas durante o treinamento, comparando a parametrização espectral direta (CosmicFNO Direto) com a decomposição polar explícita (Amplitude-Fase)."
+    },
+    "espectro": {
+        "eyebrow": "LABORATORIO DE INFERENCIA EM TEMPO REAL",
+        "titulo": "Emulador Contínuo de Espaço de Parâmetros e Espectro de Fourier (FFT)",
+        "subtitulo": "Explore continuamente a razão de massa (q) e o spin orbital para inspecionar a onda gravitacional gerada em milissegundos e os 32 modos espectrais de Fourier filtrados pelo operador neural."
+    },
+    "colisao3d": {
+        "eyebrow": "VISUALIZACAO DINAMICA DE ESPACO-TEMPO",
+        "titulo": "Coalescência Binária 3D Sincronizada com o Sinal Gravitacional",
+        "subtitulo": "Simulação tridimensional das órbitas relativísticas dos buracos negros sincronizada passo a passo com a emissão do modo dominante quadrupolar h_22(t) até o instante da fusão (t = 0)."
+    },
+    "tabela": {
+        "eyebrow": "RELATORIO CONSOLIDADO DE METRICAS",
+        "titulo": "Síntese Quantitativa dos Experimentos — Catálogo SXS v3.0.0",
+        "subtitulo": "Comparativo completo de Erro Relativo L2, Fidelidade de Fase (Overlap) e Mismatch em todas as etapas evolutivas da pesquisa."
+    },
+}
+
+meta_atual = META_PAGINAS[st.session_state["pagina_ativa"]]
+
+st.markdown(f"""
+<div class="site-header">
+    <div class="site-header-left">
+        <p class="site-eyebrow">{meta_atual['eyebrow']}</p>
+        <h1 class="site-title">{meta_atual['titulo']}</h1>
+        <p class="site-subtitle">{meta_atual['subtitulo']}</p>
     </div>
-    <div class="topbar-right">
-        <span class="status-pill">Catálogo SXS v3.0.0 — 3.435 Colisões</span>
-        <div class="avatar-circle">SF</div>
+    <div class="site-header-badges">
+        <span class="status-pill">Catálogo SXS v3.0.0 · 3.435 Colisões</span>
+        <span class="status-pill-dark">Fidelidade &gt; 99.9%</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -427,17 +477,7 @@ st.markdown("""
 if st.session_state["pagina_ativa"] == "previsao":
     b3300 = env["bench_3300"]
 
-    # Barra de controle superior organizada (funciona perfeitamente em Desktop e Mobile)
     with st.container():
-        st.markdown("""
-        <div class="white-card">
-            <div class="card-title">Previsão Antecipada da Colisão (Pre-Merger) e Diagnóstico de Fuga Galáctica</div>
-            <div class="card-sub">
-                O modelo observa apenas a fase inicial da espiral (antes de t = -50M, com o impacto oculto) para prever a onda completa da colisão e estimar a massa final, o spin e a velocidade de ejeção (Recoil Kick) do buraco negro formado.
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
         f_col1, f_col2, f_col3 = st.columns([1.5, 1.2, 1.3])
         with f_col1:
             opcoes_pred = [f"{item['id']} — q = {item['q']:.2f} ({item['tipo']})" for item in CATALOGO_INFO]
@@ -915,12 +955,13 @@ elif st.session_state["pagina_ativa"] == "colisao3d":
 # PAGINA 5: RESUMO QUANTITATIVO DOS EXPERIMENTOS
 # =====================================================================
 elif st.session_state["pagina_ativa"] == "tabela":
-    st.markdown("""
-    <div class="white-card">
-        <div class="card-title">Sintese Experimental — Escalonamento SXS (14 Formas de Onda & 3.435 Colisoes)</div>
-        <div class="card-sub">Resultados consolidados gerados pelos modulos 08, 09, 10 e 11.</div>
-    </div>
-    """, unsafe_allow_html=True)
+    b3300 = env["bench_3300"]
+
+    t_c1, t_c2, t_c3, t_c4 = st.columns(4)
+    t_c1.metric("Colisoes SXS Analisadas", f"{b3300['n_total']:,}".replace(",", "."), f"Teste Cego: {b3300['n_test']} colisoes", delta_color="off")
+    t_c2.metric("Precisao Massa Final (M_f)", f"{100.0 - b3300['erro_rel_massa']:.2f}%", f"Erro Relativo: {b3300['erro_rel_massa']:.2f}%", delta_color="off")
+    t_c3.metric("Correlacao Spin Final (R²)", f"{b3300['r2_spin']*100:.2f}%", f"MAE Spin: {b3300['mae_spin']:.4f} c", delta_color="off")
+    t_c4.metric("Fuga de Aglomerados", f"{b3300['acc_aglomerado']:.2f}%", "Classificacao > 50 km/s", delta_color="off")
 
     st.dataframe(
         {
@@ -941,3 +982,13 @@ elif st.session_state["pagina_ativa"] == "tabela":
         use_container_width=True,
         hide_index=True
     )
+
+# =====================================================================
+# RODAPE DO PORTAL CIENTIFICO
+# =====================================================================
+st.markdown("""
+<div class="site-footer">
+    <span><b>CosmicFNO</b> · Observatório Espectral de Ondas Gravitacionais (Fourier Neural Operators)</span>
+    <span>Universidade Federal de Uberlândia (UFU) · Catálogo SXS v3.0.0</span>
+</div>
+""", unsafe_allow_html=True)
