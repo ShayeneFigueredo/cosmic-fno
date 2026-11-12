@@ -3,7 +3,12 @@
 </p>
 
 <p align="center">
-  <a href="https://cosmicfno.streamlit.app/" target="_blank"><b>Acesse a Plataforma Interativa Online: https://cosmicfno.streamlit.app/</b></a>
+  <a href="https://doi.org/10.5281/zenodo.24166705"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.24166705.svg" alt="DOI"></a>
+</p>
+
+<p align="center">
+  <a href="https://cosmicfno.streamlit.app/" target="_blank"><b>Acesse a Plataforma Interativa Online: https://cosmicfno.streamlit.app/</b></a> •
+  <a href="https://doi.org/10.5281/zenodo.24166705" target="_blank"><b>Artigo Científico (Preprint DOI): 10.5281/zenodo.24166705</b></a>
 </p>
 
 # CosmicFNO: Operadores Neurais de Fourier na Emulacao, Alerta Pre-Merger e Diagnostico de Remanescentes de Ondas Gravitacionais
@@ -72,4 +77,23 @@ python src/11_escala_sxs_e_fno_polar.py
 
 # 5. Plataforma Visual Interativa (Streamlit)
 streamlit run src/06_dashboard_fno.py
+```
+
+---
+
+## 3. Como Citar (Citation / DOI)
+
+Este trabalho possui registro permanente (DOI) no repositório científico **Zenodo (CERN)**:
+- **DOI:** [`10.5281/zenodo.24166705`](https://doi.org/10.5281/zenodo.24166705)
+
+```bibtex
+@article{figueredo2026cosmicfno,
+  author       = {Figueredo, Shayene},
+  title        = {{CosmicFNO: Emulação Espectral de Ondas Gravitacionais, Previsão Antecipada de Coalescência (Pre-Merger) e Diagnóstico de Ejeção Galáctica em Escala de Catálogo (3.435 Simulações SXS)}},
+  year         = {2026},
+  publisher    = {Zenodo},
+  affiliation  = {Faculdade de Computação (FACOM), Universidade Federal de Uberlândia (UFU)},
+  doi          = {10.5281/zenodo.24166705},
+  url          = {https://doi.org/10.5281/zenodo.24166705}
+}
 ```

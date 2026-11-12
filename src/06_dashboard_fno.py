@@ -1050,6 +1050,7 @@ st.markdown(f"""
     <div class="editorial-title-row">
         <h1 class="editorial-title">{meta_atual['titulo']}</h1>
         <div class="editorial-badges">
+            <a href="https://doi.org/10.5281/zenodo.24166705" target="_blank" class="meta-tag" style="text-decoration:none;">DOI: 10.5281/zenodo.24166705</a>
             <span class="meta-tag">{tr['pill_catalog']}</span>
             <span class="meta-tag-solid">{tr['pill_fid']}</span>
         </div>
@@ -1576,7 +1577,7 @@ elif st.session_state["pagina_ativa"] == "tabela":
 # =====================================================================
 st.markdown(f"""
 <div class="site-footer">
-    <span>{tr['footer_l']}</span>
+    <span>{tr['footer_l']} · <a href="https://doi.org/10.5281/zenodo.24166705" target="_blank" style="color:#6d28d9;text-decoration:none;font-weight:600;">DOI: 10.5281/zenodo.24166705</a></span>
     <span>{tr['footer_r']}</span>
 </div>
 """, unsafe_allow_html=True)

@@ -1,9 +1,10 @@
 cff-version: 1.2.0
 message: "Se voce utilizar este software ou seus modelos em sua pesquisa, por favor cite conforme abaixo."
-title: "CosmicFNO: Emulacao de Formas de Onda Gravitacionais e Predicao de Recuo Relativistico em Sistemas Binarios de Buracos Negros com Operadores Neurais de Fourier"
+title: "CosmicFNO: Emulação Espectral de Ondas Gravitacionais, Previsão Antecipada de Coalescência (Pre-Merger) e Diagnóstico de Ejeção Galáctica em Escala de Catálogo (3.435 Simulações SXS)"
 version: 1.0.0
-date-released: 2026-11-11
-url: "https://github.com/ShayeneFigueredo/cosmic-fno"
+doi: "10.5281/zenodo.24166705"
+date-released: 2026-11-12
+url: "https://doi.org/10.5281/zenodo.24166705"
 repository-code: "https://github.com/ShayeneFigueredo/cosmic-fno"
 license: MIT
 authors:
